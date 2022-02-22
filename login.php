@@ -1,3 +1,28 @@
+<?php
+require "./functions/db.php";
+if (!empty($_POST)) {
+    $email = request("email");
+    $password = request("password");
+
+    if (empty($email) || empty($password)) {
+        die("Please fill all the fields");
+    }
+
+    $user = where('user', 'email', '=', $email, false);
+
+    if (empty($user)) {
+        die("No user found with given email address");
+    }
+
+    if (password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: home.php");
+    } else {
+        die("Invalid email or password");
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,23 +45,20 @@
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">Login</h1>
 
-                        <form>
+                        <form action="./login.php" method="POST">
                             <!-- Email input -->
                             <div class="form-outline">
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <input type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
+                                <input name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline ">
                                 <label class="form-label" for="form3Example4">Password</label>
-                                <input type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <input name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
                             </div>
-
-
-
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="button" class="btn btn-primary px-4">Login</button>
+                                <button type="submit" class="btn btn-primary px-4">Login</button>
                                 <p class="small mt-2 pt-1 mb-0">Don't have an account? <a href="./register.php" class="link-danger">Register</a></p>
                             </div>
 
