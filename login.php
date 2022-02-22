@@ -16,7 +16,11 @@ if (!empty($_POST)) {
 
     if (password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header("Location: home.php");
+        if ($user['role'] == "admin") {
+            header("Location: ./admin/index.php");
+        } else {
+            header("Location: home.php");
+        }
     } else {
         die("Invalid email or password");
     }

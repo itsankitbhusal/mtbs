@@ -57,7 +57,7 @@ function is_logged()
 function user()
 {
     if (is_logged()) {
-        return find('users', $_SESSION['user_id']);
+        return find('user', $_SESSION['user_id']);
     }
 
     return false;

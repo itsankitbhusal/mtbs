@@ -1,5 +1,9 @@
-<?php include "./components/header.php"; ?>
-<?php include "./components/sidebar.php"; ?>
+<?php
+require_once "./admin.php";
+include  "./components/header.php";
+include  "./components/sidebar.php";
+?>
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid">

@@ -50,7 +50,7 @@ function is_admin()
         return false;
     }
 
-    if ($user['role'] != "Admin") {
+    if ($user['role'] != "admin") {
         return false;
     }
 
