@@ -1,5 +1,5 @@
-<?php include "../components/header.php"; ?>
-<?php include "../sidebar.php"; ?>
+<?php include  "../crudComp/header.php"; ?>
+<?php include  "../crudComp/sidebar.php"; ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -67,4 +67,4 @@
 </div>
 </div>
 <!-- End of Main Content -->
-<?php include "../footer.php"; ?>
+<?php include "../crudComp/footer.php"; ?>
