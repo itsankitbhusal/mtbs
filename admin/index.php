@@ -1,7 +1,8 @@
 <?php
-require_once "./admin.php";
-include  "./components/header.php";
-include  "./components/sidebar.php";
+require_once __DIR__ . "/./components/admin.php";
+include_once __DIR__ . "/./components/header.php";
+include_once __DIR__ . "/./components/sidebar.php";
+
 ?>
 
 
@@ -14,4 +15,4 @@ include  "./components/sidebar.php";
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
-<?php include "./components/footer.php"; ?>
+<?php include_once __DIR__ . "/./components/footer.php"; ?>
