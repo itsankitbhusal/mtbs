@@ -1,30 +1,36 @@
 <?php
-require_once __DIR__ . "/../components/admin.php";
-// include "../../functions/db.php";
-// include "../../functions/functions.php";
-if (!empty($_POST)) {
 
-    $name = request('name');
-    $language = request('language');
-    $release_date = request('release_date');
-    $runtime = request('hh') . ":" . request('mm') . ":" . request('ss');
-    $genre = request('genre');
-}
+require_once __DIR__ . "/../components/admin.php";
+
+$result = all('genre');
+
+include  __DIR__ . "/../components/header.php";
+include  __DIR__ . "/../components/sidebar.php";
 
 ?>
-<?php include  __DIR__ . "/../components/header.php"; ?>
-<?php include  __DIR__ . "/../components/sidebar.php"; ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 ml-4 text-gray-800">Add movie to database</h1>
-
+    <div class="d-flex m-4 justify-content-between mb-4">
+        <h3>Add movie to database</h3>
+        <a href="./index.php" class="btn btn-primary px-4">Go back</a>
+    </div>
+    <?php if (hasError()) : ?>
+        <div class="ml-4 alert alert-danger">
+            <?php echo getError(); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (hasSuccess()) : ?>
+        <div class="ml-4 alert alert-success">
+            <?php echo getSuccess(); ?>
+        </div>
+    <?php endif; ?>
     <!-- /.container-fluid -->
-    <form class="m-4" method="POST" action="./create.php">
+    <form class="m-4" method="POST" action="./store.php" enctype="multipart/form-data">
         <div class="form-group">
             <label for="movieName">Name</label>
-            <input name="name" type="text" class="form-control" id="movieName" placeholder="The Shawshank Redemption">
+            <input name="moviename" type="text" class="form-control" id="movieName" placeholder="The Shawshank Redemption">
         </div>
         <div class="form-group">
             <label for="language">Language</label>
@@ -35,6 +41,7 @@ if (!empty($_POST)) {
                 <option>Hindi</option>
                 <option>Spanish</option>
                 <option>French</option>
+
             </select>
         </div>
         <div class="form-group">
@@ -46,7 +53,7 @@ if (!empty($_POST)) {
             <br>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Runtime | hh/mm/ss</span>
+                    <span class="input-group-text">Runtime </span>
                 </div>
                 <input name="hh" placeholder="hh" type="number" min="0" max="4" aria-label="hh" class="form-control">
                 <input name="mm" placeholder="mm" type="number" min="0" max="59" aria-label="mm" class="form-control">
@@ -58,28 +65,23 @@ if (!empty($_POST)) {
         <div class="form-group">
             <label for="genre">Genre</label>
             <select name="genre" multiple class="form-control" id="genre">
-                <option>Action</option>
-                <option>Drama</option>
-                <option>Thriller</option>
-                <option>SciFi</option>
-                <option>Comedy</option>
+                <?php foreach ($result as $key) : ?>
+
+
+                    <option name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?></option>
+
+
+                <?php endforeach; ?>
             </select>
         </div>
 
 
         <div class="form-group">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload Image</span>
-                </div>
-                <div class="custom-file">
-                    <input name="image" type="file" class="custom-file-input" id="inputGroupFile01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-            </div>
+            <label for="image">Upload Image:</label>
+            <input id="image" name="image" type="file" class="form-control-file">
         </div>
 
-        <button name="name" type="submit" class="btn btn-primary">Submit</button>
+        <button name="name" type="submit" class="btn btn-primary">Add movie</button>
 
     </form>
 </div>
