@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 04:06 AM
+-- Generation Time: Feb 23, 2022 at 02:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -48,6 +48,15 @@ CREATE TABLE `genre` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `genre`
+--
+
+INSERT INTO `genre` (`id`, `name`, `description`) VALUES
+(1, 'Horror', 'Dark places and unexplained things like forests, graveyards, castles, abandoned structures or buildings, locked doors to remove rooms, blood, gore, or killing instruments'),
+(2, 'Sci-Fi', 'Outer space or futuristic items like spaceships or laser guns'),
+(5, 'War', ' Different vehicles such as tanks, planes, or realistic battlefields');
+
 -- --------------------------------------------------------
 
 --
@@ -65,21 +74,16 @@ CREATE TABLE `hall` (
 --
 
 INSERT INTO `hall` (`id`, `name`, `total_seats`) VALUES
-(17, 'hello', 12),
-(18, 'hello2', 23),
+(18, 'hello2', 50),
 (22, 'new hall', 50),
 (23, 'CinemaTIC', 40),
 (24, 'cnema', 23),
 (25, 'nephall', 32),
-(26, 'asdad', 0),
-(27, 'asd', 0),
-(28, 'test', 2),
-(29, 'test', 2),
-(30, 'testst', 23),
+(26, 'asdad', 25),
+(28, 'test', 27),
 (31, 'testst3', 34),
 (32, 'ankit', 23),
-(33, 'ankit2', 1),
-(34, 'helllllllll', 88);
+(33, 'ankit2', 45);
 
 -- --------------------------------------------------------
 
@@ -92,9 +96,11 @@ CREATE TABLE `movie` (
   `name` varchar(100) NOT NULL,
   `language` varchar(10) NOT NULL,
   `release_date` date NOT NULL,
-  `runtime` time NOT NULL,
   `genre_id` int(11) NOT NULL,
-  `image` varchar(200) DEFAULT NULL
+  `image` varchar(200) DEFAULT NULL,
+  `hh` varchar(1) DEFAULT NULL,
+  `mm` varchar(2) DEFAULT NULL,
+  `ss` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -208,13 +214,13 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `movie`
