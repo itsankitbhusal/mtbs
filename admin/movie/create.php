@@ -1,7 +1,7 @@
 <?php
-
-include "../../functions/db.php";
-include "../../functions/functions.php";
+require_once __DIR__ . "/../components/admin.php";
+// include "../../functions/db.php";
+// include "../../functions/functions.php";
 if (!empty($_POST)) {
 
     $name = request('name');
@@ -9,13 +9,11 @@ if (!empty($_POST)) {
     $release_date = request('release_date');
     $runtime = request('hh') . ":" . request('mm') . ":" . request('ss');
     $genre = request('genre');
-
-    print_r($name);
 }
 
 ?>
-<?php include  "../crudComp/header.php"; ?>
-<?php include  "../crudComp/sidebar.php"; ?>
+<?php include  __DIR__ . "/../components/header.php"; ?>
+<?php include  __DIR__ . "/../components/sidebar.php"; ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -87,4 +85,4 @@ if (!empty($_POST)) {
 </div>
 </div>
 <!-- End of Main Content -->
-<?php include "../crudComp/footer.php"; ?>
+<?php include __DIR__ . "/../components/footer.php"; ?>
