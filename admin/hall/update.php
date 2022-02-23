@@ -13,15 +13,21 @@ if (empty($id)) {
 }
 
 $hall = find('hall', $id);
-if (empty($hall)) {
-    die("hall not found!");
-}
-
-if (empty($name)) {
-    setError("Please provide Name!");
+if (empty($name) || empty($total_seats)) {
+    setError("Please fill all the fiels!");
     header("Location: index.php");
     die;
 }
+
+if ($total_seats < 10) {
+    setError("Total seats should be more than 10");
+    header("Location: index.php");
+    die;
+}
+
+
+
+
 
 update('hall', $id, compact('name', 'total_seats'));
 

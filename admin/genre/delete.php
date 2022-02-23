@@ -8,13 +8,13 @@ if (empty($id)) {
     die("Please provide ID");
 }
 
-$hall = find('hall', $id);
-if (empty($hall)) {
+$genre = find('genre', $id);
+if (empty($genre)) {
     die("Enter a valid id!!!");
 }
 
 
-delete('hall', $id);
+delete('genre', $id);
 
-setSuccess('Cinema Hall deleted!');
+setSuccess('Movie Genre deleted!');
 header("Location: index.php");
