@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2022 at 02:08 PM
+-- Generation Time: Feb 24, 2022 at 04:18 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -24,48 +24,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `movie`
+-- Table structure for table `genre_movie`
 --
 
-CREATE TABLE `movie` (
+CREATE TABLE `genre_movie` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `language` varchar(10) NOT NULL,
-  `release_date` date NOT NULL,
-  `image` varchar(200) DEFAULT NULL,
-  `genre` varchar(20) NOT NULL,
-  `hh` varchar(1) DEFAULT NULL,
-  `mm` varchar(2) DEFAULT NULL,
-  `ss` varchar(2) DEFAULT NULL
+  `genre_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `movie`
---
-
-INSERT INTO `movie` (`id`, `name`, `language`, `release_date`, `image`, `genre`, `hh`, `mm`, `ss`) VALUES
-(12, 'Hello', 'English', '2020-02-10', '6217831b1cc3e.png', 'Horror', '3', '23', '47'),
-(13, 'test2', 'English', '2021-03-02', '6217830c19f94.png', 'War', '3', '9', '32');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `movie`
+-- Indexes for table `genre_movie`
 --
-ALTER TABLE `movie`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `genre_movie`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `genre_id` (`genre_id`),
+  ADD KEY `movie_id` (`movie_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `movie`
+-- AUTO_INCREMENT for table `genre_movie`
 --
-ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `genre_movie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `genre_movie`
+--
+ALTER TABLE `genre_movie`
+  ADD CONSTRAINT `genre_movie_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `genre_movie_ibfk_2` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

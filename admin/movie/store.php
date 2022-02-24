@@ -1,6 +1,8 @@
 <?php
-
 require_once __DIR__ . "/../components/admin.php";
+// echo "<pre>";
+// print_r($_POST);
+// die;
 
 //file upload or not validation
 $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
@@ -39,19 +41,15 @@ if (!empty($_POST)) {
 
     $file_name = $uname . $ext;
 
-    move_uploaded_file($file, "../../uploads/$file_name");
-
     $image = $file_name;
 
-    if (!empty($image) && !empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm) && !empty($ss)) {
-
+    if (!empty($image) && !empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm)) {
+        move_uploaded_file($file, "../../uploads/$file_name");
         create('movie', compact('name', 'language', 'release_date', 'genre', 'image', 'hh', 'mm', 'ss'));
         setSuccess('Data Inserted Sucessfully');
         header("Location: index.php");
         die("Please fill all the fields!!");
     } else {
-        setError("Please fill all the fields");
-        header("Location: create.php");
-        die;
+        die("Please fill all the fields");
     }
 }
