@@ -2,15 +2,14 @@
 
 require_once __DIR__ . "/../components/admin.php";
 
-
+//file upload or not validation
+$uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
+if (!$uploaded) {
+    die('Please upload an image');
+}
 if (!empty($_POST)) {
 
-
-
-    //image 
-
-
-    $name = request('moviename');
+    $name = request('name');
     $language = request('language');
     $release_date = request('release_date');
 
@@ -19,19 +18,9 @@ if (!empty($_POST)) {
     $mm = request('mm');
     $ss = request('ss');
 
-    //image validation starts;
-    //cann't check if image isnot uploaded and shows php error
-    // if (empty($_FILES['photo']) && empty($_FILES['photo']['name'])) {
-    //     die('Please upload and image');
-    // }
     $file = $_FILES['image']['tmp_name'];
     $type = mime_content_type($file);
     $size = $_FILES['image']['size'];
-
-    $images = [
-        'image/png',
-        'image/jpeg',
-    ];
 
     if ($type != "image/png" && $type != "image/jpeg") {
         die("File must be an image");
@@ -57,9 +46,8 @@ if (!empty($_POST)) {
     if (!empty($image) && !empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm) && !empty($ss)) {
 
         create('movie', compact('name', 'language', 'release_date', 'genre', 'image', 'hh', 'mm', 'ss'));
-
         setSuccess('Data Inserted Sucessfully');
-        header("Location: create.php");
+        header("Location: index.php");
         die("Please fill all the fields!!");
     } else {
         setError("Please fill all the fields");

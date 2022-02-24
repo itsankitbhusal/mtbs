@@ -15,19 +15,24 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="http://localhost/mtbs/admin/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="http://localhost/mtbs/admin/movie">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Movie</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="http://localhost/mtbs/admin/hall">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Theaters</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://localhost/mtbs/admin/genre">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Genre</span></a>
         </li>
 
         <!-- Divider -->

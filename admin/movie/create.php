@@ -29,8 +29,8 @@ include  __DIR__ . "/../components/sidebar.php";
     <!-- /.container-fluid -->
     <form class="m-4" method="POST" action="./store.php" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="movieName">Name</label>
-            <input name="moviename" type="text" class="form-control" id="movieName" placeholder="The Shawshank Redemption">
+            <label for="name">Name</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="The Shawshank Redemption">
         </div>
         <div class="form-group">
             <label for="language">Language</label>
@@ -81,7 +81,7 @@ include  __DIR__ . "/../components/sidebar.php";
             <input id="image" name="image" type="file" class="form-control-file">
         </div>
 
-        <button name="name" type="submit" class="btn btn-primary">Add movie</button>
+        <button type="submit" class="btn btn-primary">Add movie</button>
 
     </form>
 </div>

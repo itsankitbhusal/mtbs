@@ -1,21 +1,13 @@
 <?php
-
 require_once __DIR__ . "/../components/admin.php";
-
-
-
 $result = all('movie');
-
 include  __DIR__ . "/../components/header.php";
 include  __DIR__ . "/../components/sidebar.php";
-
-
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-
     <div class="d-flex m-4 justify-content-between mb-4">
         <h3>Movie Details</h3>
         <a href="./create.php" class="btn btn-primary px-4">Add Movie</a>
@@ -65,7 +57,7 @@ include  __DIR__ . "/../components/sidebar.php";
 
                     <td><?php echo $runtime; ?></td>
 
-                    <td> <img width="100px" src="../../uploads/62165dda0244b.png"></td>
+                    <td> <img width="100px" src="../../uploads/<?php echo $key['image']; ?>"></td>
                     <td>
                         <a class="btn btn-primary btn-sm " href="#!">Show</a>
                         <a class="btn btn-primary btn-sm " href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>

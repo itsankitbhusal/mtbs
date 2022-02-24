@@ -7,6 +7,7 @@ $id = request('id');
 $prev_result = all('genre');
 $result = where('movie', 'id', '=', $id, false);
 
+
 include  __DIR__ . "/../components/header.php";
 include  __DIR__ . "/../components/sidebar.php";
 
@@ -32,8 +33,8 @@ include  __DIR__ . "/../components/sidebar.php";
     <!-- /.container-fluid -->
     <form class="m-4" method="POST" action="./update.php?id=<?php echo $id; ?>" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="movieName">Name</label>
-            <input value="<?php echo $result['name'] ?>" name="moviename" type="text" class="form-control" id="movieName" placeholder="The Shawshank Redemption">
+            <label for="name">Name</label>
+            <input value="<?php echo $result['name'] ?>" name="name" type="text" class="form-control" id="name" placeholder="The Shawshank Redemption">
         </div>
         <div class="form-group">
             <label for="language">Language</label>
@@ -86,15 +87,12 @@ include  __DIR__ . "/../components/sidebar.php";
                                 echo "selected";
                             }
                             ?> name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?></option>
-
-
                 <?php endforeach; ?>
             </select>
         </div>
 
         <div class="my-4">
-            <?php $result = all('movie'); ?>
-            <img height="200px" src="../../uploads/62165dda0244b.png">
+            <img height="200px" src="../../uploads/<?php echo $result['image']; ?>">
         </div>
         <div class="form-group">
             <label for="image">Upload Image:</label>
@@ -102,7 +100,7 @@ include  __DIR__ . "/../components/sidebar.php";
         </div>
 
 
-        <button name="name" type="submit" class="btn btn-primary">Update movie</button>
+        <button type="submit" class="btn btn-primary">Update movie</button>
 
     </form>
 </div>
