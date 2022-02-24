@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 02:13 PM
+-- Generation Time: Feb 24, 2022 at 04:56 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -53,9 +53,13 @@ CREATE TABLE `genre` (
 --
 
 INSERT INTO `genre` (`id`, `name`, `description`) VALUES
-(1, 'Horror', 'Dark places and unexplained things like forests, graveyards, castles, abandoned structures or buildings, locked doors to remove rooms, blood, gore, or killing instruments'),
+(1, 'Horror', 'Zombies, serial killers, or ghosts'),
 (2, 'Sci-Fi', 'Outer space or futuristic items like spaceships or laser guns'),
-(5, 'War', ' Different vehicles such as tanks, planes, or realistic battlefields');
+(5, 'War', ' Different vehicles such as tanks, planes, or realistic battlefields'),
+(11, 'Action', 'Chase sequences, extended fight scenes, guns, races against time'),
+(12, 'Romance', 'Different stages of “falling in love” with a subsequent break-up and reconciliation, true love, fairy tales, forbidden love'),
+(13, 'Comedy', 'Slapstick humor, witty dialogue, rites of passage, gross-out humor, fish-out-of-water, cross-dressing, mistaken identity'),
+(14, 'Crime', 'Whodunnits, capers, rival gangs, robberies');
 
 -- --------------------------------------------------------
 
@@ -96,12 +100,23 @@ CREATE TABLE `movie` (
   `name` varchar(100) NOT NULL,
   `language` varchar(10) NOT NULL,
   `release_date` date NOT NULL,
-  `genre_id` int(11) NOT NULL,
+  `genre` varchar(200) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   `hh` varchar(1) DEFAULT NULL,
   `mm` varchar(2) DEFAULT NULL,
   `ss` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie`
+--
+
+INSERT INTO `movie` (`id`, `name`, `language`, `release_date`, `genre`, `image`, `hh`, `mm`, `ss`) VALUES
+(1, 'Test Add movie', 'Spanish', '2022-02-24', 'War', '6216ff65744ae.png', '3', '23', '12'),
+(2, 'new add movie', 'English', '2022-02-10', 'Horror', '62165e30813aa.png', '2', '12', '45'),
+(3, 'hello', 'English', '2022-01-01', 'Action', '621660a3a651e.png', '1', '3', '2'),
+(4, 'neplai movie', 'Nepali', '2022-02-25', 'Comedy', '621663c0b19df.png', '2', '23', '45'),
+(5, 'asdjnak', 'English', '2021-02-06', 'Action', '6216648438375.png', '3', '41', '48');
 
 -- --------------------------------------------------------
 
@@ -180,7 +195,8 @@ ALTER TABLE `hall`
 -- Indexes for table `movie`
 --
 ALTER TABLE `movie`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `movie_genre` (`genre`);
 
 --
 -- Indexes for table `payment`
@@ -214,7 +230,7 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `hall`
@@ -226,7 +242,7 @@ ALTER TABLE `hall`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `payment`

@@ -30,7 +30,7 @@ include  __DIR__ . "/../components/sidebar.php";
         </div>
     <?php endif; ?>
     <!-- /.container-fluid -->
-    <form class="m-4" method="POST" action="./update.php" enctype="multipart/form-data">
+    <form class="m-4" method="POST" action="./update.php?id=<?php echo $id; ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label for="movieName">Name</label>
             <input value="<?php echo $result['name'] ?>" name="moviename" type="text" class="form-control" id="movieName" placeholder="The Shawshank Redemption">
@@ -92,11 +92,15 @@ include  __DIR__ . "/../components/sidebar.php";
             </select>
         </div>
 
-
+        <div class="my-4">
+            <?php $result = all('movie'); ?>
+            <img height="200px" src="../../uploads/62165dda0244b.png">
+        </div>
         <div class="form-group">
             <label for="image">Upload Image:</label>
             <input id="image" name="image" type="file" class="form-control-file">
         </div>
+
 
         <button name="name" type="submit" class="btn btn-primary">Update movie</button>
 
