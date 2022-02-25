@@ -1,4 +1,7 @@
 <!-- Footer -->
+<?php
+$log_url = "http://localhost/mtbs/logout.php";
+?>
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
@@ -34,7 +37,9 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
-                <a class="btn btn-primary" href="#">Logout</a>
+                <form action="<?php echo $log_url ?>" method="post">
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
             </div>
         </div>
     </div>

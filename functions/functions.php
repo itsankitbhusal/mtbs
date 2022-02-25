@@ -2,7 +2,7 @@
 
 function redirect($url)
 {
-    header("Location: /project/$url");
+    header("Location: /mtbs/$url");
     die;
 }
 
@@ -60,6 +60,8 @@ function is_admin()
 function check_admin()
 {
     if (!is_admin()) {
-        die("You do not have permission to view this page!");
+        // die("You do not have permission to view this page!");
+        $login = "http://localhost/mtbs/login.php";
+        Header("Location: " . $login);
     }
 }
