@@ -53,7 +53,19 @@ include  __DIR__ . "/../components/sidebar.php";
                     <td><?php echo $key['name']; ?></td>
                     <td><?php echo $key['language']; ?></td>
                     <td><?php echo $key['release_date']; ?></td>
-                    <td><?php echo $key['genre']; ?></td>
+                    <td><?php
+
+                        $genres = where('genre_movie', 'movie_id', '=', $key['id']);
+                        $total_genre = count($genres);
+                        $i = 1;
+                        foreach ($genres as $g) {
+                            $genre = find('genre', $g['genre_id']);
+                            echo $genre['name'];
+                            if ($i != $total_genre) echo ", ";
+                            $i++;
+                        }
+
+                        ?></td>
 
                     <td><?php echo $runtime; ?></td>
 

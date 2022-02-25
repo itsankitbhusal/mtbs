@@ -11,6 +11,11 @@ require_once __DIR__ . "/../components/admin.php";
 
 //grab update filds data
 $id = request('id');
+$movie = find('movie', $id);
+if (!$movie) {
+    die("Provide movie ID");
+}
+
 $image = $_FILES['image'];
 
 $name = request('name');
@@ -22,7 +27,6 @@ $list = request('genre');
 if (empty($list)) {
     die("Please choose an genre");
 }
-$genre = implode(",", $list);
 //runtime
 $hh = request('hh');
 $mm = request('mm');
@@ -70,8 +74,16 @@ if ($uploaded) {
 
 
 //update query in movie table
-if (!empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm)) {
-    update('movie', $id, compact('name', 'language', 'release_date', 'genre', 'image', 'hh', 'mm', 'ss'));
+if (!empty($name) && !empty($language) && !empty($release_date) && !empty($hh) && !empty($mm)) {
+    update('movie', $id, compact('name', 'language', 'release_date', 'image', 'hh', 'mm', 'ss'));
+    query('delete from genre_movie where movie_id = ' . $id);
+    foreach ($list as $genre) {
+        create('genre_movie', [
+            'genre_id' => $genre,
+            'movie_id' => $movie['id'],
+        ]);
+    }
+
     setSuccess('Data Updated Sucessfully');
     header("Location: index.php");
 } else {

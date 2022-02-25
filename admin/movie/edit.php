@@ -6,6 +6,12 @@ $id = request('id');
 
 $prev_result = all('genre');
 $result = where('movie', 'id', '=', $id, false);
+$genre_list = where('genre_movie', 'movie_id', '=', $id);
+
+$genre_ids = [];
+foreach ($genre_list as $ge) {
+    $genre_ids[] = $ge['genre_id'];
+}
 
 
 include  __DIR__ . "/../components/header.php";
@@ -82,7 +88,8 @@ include  __DIR__ . "/../components/sidebar.php";
 
             <?php foreach ($prev_result as $key) : ?>
 
-                <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?>
+                <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['id']; ?>" <?php if (in_array($key['id'], $genre_ids)) echo 'checked'; ?>>
+                <?php echo $key['name']; ?>
                 <!-- <option  name='genre[]' value="<?php /* echo $key['name']; ?>"><?php echo $key['name']; */ ?></option> -->
             <?php endforeach; ?>
             </select>

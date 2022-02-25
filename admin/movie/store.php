@@ -16,12 +16,15 @@ if (!empty($_POST)) {
 
     //movie genre
     $list = request('genre');
-    $genre = implode(",", $list);
+
     //runtime
     $hh = request('hh');
     $mm = request('mm');
     $ss = request('ss');
     //image
+
+    if (empty($_FILES['image']) || $_FILES['image']['error'] != 0) {
+    }
     $file = $_FILES['image']['tmp_name'];
     $type = mime_content_type($file);
     $size = $_FILES['image']['size'];
@@ -45,9 +48,18 @@ if (!empty($_POST)) {
 
     $image = $file_name;
 
-    if (!empty($image) && !empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm)) {
+    if (!empty($image) && !empty($name) && !empty($language) && !empty($release_date) && !empty($hh) && !empty($mm)) {
         move_uploaded_file($file, "../../uploads/$file_name");
-        create('movie', compact('name', 'language', 'release_date', 'genre', 'image', 'hh', 'mm', 'ss'));
+        create('movie', compact('name', 'language', 'release_date', 'image', 'hh', 'mm', 'ss'));
+
+        $movie = query('select * from movie order by id desc limit 1', false);
+        foreach ($list as $genre) {
+            create('genre_movie', [
+                'genre_id' => $genre,
+                'movie_id' => $movie['id'],
+            ]);
+        }
+
         setSuccess('Data Inserted Sucessfully');
         header("Location: index.php");
         die("Please fill all the fields!!");

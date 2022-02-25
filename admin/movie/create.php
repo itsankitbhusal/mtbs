@@ -69,7 +69,7 @@ include  __DIR__ . "/../components/sidebar.php";
             <?php foreach ($result as $key) : ?>
 
                 <!-- <option name='genre[]' value="<?php /* echo $key['name']; ?>"><?php echo $key['name']; */ ?>*/</option> -->
-                <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?>
+                <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['id']; ?>"><?php echo $key['name']; ?>
             <?php endforeach; ?>
             </select>
         </div>

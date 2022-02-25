@@ -28,7 +28,7 @@ function pdo()
  *
  * @param string $key Key of Item to Fetch
  *
- * @return string|null
+ * @return string|null|array
  */
 function request($key)
 {
