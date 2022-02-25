@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . "/../components/admin.php";
-// echo "<pre>";
-// print_r($_POST);
-// die;
+echo "<pre>";
+
+
 
 //file upload or not validation
 $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
@@ -10,16 +10,18 @@ if (!$uploaded) {
     die('Please upload an image');
 }
 if (!empty($_POST)) {
-
     $name = request('name');
     $language = request('language');
     $release_date = request('release_date');
 
-    $genre = request('genre');
+    //movie genre
+    $list = request('genre');
+    $genre = implode(",", $list);
+    //runtime
     $hh = request('hh');
     $mm = request('mm');
     $ss = request('ss');
-
+    //image
     $file = $_FILES['image']['tmp_name'];
     $type = mime_content_type($file);
     $size = $_FILES['image']['size'];

@@ -64,14 +64,13 @@ include  __DIR__ . "/../components/sidebar.php";
 
         <div class="form-group">
             <label for="genre">Genre</label>
-            <select name="genre" multiple class="form-control" id="genre">
-                <?php foreach ($result as $key) : ?>
+            <br>
+            <!-- <select name="genre" multiple class="form-control" id="genre"> -->
+            <?php foreach ($result as $key) : ?>
 
-
-                    <option name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?></option>
-
-
-                <?php endforeach; ?>
+                <!-- <option name='genre[]' value="<?php /* echo $key['name']; ?>"><?php echo $key['name']; */ ?>*/</option> -->
+                <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?>
+            <?php endforeach; ?>
             </select>
         </div>
 
@@ -80,6 +79,7 @@ include  __DIR__ . "/../components/sidebar.php";
             <label for="image">Upload Image:</label>
             <input id="image" name="image" type="file" class="form-control-file">
         </div>
+        <br>
 
         <button type="submit" class="btn btn-primary">Add movie</button>
 

@@ -77,17 +77,14 @@ include  __DIR__ . "/../components/sidebar.php";
 
         <div class="form-group">
             <label for="genre">Genre</label>
-            <select name="genre" multiple class="form-control" id="genre">
+            <br>
+            <!-- <select name="genre" multiple class="form-control" id="genre"> -->
 
-                <?php foreach ($prev_result as $key) : ?>
+            <?php foreach ($prev_result as $key) : ?>
 
-
-                    <option <?php
-                            if ($result['genre'] == $key['name']) {
-                                echo "selected";
-                            }
-                            ?> name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?></option>
-                <?php endforeach; ?>
+                <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['name']; ?>"><?php echo $key['name']; ?>
+                <!-- <option  name='genre[]' value="<?php /* echo $key['name']; ?>"><?php echo $key['name']; */ ?></option> -->
+            <?php endforeach; ?>
             </select>
         </div>
 

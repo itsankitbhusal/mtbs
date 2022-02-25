@@ -1,17 +1,29 @@
 <?php
 
 require_once __DIR__ . "/../components/admin.php";
+// $id = request('id');
+// $movie = find('movie', $id);
 
-
+// echo '<pre>';
+// echo $movie['image'] . "<br>";
+// print_r($_POST);
+// die;
 
 //grab update filds data
 $id = request('id');
 $image = $_FILES['image'];
+
 $name = request('name');
 $language = request('language');
 $release_date = request('release_date');
 
-$genre = request('genre');
+//movie genre
+$list = request('genre');
+if (empty($list)) {
+    die("Please choose an genre");
+}
+$genre = implode(",", $list);
+//runtime
 $hh = request('hh');
 $mm = request('mm');
 $ss = request('ss');
@@ -19,6 +31,8 @@ $ss = request('ss');
 //fetch row from movie where id is $id
 $movie = find('movie', $id);
 
+if (empty($image)) {
+}
 $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
 //if movie is uploaded tha only movie image into folder
 if ($uploaded) {
@@ -48,12 +62,15 @@ if ($uploaded) {
     move_uploaded_file($file, "../../uploads/$file_name");
     $to_delete = "../../uploads/" . $movie['image'];
     unlink($to_delete);
+} else {
+    $image = $movie['image'];
 }
 
 
 
+
 //update query in movie table
-if (!empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm) && !empty($ss)) {
+if (!empty($name) && !empty($language) && !empty($release_date) && !empty($genre) && !empty($hh) && !empty($mm)) {
     update('movie', $id, compact('name', 'language', 'release_date', 'genre', 'image', 'hh', 'mm', 'ss'));
     setSuccess('Data Updated Sucessfully');
     header("Location: index.php");

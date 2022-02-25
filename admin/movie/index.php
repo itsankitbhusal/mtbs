@@ -45,7 +45,7 @@ include  __DIR__ . "/../components/sidebar.php";
         </thead>
         <tbody>
             <?php foreach ($result as $key) :
-                $runtime = $key['hh'] . ":" . $key['mm'] . ":" . $key['ss'];
+                $runtime = $key['hh'] . "h" . " : " . $key['mm'] . "min" . " : " . $key['ss'] . "s";
             ?>
                 <tr>
 
