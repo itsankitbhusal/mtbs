@@ -28,9 +28,7 @@ if (empty($list)) {
     die("Please choose an genre");
 }
 //runtime
-$hh = request('hh');
-$mm = request('mm');
-$ss = request('ss');
+$runtime = request('runtime');
 
 //fetch row from movie where id is $id
 $movie = find('movie', $id);
@@ -74,8 +72,8 @@ if ($uploaded) {
 
 
 //update query in movie table
-if (!empty($name) && !empty($language) && !empty($release_date) && !empty($hh) && !empty($mm)) {
-    update('movie', $id, compact('name', 'language', 'release_date', 'image', 'hh', 'mm', 'ss'));
+if (!empty($name) && !empty($language) && !empty($release_date) && !empty($runtime)) {
+    update('movie', $id, compact('name', 'language', 'release_date', 'image', 'runtime'));
     query('delete from genre_movie where movie_id = ' . $id);
     foreach ($list as $genre) {
         create('genre_movie', [

@@ -13,11 +13,7 @@ if (empty($result)) {
 
 include  __DIR__ . "/../components/header.php";
 include  __DIR__ . "/../components/sidebar.php";
-
-
 ?>
-
-
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -38,14 +34,6 @@ include  __DIR__ . "/../components/sidebar.php";
             <label for="movieName">Name</label>
             <input name="name" type="text" class="form-control" id="movieName" value="<?php echo $result['name']; ?>" placeholder="QFX Jalma">
         </div>
-
-        <div class="form-group">
-            <label for="total_seats">Total Seats</label>
-            <textarea name="description" type="number" class="form-control" id="total_seats"><?php echo $result['description']; ?></textarea>
-        </div>
-
-
-
         <button type="submit" class="btn btn-primary">Update Cinema genre</button>
 
     </form>

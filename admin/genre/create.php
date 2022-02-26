@@ -5,10 +5,8 @@ require_once __DIR__ . "/../components/admin.php";
 if (!empty($_POST)) {
 
     $name = request('name');
-    $description = request('description');
-    if (!empty($name) && !empty($description)) {
-
-        create('genre', compact("name", "description"));
+    if (!empty($name)) {
+        create('genre', compact("name"));
         setSuccess("Genre added sucessfully!");
         header("Location: index.php");
         die();
@@ -46,14 +44,6 @@ include  __DIR__ . "/../components/sidebar.php";
             <label for="movieName">Name</label>
             <input name="name" type="text" class="form-control" id="movieName" placeholder="Sci-Fi">
         </div>
-
-        <div class="form-group">
-            <label for="total_seats">Description</label>
-            <textarea name="description" type="text" class="form-control " id="total_seats"></textarea>
-        </div>
-
-
-
         <button type="submit" class="btn btn-primary">Add Genre</button>
 
     </form>

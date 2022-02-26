@@ -74,9 +74,7 @@ include  __DIR__ . "/../components/sidebar.php";
                 <div class="input-group-prepend">
                     <span class="input-group-text">Runtime </span>
                 </div>
-                <input value="<?php echo $result['hh'] ?>" name="hh" placeholder="hh" type="number" min="0" max="4" aria-label="hh" class="form-control">
-                <input value="<?php echo $result['mm'] ?>" name="mm" placeholder="mm" type="number" min="0" max="59" aria-label="mm" class="form-control">
-                <input value="<?php echo $result['ss'] ?>" name="ss" placeholder="ss" type="number" min="0" max="59" aria-label="ss" class="form-control">
+                <input value="<?php echo $result['runtime'] ?>" name="runtime" placeholder="runtime in minutes" type="number" min="0" max="250" aria-label="hh" class="form-control">
             </div>
 
         </div>

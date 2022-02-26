@@ -39,7 +39,6 @@ include  __DIR__ . "/../components/sidebar.php";
             <tr>
                 <th>Id</th>
                 <th>Genre</th>
-                <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -49,9 +48,7 @@ include  __DIR__ . "/../components/sidebar.php";
 
                     <td><?php echo $key['id']; ?></td>
                     <td><?php echo $key['name']; ?></td>
-                    <td class="w-50"><?php echo $key['description']; ?></td>
                     <td>
-                        <a class="btn btn-primary btn-sm " href="#!">Show</a>
                         <a class="btn btn-primary btn-sm " href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
                         <a class="btn btn-danger btn-sm " onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
                     </td>

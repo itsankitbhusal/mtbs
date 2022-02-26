@@ -39,14 +39,13 @@ include  __DIR__ . "/../components/sidebar.php";
                 <option>English</option>
                 <option>Nepali</option>
                 <option>Hindi</option>
-                <option>Spanish</option>
-                <option>French</option>
-
+                <!-- <option>Spanish</option>
+                <option>French</option> -->
             </select>
         </div>
         <div class="form-group">
             <label for="releseDate">Release Date</label>
-            <input name="release_date" type="date" class="form-control" id="releseDate">
+            <input name="release_date" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="releseDate">
         </div>
         <div class="form-group">
             <label for="runtime">Runtime </label>
@@ -55,9 +54,9 @@ include  __DIR__ . "/../components/sidebar.php";
                 <div class="input-group-prepend">
                     <span class="input-group-text">Runtime </span>
                 </div>
-                <input name="hh" placeholder="hh" type="number" min="0" max="4" aria-label="hh" class="form-control">
-                <input name="mm" placeholder="mm" type="number" min="0" max="59" aria-label="mm" class="form-control">
-                <input name="ss" placeholder="ss" type="number" min="0" max="59" aria-label="ss" class="form-control">
+                <!-- <input name="hh" placeholder="hh" type="number" min="0" max="4" aria-label="hh" class="form-control"> -->
+                <input name="runtime" placeholder="Runtime in minutes" type="number" max="250" aria-label="mm" class="form-control">
+                <!-- <input name="ss" placeholder="ss" type="number" min="0" max="59" aria-label="ss" class="form-control"> -->
             </div>
 
         </div>
@@ -65,10 +64,7 @@ include  __DIR__ . "/../components/sidebar.php";
         <div class="form-group">
             <label for="genre">Genre</label>
             <br>
-            <!-- <select name="genre" multiple class="form-control" id="genre"> -->
             <?php foreach ($result as $key) : ?>
-
-                <!-- <option name='genre[]' value="<?php /* echo $key['name']; ?>"><?php echo $key['name']; */ ?>*/</option> -->
                 <input class="my-2 ml-4" type="checkbox" name='genre[]' value="<?php echo $key['id']; ?>"><?php echo $key['name']; ?>
             <?php endforeach; ?>
             </select>

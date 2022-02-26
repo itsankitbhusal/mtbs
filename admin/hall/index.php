@@ -51,7 +51,6 @@ include  __DIR__ . "/../components/sidebar.php";
                     <td><?php echo $key['name']; ?></td>
                     <td><?php echo $key['total_seats']; ?></td>
                     <td>
-                        <a class="btn btn-primary btn-sm " href="#!">Show</a>
                         <a class="btn btn-primary btn-sm " href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
                         <a class="btn btn-danger btn-sm " onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
                     </td>

@@ -45,7 +45,7 @@ include  __DIR__ . "/../components/sidebar.php";
         </thead>
         <tbody>
             <?php foreach ($result as $key) :
-                $runtime = $key['hh'] . "h" . " : " . $key['mm'] . "min" . " : " . $key['ss'] . "s";
+                $runtime = $key['runtime'] . " Minutes";
             ?>
                 <tr>
 
@@ -54,7 +54,6 @@ include  __DIR__ . "/../components/sidebar.php";
                     <td><?php echo $key['language']; ?></td>
                     <td><?php echo $key['release_date']; ?></td>
                     <td><?php
-
                         $genres = where('genre_movie', 'movie_id', '=', $key['id']);
                         $total_genre = count($genres);
                         $i = 1;
@@ -71,7 +70,6 @@ include  __DIR__ . "/../components/sidebar.php";
 
                     <td> <img width="100px" src="../../uploads/<?php echo $key['image']; ?>"></td>
                     <td>
-                        <a class="btn btn-primary btn-sm " href="#!">Show</a>
                         <a class="btn btn-primary btn-sm " href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
                         <a class="btn btn-danger btn-sm " onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
                     </td>
