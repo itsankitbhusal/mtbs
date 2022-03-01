@@ -57,9 +57,35 @@ function is_admin()
     return true;
 }
 
+function is_user()
+{
+
+    $user = user();
+
+    if (empty($user)) {
+        return false;
+    }
+
+    if ($user['role'] != "user") {
+        return false;
+    }
+
+    return true;
+}
+
 function check_admin()
 {
     if (!is_admin()) {
+        // die("You do not have permission to view this page!");
+        $login = "http://localhost/mtbs/login.php";
+        Header("Location: " . $login);
+    }
+}
+
+
+function check_user()
+{
+    if (!is_user()) {
         // die("You do not have permission to view this page!");
         $login = "http://localhost/mtbs/login.php";
         Header("Location: " . $login);
