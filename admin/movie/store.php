@@ -17,7 +17,8 @@ if (!empty($_POST)) {
     $runtime = request('runtime');
 
     //image
-    if (empty($_FILES['image']) || $_FILES['image']['error'] != 0) {
+    $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
+    if ($uploaded) {
 
         $file = $_FILES['image']['tmp_name'];
         $type = mime_content_type($file);
