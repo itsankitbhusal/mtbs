@@ -1,31 +1,6 @@
 <?php
 require "./functions/db.php";
-if (!empty($_POST)) {
-    $email = request("email");
-    $password = request("password");
-
-    if (empty($email) || empty($password)) {
-        die("Please fill all the fields");
-    }
-
-    $user = where('user', 'email', '=', $email, false);
-
-    if (empty($user)) {
-        die("No user found with given email address");
-    }
-
-    if (password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        if ($user['role'] == "admin") {
-            header("Location: ./admin/index.php");
-        } else {
-            header("Location: home.php");
-        }
-    } else {
-        die("Invalid email or password");
-    }
-}
-
+require "./functions/functions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +12,7 @@ if (!empty($_POST)) {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Login</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./admin/css/bootstrap.min.css">
 </head>
 
@@ -49,7 +24,19 @@ if (!empty($_POST)) {
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">Login</h1>
 
-                        <form action="./login.php" method="POST">
+                        <form action="./loginphp.php" method="POST">
+                            <!-- error -->
+                            <?php if (hasError()) : ?>
+                                <div class="ml-4 alert alert-danger">
+                                    <?php echo getError(); ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (hasSuccess()) : ?>
+                                <div class="ml-4 alert alert-success">
+                                    <?php echo getSuccess(); ?>
+                                </div>
+                            <?php endif; ?>
+
                             <!-- Email input -->
                             <div class="form-outline">
                                 <label class="form-label" for="form3Example3">Email address</label>
@@ -59,7 +46,8 @@ if (!empty($_POST)) {
                             <!-- Password input -->
                             <div class="form-outline ">
                                 <label class="form-label" for="form3Example4">Password</label>
-                                <input name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <input id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <a href="#!" class="d-flex justify-content-end" onclick="showPass()"><i class="fas fa-eye"></i></a>
                             </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <button type="submit" class="btn btn-primary px-4">Login</button>
@@ -73,6 +61,16 @@ if (!empty($_POST)) {
         </div>
 
     </section>
+    <script>
+        function showPass() {
+            let variable = document.getElementById("input");
+            if (variable.type === "password") {
+                variable.type = "text";
+            } else if (variable.type === "text") {
+                variable.type = "password"
+            }
+        }
+    </script>
 </body>
 
 </html>
