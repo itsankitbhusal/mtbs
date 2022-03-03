@@ -23,11 +23,7 @@ include  __DIR__ . "/../components/sidebar.php";
         <div class="ml-4 alert alert-success">
             <?php echo getSuccess(); ?>
         </div>
-    <?php endif;
-
-
-
-    ?>
+    <?php endif; ?>
 
 
     <table class="table mx-4">
