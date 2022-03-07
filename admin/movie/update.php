@@ -1,19 +1,12 @@
 <?php
 
 require_once __DIR__ . "/../components/admin.php";
-// $id = request('id');
-// $movie = find('movie', $id);
-
-// echo '<pre>';
-// echo $movie['image'] . "<br>";
-// print_r($_POST);
-// die;
 
 //grab update filds data
 $id = request('id');
 $movie = find('movie', $id);
 if (!$movie) {
-    die("Provide movie ID");
+    setError("Provide movie ID");
 }
 
 $image = $_FILES['image'];
@@ -25,7 +18,7 @@ $release_date = request('release_date');
 //movie genre
 $list = request('genre');
 if (empty($list)) {
-    die("Please choose an genre");
+    setError("Please choose an genre");
 }
 //runtime
 $runtime = request('runtime');
@@ -33,9 +26,10 @@ $runtime = request('runtime');
 //fetch row from movie where id is $id
 $movie = find('movie', $id);
 
-if (empty($image)) {
-}
+
 $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
+$cover = is_uploaded_file($_FILES['image_cover']['tmp_name']);
+
 //if movie is uploaded tha only movie image into folder
 if ($uploaded) {
     //image 
@@ -44,12 +38,12 @@ if ($uploaded) {
     $size = $image['size'];
 
     if ($type != "image/png" && $type != "image/jpeg") {
-        die("File must be an image");
+        setError("File must be an image");
     }
     $mb_size = $size / 1024 / 1024;
 
     if ($mb_size > 5) {
-        die("File should be less than 5 MB");
+        setError("File should be less than 5 MB");
     }
     $uname = uniqid();
 
@@ -67,13 +61,43 @@ if ($uploaded) {
 } else {
     $image = $movie['image'];
 }
+if ($cover) {
+    //image 
+    $file_cover = $image['tmp_name'];
+    $type_cover = mime_content_type($file_cover);
+    $size_cover = $image['size'];
+
+    if ($type_cover != "image/png" && $type_cover != "image/jpeg") {
+        setError("File must be an image");
+    }
+    $mb_size = $size / 1024 / 1024;
+
+    if ($mb_size > 5) {
+        setError("Cover should be less than 5 MB");
+    }
+    $uname_cover = uniqid();
+
+    $ext_cover = match ($type_cover) {
+        "image/png" => ".png",
+        "image/jpeg" => ".jpeg",
+    };
+
+    $file_name_cover = $uname_cover . $ext_cover;
+    $image_cover = $file_name_cover;
+
+    move_uploaded_file($file, "../../cover/$file_name_cover");
+    $to_delete_cover = "../../cover/" . $movie['image_cover'];
+    unlink($to_delete_cover);
+} else {
+    $image_cover = $movie['image_cover'];
+}
 
 
 
 
 //update query in movie table
 if (!empty($name) && !empty($language) && !empty($release_date) && !empty($runtime)) {
-    update('movie', $id, compact('name', 'language', 'release_date', 'image', 'runtime'));
+    update('movie', $id, compact('name', 'language', 'release_date', 'image', 'image_cover', 'runtime'));
     query('delete from genre_movie where movie_id = ' . $id);
     foreach ($list as $genre) {
         create('genre_movie', [
@@ -85,5 +109,6 @@ if (!empty($name) && !empty($language) && !empty($release_date) && !empty($runti
     setSuccess('Data Updated Sucessfully');
     header("Location: index.php");
 } else {
-    die("Please fill all the fields!!!");
+    setError("Please fill all the fields!!!");
+    header("Location: edit.php");
 }

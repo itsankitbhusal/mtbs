@@ -35,7 +35,6 @@ include  __DIR__ . "/../components/sidebar.php";
                 <th class="font-weight-bold text-center">Release Date</th>
                 <th class="font-weight-bold text-center">Genre</th>
                 <th class="font-weight-bold text-center">Runtime</th>
-                <th class="font-weight-bold text-center">Image</th>
                 <th class="font-weight-bold text-center">Action</th>
             </tr>
         </thead>
@@ -63,10 +62,9 @@ include  __DIR__ . "/../components/sidebar.php";
                                             ?></td>
 
                     <td class="text-center"><?php echo $runtime; ?></td>
-
-                    <td class="text-center"> <img width="50px" src="../../uploads/<?php echo $key['image']; ?>"></td>
                     <td class="text-center">
                         <a class="btn btn-primary btn-sm mx-2" href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
+                        <a class="btn btn-secondary btn-sm mx-2" href="./show.php?id=<?php echo $key['id']; ?>">Show</a>
                         <a class="btn btn-danger btn-sm mx-2" onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
                     </td>
                 </tr>

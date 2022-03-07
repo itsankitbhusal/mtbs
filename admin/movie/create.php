@@ -79,6 +79,11 @@ include  __DIR__ . "/../components/sidebar.php";
             <label class="form-label" for="image">Upload Image:</label>
             <input id="image" name="image" type="file" class="form-control">
         </div>
+
+        <div class="form-group">
+            <label class="form-label" for="image">Upload Cover:</label>
+            <input id="image" name="cover" type="file" class="form-control">
+        </div>
         <br>
 
         <button type="submit" class="btn btn-primary">Add movie</button>
