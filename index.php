@@ -1,3 +1,11 @@
+<?php
+require "./functions/db.php";
+
+$result = all('movie');
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,17 +71,15 @@
     <!-- End your project here-->
 
     <!-- carousel start -->
+
     <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./user/img/img3.jpg" class="d-block w-100" alt="Wild Landscape" />
-            </div>
-            <div class="carousel-item">
-                <img src="./user/img/img2.jpg" class="d-block w-100" alt="Camera" />
-            </div>
-            <div class="carousel-item">
-                <img src="./user/img/img1.jpg" class="d-block w-100" alt="Exotic Fruits" />
-            </div>
+            <?php foreach ($result as $key) : ?>
+                <div class="carousel-item active">
+                    <img src="./cover/<?php echo $key['image_cover'] ?>" class="d-block w-100" alt="Wild Landscape" />
+                </div>
+            <?php endforeach; ?>
         </div>
         <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -83,6 +89,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+
     </div>
     <!-- carousel end -->
 
@@ -95,23 +102,32 @@
         <!-- cards -->
         <div class="container d-flex gap-5   flex-wrap justify-content-center">
 
+            <?php foreach ($result as $key) : ?>
+                <div class="card col-md-4 col-lg-3 hover-shadow border">
+                    <div class="bg-image">
+                        <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid" />
 
-            <div class="card col-md-4 col-lg-3 hover-shadow border">
-                <div class="bg-image">
-                    <img src="" class="img-fluid" />
+                    </div>
 
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $key['name'] ?></h5>
+                        <p class="card-text text-muted">
+                            <?php
+                            $genres = where('genre_movie', 'movie_id', '=', $key['id']);
+                            $total_genre = count($genres);
+                            $i = 1;
+                            foreach ($genres as $g) {
+                                $genre = find('genre', $g['genre_id']);
+                                echo $genre['name'];
+                                if ($i < $total_genre) echo ", ";
+                                $i++;
+                            }
+
+                            ?>
+                        </p>
+                    </div>
                 </div>
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                    </p>
-
-                    <button type="button" class="btn btn-outline-success">Button</button>
-                </div>
-            </div>
+            <?php endforeach; ?>
 
 
         </div>
