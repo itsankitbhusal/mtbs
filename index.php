@@ -1,144 +1,174 @@
-<?php
-require "./functions/db.php";
-require "./functions/functions.php";
-
-$result = all('movie');
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>MTBS - Movie Ticket Booking System</title>
-    <link rel="stylesheet" href="./user/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./user/css/style.css">
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- font-end -->
+    <!-- MDB icon -->
+    <link rel="icon" href="#" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="./user/css/mdb.min.css" />
 </head>
 
 <body>
-
-    <!-- Navbar stars -->
-    <nav style="font-family: 'Khula', sans-serif; font-weight: 700; font-size:1rem;" class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img style="width:15vw;" class="p-2 logo img-fluid" src="./user/img/logoWithName.png" alt="CineMatic Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- Start your project here-->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="navbar-buttons">
-                <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a class="px-4 nav-link active" aria-current="page" href="#">HOME</a>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand m-2 mt-lg-0" href="#">
+                    <img src="./user/img/logoWithName.png" height="30" alt="MTBS Logo" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 font-weight-bold">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">HOME</a>
                     </li>
-                    <li class="px-4 nav-item" style="font-family: 'Khula', sans-serif;">
-                        <a style="font-family: 'Khula', sans-serif;" class="nav-link font-weight-bold" href="#">MOVIES</a>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">MOVIES</a>
                     </li>
-                    <li class="px-4 nav-item">
+                    <li class="nav-item mx-2">
                         <a class="nav-link" href="#">ABOUT</a>
                     </li>
-                    <li class="px-4 nav-item">
+                    <li class="nav-item mx-2">
                         <a class="nav-link" href="#">CONTACT</a>
                     </li>
-
                 </ul>
+                <!-- Left links -->
             </div>
-            <div class="nav-item">
-                <button style="font-family: 'Khula', sans-serif; font-weight: 700; font-size:1rem; margin: 5px" class="btn btn-success px-4" type="submit">Sign In</button>
-            </div>
+            <!-- Collapsible wrapper -->
 
-        </div>
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <button class="btn btn-primary">Sign Up</button>
+                <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
     </nav>
-    <!-- Navbar ends -->
+    <!-- Navbar -->
+    <!-- End your project here-->
 
-    <!-- hero section carousel -->
-
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <!-- carousel start -->
+    <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item">
-                <img class="d-block w-100 " src="./user/img/img1.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100 " src="./user/img/img2.jpg" alt="Second slide">
-            </div>
             <div class="carousel-item active">
-                <img class="d-block w-100 " src="./user/img/img3.jpg" alt="Second slide">
+                <img src="./user/img/img3.jpg" class="d-block w-100" alt="Wild Landscape" />
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 " src="./user/img/img4.jpg" alt="Third slide">
+                <img src="./user/img/img2.jpg" class="d-block w-100" alt="Camera" />
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 " src="./user/img/img5.jpg" alt="Fourth slide">
+                <img src="./user/img/img1.jpg" class="d-block w-100" alt="Exotic Fruits" />
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100 " src="./user/img/img6.jpg" alt="Fifth slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100 " src="./user/img/img7.jpg" alt="Sixth slide">
-            </div>
-
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <!-- hero section carousel end -->
+    <!-- carousel end -->
 
-    <!-- now showing -->
-    <div class="container ">
-        <h1 class="h1 my-4" style="font-family: 'Khula', sans-serif; font-weight: 900; ">NOW SHOWING</h1>
+    <!-- now showing starts -->
 
-        <div class="d-flex flex-wrap ">
-            <!-- foo -->
-            <?php foreach ($result as $key) : ?>
-                <!-- <div class="d-inline-block "> -->
-                <!-- <div class=""> -->
-                <div class="w-25 d-inline-block">
-                    <img style="width: 20vw;" class="" src="./uploads/<?php echo $key['image'] ?>" alt="movie poster">
-                    <h4><?php echo $key['name'] ?></h4>
-                    <p style="font-family: poppins,sans-serif;">
-                        <?php
-                        $genre = where('genre_movie', 'movie_id', "=", $key['id']);
-                        foreach ($genre as $g) :
-                            $genre_name = where('genre', 'id', '=', $g['genre_id']);
-                            $total_genre = count($genre);
-                            foreach ($genre_name as $gen) {
-                                echo $gen['name'] . " ";
-                            };
-                        endforeach; ?>
-                    </p>
-                    <!-- </div> -->
-                    <!-- </div>  -->
-                </div>
-            <?php endforeach; ?>
-            <!-- fooo -->
+    <div class="container my-5">
+        <div class="my-4">
+            <h1 class="font-weight-bold">NOW SHOWING</h1>
         </div>
+        <!-- cards -->
+        <div class="container d-flex gap-5   flex-wrap justify-content-center">
+
+
+            <div class="card col-md-4 col-lg-3 hover-shadow border">
+                <div class="bg-image">
+                    <img src="" class="img-fluid" />
+
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                    </p>
+
+                    <button type="button" class="btn btn-outline-success">Button</button>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- cards -->
+
+
+
 
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-light text-center container-fluid mt-5">
+        <!-- Grid container -->
+        <div class="container p-4 d-flex justify-content-between align-content-center">
+
+            <!-- Section: Social media -->
+            <div class="col-md-4 w-25 d-flex align-items-center">
+                <img class="img-fluid w-75" src="./user/img/logoWithName.png" alt="logo">
+            </div>
+            <section class="mb-4 col-md-4 d-flex align-items-center">
+                <div class="mt-4 ">
+                    <!-- Facebook -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #4267B2" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #fb3958" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+                    <!-- Linkedin -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #0072b1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Github -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #171515" href="#!" role="button"><i class="fab fa-github"></i></a>
+
+                </div>
+            </section>
+            <!-- Section: Social media -->
 
 
-    <!-- now showing end -->
 
 
+        </div>
+        <!-- Grid container -->
 
-    <!-- scripts for slider -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            &copy; <?php echo date("Y"); ?> Copyright:
+            <a class="text-dark font-weight-bold" href="#">Ankit Bhusal</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- now showing ends -->
+    <!-- MDB -->
+    <script type="text/javascript" src="./user/js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
 </body>
 
 </html>
