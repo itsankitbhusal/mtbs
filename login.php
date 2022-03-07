@@ -13,7 +13,7 @@ require "./functions/functions.php";
     <meta name="author" content="" />
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="./admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./user/css/mdb.min.css">
 </head>
 
 <body id="page-top">
@@ -38,18 +38,18 @@ require "./functions/functions.php";
                             <?php endif; ?>
 
                             <!-- Email input -->
-                            <div class="form-outline">
+                            <div class="form-outline mt-2">
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <input name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
+                                <input style="border: 1px solid black;" name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
                             </div>
 
                             <!-- Password input -->
-                            <div class="form-outline ">
+                            <div class="form-outline mt-4">
                                 <label class="form-label" for="form3Example4">Password</label>
-                                <input id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <input style="border: 1px solid black;" id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
                                 <a href="#!" class="d-flex justify-content-end" onclick="showPass()"><i class="fas fa-eye"></i></a>
                             </div>
-                            <div class="text-center text-lg-start mt-4 pt-2">
+                            <div class="text-center text-lg-start pt-2">
                                 <button type="submit" class="btn btn-primary px-4">Login</button>
                                 <p class="small mt-2 pt-1 mb-0">Don't have an account? <a href="./register.php" class="link-danger">Register</a></p>
                             </div>

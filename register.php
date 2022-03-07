@@ -45,7 +45,7 @@ if (!empty($_POST)) {
     <meta name="author" content="" />
     <title>Register</title>
 
-    <link rel="stylesheet" href="./admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./user/css/mdb.min.css">
 </head>
 
 <body id="page-top">
@@ -60,24 +60,24 @@ if (!empty($_POST)) {
                             <!-- Name input -->
                             <div class="form-outline">
                                 <label class="form-label" for="name">Name</label>
-                                <input name="name" type="name" id="name" class="form-control " placeholder="Enter your name" />
+                                <input style="border: 1px solid black;" name="name" type="name" id="name" class="form-control " placeholder="Enter your name" />
                             </div>
 
                             <!-- Email input -->
                             <div class="form-outline">
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <input name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
+                                <input style="border: 1px solid black;" name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline ">
                                 <label class="form-label" for="form3Example4">Password</label>
-                                <input name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <input style="border: 1px solid black;" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
                             </div>
                             <!--Confirm Password input -->
                             <div class="form-outline ">
                                 <label class="form-label" for="confirm">Confirm Password</label>
-                                <input name="password_verify" type="password" id="confirm" class="form-control " placeholder="Confirm password" />
+                                <input style="border: 1px solid black;" name="password_verify" type="password" id="confirm" class="form-control " placeholder="Confirm password" />
                             </div>
 
 
