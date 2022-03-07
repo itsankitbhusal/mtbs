@@ -17,8 +17,8 @@ include  __DIR__ . "/../components/sidebar.php";
     <!-- Page Heading -->
 
     <div class="d-flex m-4 justify-content-between mb-4">
-        <h3>Movie Genre Details</h3>
-        <a href="./create.php" class="btn btn-primary px-4">Add New Genre</a>
+        <h3 class="font-weight-bold">Movie Genre Details</h3>
+        <a href="./create.php" class="btn btn-primary px-4 font-weight-bold">Add New Genre</a>
     </div>
     <!-- /.container-fluid -->
 
@@ -34,28 +34,30 @@ include  __DIR__ . "/../components/sidebar.php";
     <?php endif; ?>
 
 
-    <table class="table mx-4">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Genre</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($result as $key) : ?>
+    <div class="container">
+        <table class="table mx-4 table-responsive-md table-borderless">
+            <thead>
                 <tr>
-
-                    <td><?php echo $key['id']; ?></td>
-                    <td><?php echo $key['name']; ?></td>
-                    <td>
-                        <a class="btn btn-primary btn-sm " href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
-                        <a class="btn btn-danger btn-sm " onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
-                    </td>
+                    <th class="font-weight-bold text-center">Id</th>
+                    <th class="font-weight-bold text-center">Genre</th>
+                    <th class="font-weight-bold text-center">Actions</th>
                 </tr>
-            <?php endforeach;  ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($result as $key) : ?>
+                    <tr>
+
+                        <td class="font-weight-bold text-center"><?php echo $key['id']; ?></td>
+                        <td class=" text-center"><?php echo $key['name']; ?></td>
+                        <td class=" text-center">
+                            <a class="btn btn-primary btn-sm mx-2" href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
+                            <a class="btn btn-danger btn-sm mx-2" onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach;  ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 </div>
 

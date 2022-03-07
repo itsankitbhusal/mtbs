@@ -17,8 +17,8 @@ include  __DIR__ . "/../components/sidebar.php";
     <!-- Page Heading -->
 
     <div class="d-flex m-4 justify-content-between mb-4">
-        <h3>Cinema Hall Details</h3>
-        <a href="./create.php" class="btn btn-primary px-4">Add New Hall</a>
+        <h3 class="font-weight-bold">Cinema Hall Details</h3>
+        <a href="./create.php" class="btn btn-primary px-4 font-weight-bold">Add New Hall</a>
     </div>
     <!-- /.container-fluid -->
 
@@ -34,25 +34,25 @@ include  __DIR__ . "/../components/sidebar.php";
     <?php endif; ?>
 
 
-    <table class="table mx-4">
+    <table class="table mx-4 table-responsive-md table-borderless">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Total Seats</th>
-                <th>Actions</th>
+                <th class="text-center font-weight-bold">Id</th>
+                <th class="text-center font-weight-bold">Name</th>
+                <th class="text-center font-weight-bold">Total Seats</th>
+                <th class="text-center font-weight-bold">Actions</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($result as $key) : ?>
                 <tr>
 
-                    <td><?php echo $key['id']; ?></td>
-                    <td><?php echo $key['name']; ?></td>
-                    <td><?php echo $key['total_seats']; ?></td>
-                    <td>
-                        <a class="btn btn-primary btn-sm " href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
-                        <a class="btn btn-danger btn-sm " onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
+                    <td class="text-center font-weight-bold"><?php echo $key['id']; ?></td>
+                    <td class="text-center"><?php echo $key['name']; ?></td>
+                    <td class="text-center"><?php echo $key['total_seats']; ?></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary btn-sm mx-2" href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
+                        <a class="btn btn-danger btn-sm mx-2" onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
                     </td>
                 </tr>
             <?php endforeach;  ?>

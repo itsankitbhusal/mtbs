@@ -19,8 +19,8 @@ include  __DIR__ . "/../components/sidebar.php";
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-flex m-4 justify-content-between mb-4">
-        <h3>Update Genre Details</h3>
-        <a href="./index.php" class="btn btn-primary px-4">Go back</a>
+        <h3 class="font-weight-bold">Update Genre Details</h3>
+        <a href="./index.php" class="btn btn-primary px-4 font-weight-bold">Go back</a>
     </div>
     <?php if (hasError()) : ?>
         <div class="ml-4 alert alert-danger">

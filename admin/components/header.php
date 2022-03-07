@@ -18,7 +18,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo $page_url ?>css/sb-admin-2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="<?php echo $page_url ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $page_url ?>css/mdb.min.css">
 </head>
 
 <body id="page-top">
