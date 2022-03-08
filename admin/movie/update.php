@@ -7,6 +7,7 @@ $id = request('id');
 $movie = find('movie', $id);
 if (!$movie) {
     setError("Provide movie ID");
+    Header("Location: ./edit.php");
 }
 
 $image = $_FILES['image'];
@@ -19,6 +20,7 @@ $release_date = request('release_date');
 $list = request('genre');
 if (empty($list)) {
     setError("Please choose an genre");
+    Header("Location: ./edit.php");
 }
 //runtime
 $runtime = request('runtime');
