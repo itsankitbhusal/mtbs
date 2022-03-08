@@ -36,9 +36,9 @@ $result = all('movie');
             </button>
 
             <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-center " id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand m-2 mt-lg-0" href="#">
+                <a class="navbar-brand m-2 mt-lg-0" href="./index.php">
                     <img src="./user/img/logoWithName.png" height="30" alt="MTBS Logo" loading="lazy" />
                 </a>
                 <!-- Left links -->
@@ -62,7 +62,7 @@ $result = all('movie');
 
             <!-- Right elements -->
             <div class="d-flex align-items-center">
-                <button class="btn btn-primary">Sign Up</button>
+                <a href="./register.php" class="btn btn-primary">Sign Up</a>
                 <!-- Right elements -->
             </div>
             <!-- Container wrapper -->
@@ -71,13 +71,33 @@ $result = all('movie');
     <!-- End your project here-->
 
     <!-- carousel start -->
+    <?php
+    // echo "<pre>";
+    // print_r($result);
+    // die;
+    ?>
 
     <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
 
         <div class="carousel-inner">
-            <?php foreach ($result as $key) : ?>
-                <div class="carousel-item active">
-                    <img src="./cover/<?php echo $key['image_cover'] ?>" class="d-block w-100" alt="Wild Landscape" />
+
+            <?php
+            $i = 0;
+            $first = reset($result);
+            foreach ($result as $key) :
+            ?>
+
+
+                <div class="carousel-item <?php
+
+                                            if ($first == $key) {
+                                                echo "active";
+                                            } else {
+                                                echo "";
+                                            }
+
+                                            ?>">
+                    <img src="./cover/<?php echo $key['image_cover']; ?>" class="img-flui  d-block w-100" alt="" />
                 </div>
             <?php endforeach; ?>
         </div>
@@ -100,12 +120,12 @@ $result = all('movie');
             <h1 class="font-weight-bold">NOW SHOWING</h1>
         </div>
         <!-- cards -->
-        <div class="container d-flex gap-5   flex-wrap justify-content-center">
+        <div class="container d-flex  gap-4 flex-wrap justify-content-center">
 
             <?php foreach ($result as $key) : ?>
-                <div class="card col-md-4 col-lg-3 hover-shadow border">
-                    <div class="bg-image">
-                        <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid" />
+                <div class="card col-lg-2.5  hover-shadow border">
+                    <div class="">
+                        <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid w-100" />
 
                     </div>
 
