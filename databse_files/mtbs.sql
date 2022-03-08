@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2022 at 03:59 AM
+-- Generation Time: Mar 08, 2022 at 06:02 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -44,24 +44,23 @@ CREATE TABLE `booking` (
 
 CREATE TABLE `genre` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `description` text NOT NULL
+  `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `genre`
 --
 
-INSERT INTO `genre` (`id`, `name`, `description`) VALUES
-(1, 'Horror', 'Zombies, serial killers, or ghosts'),
-(2, 'Sci-Fi', 'Outer space or futuristic items like spaceships or laser guns'),
-(5, 'War', ' Different vehicles such as tanks, planes, or realistic battlefields'),
-(11, 'Action', 'Chase sequences, extended fight scenes, guns, races against time'),
-(12, 'Romance', 'Different stages of “falling in love” with a subsequent break-up and reconciliation, true love, fairy tales, forbidden love'),
-(13, 'Comedy', 'Slapstick humor, witty dialogue, rites of passage, gross-out humor, fish-out-of-water, cross-dressing, mistaken identity'),
-(14, 'Crime', 'Whodunnits, capers, rival gangs, robberies'),
-(15, 'Drama', 'Narrative fiction intended to be more serious than humorous in tone'),
-(16, 'Thriller', 'Thriller is a genre of fiction, having numerous, often overlapping subgenres. Thrillers are characterized and defined by the moods they elicit, giving viewers heightened feelings of suspense, excitement, surprise, anticipation and anxiety');
+INSERT INTO `genre` (`id`, `name`) VALUES
+(1, 'Sci-Fi'),
+(2, 'Horror'),
+(3, 'Fantasy'),
+(4, 'Comedy'),
+(5, 'Crime'),
+(6, 'Action'),
+(7, 'Romance'),
+(8, 'Drama'),
+(9, 'Biography');
 
 -- --------------------------------------------------------
 
@@ -80,8 +79,14 @@ CREATE TABLE `genre_movie` (
 --
 
 INSERT INTO `genre_movie` (`id`, `genre_id`, `movie_id`) VALUES
-(3, 11, 16),
-(5, 15, 16);
+(80, 5, 17),
+(81, 8, 17),
+(82, 9, 17),
+(83, 5, 16),
+(84, 6, 16),
+(85, 8, 16),
+(86, 8, 19),
+(87, 6, 18);
 
 -- --------------------------------------------------------
 
@@ -100,16 +105,8 @@ CREATE TABLE `hall` (
 --
 
 INSERT INTO `hall` (`id`, `name`, `total_seats`) VALUES
-(18, 'hello2', 50),
-(22, 'new hall', 50),
-(23, 'CinemaTIC', 40),
-(24, 'cnema', 23),
-(25, 'nephall', 32),
-(26, 'asdad', 25),
-(28, 'test', 27),
-(31, 'testst3', 34),
-(32, 'ankit', 23),
-(33, 'ankit2', 45);
+(1, 'Theater 1', 50),
+(2, 'Theater 2', 60);
 
 -- --------------------------------------------------------
 
@@ -123,20 +120,19 @@ CREATE TABLE `movie` (
   `language` varchar(10) NOT NULL,
   `release_date` date NOT NULL,
   `image` varchar(200) DEFAULT NULL,
-  `genre` varchar(20) NOT NULL,
-  `hh` varchar(1) DEFAULT NULL,
-  `mm` varchar(2) DEFAULT NULL,
-  `ss` varchar(2) DEFAULT NULL
+  `image_cover` varchar(200) NOT NULL,
+  `runtime` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `movie`
 --
 
-INSERT INTO `movie` (`id`, `name`, `language`, `release_date`, `image`, `genre`, `hh`, `mm`, `ss`) VALUES
-(15, 'The Shawshank Redemption', 'English', '1994-10-14', '6217a0e73004a.jpeg', 'Drama', '2', '22', '0'),
-(16, 'The Godfather', 'English', '1972-03-24', '6217be77b02f7.jpeg', 'Crime,Drama', '2', '55', '0'),
-(17, 'The Dark Knight', 'English', '2008-07-18', '6217c038d344e.jpeg', 'Action,Crime,Drama', '2', '32', '0');
+INSERT INTO `movie` (`id`, `name`, `language`, `release_date`, `image`, `image_cover`, `runtime`) VALUES
+(16, 'The Batman', 'English', '2022-03-04', '6226bc0fc413d.jpeg', '6226bc0fc4627.jpeg', '153'),
+(17, 'Gangubai Kathiawadi', 'Hindi', '2022-02-25', '6226bce868555.jpeg', '6226bce868756.jpeg', '140'),
+(18, 'Lappan Chhappan 2', 'Nepali', '2022-02-25', '6226cbe7db01b.jpeg', '6226bd8f262b6.jpeg', '126'),
+(19, 'Ma Yesto Geet Gauchu 2', 'Nepali', '2022-02-25', '6226be3da38d5.jpeg', '6226be3da3a6a.jpeg', '130');
 
 -- --------------------------------------------------------
 
@@ -165,6 +161,13 @@ CREATE TABLE `show` (
   `play_time` time NOT NULL,
   `ticket_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `show`
+--
+
+INSERT INTO `show` (`id`, `hall_id`, `movie_id`, `play_date`, `play_time`, `ticket_price`) VALUES
+(2, 1, 17, '2022-03-08', '10:35:00', 200);
 
 -- --------------------------------------------------------
 
@@ -235,7 +238,9 @@ ALTER TABLE `payment`
 -- Indexes for table `show`
 --
 ALTER TABLE `show`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hall` (`hall_id`),
+  ADD KEY `movie` (`movie_id`);
 
 --
 -- Indexes for table `user`
@@ -257,25 +262,25 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `genre_movie`
 --
 ALTER TABLE `genre_movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -287,7 +292,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `show`
 --
 ALTER TABLE `show`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -305,6 +310,13 @@ ALTER TABLE `user`
 ALTER TABLE `genre_movie`
   ADD CONSTRAINT `genre_movie_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `genre_movie_ibfk_2` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `show`
+--
+ALTER TABLE `show`
+  ADD CONSTRAINT `hall` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
