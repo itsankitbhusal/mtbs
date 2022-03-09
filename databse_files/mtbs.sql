@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2022 at 06:02 AM
+-- Generation Time: Mar 09, 2022 at 02:00 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -82,11 +82,11 @@ INSERT INTO `genre_movie` (`id`, `genre_id`, `movie_id`) VALUES
 (80, 5, 17),
 (81, 8, 17),
 (82, 9, 17),
-(83, 5, 16),
-(84, 6, 16),
-(85, 8, 16),
 (86, 8, 19),
-(87, 6, 18);
+(87, 6, 18),
+(91, 5, 16),
+(92, 6, 16),
+(93, 8, 16);
 
 -- --------------------------------------------------------
 
@@ -150,10 +150,10 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `show`
+-- Table structure for table `shows`
 --
 
-CREATE TABLE `show` (
+CREATE TABLE `shows` (
   `id` int(11) NOT NULL,
   `hall_id` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
@@ -163,11 +163,12 @@ CREATE TABLE `show` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `show`
+-- Dumping data for table `shows`
 --
 
-INSERT INTO `show` (`id`, `hall_id`, `movie_id`, `play_date`, `play_time`, `ticket_price`) VALUES
-(2, 1, 17, '2022-03-08', '10:35:00', 200);
+INSERT INTO `shows` (`id`, `hall_id`, `movie_id`, `play_date`, `play_time`, `ticket_price`) VALUES
+(2, 1, 17, '2022-03-08', '10:35:00', 300),
+(5, 2, 16, '2022-03-09', '06:31:00', 550);
 
 -- --------------------------------------------------------
 
@@ -235,9 +236,9 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `show`
+-- Indexes for table `shows`
 --
-ALTER TABLE `show`
+ALTER TABLE `shows`
   ADD PRIMARY KEY (`id`),
   ADD KEY `hall` (`hall_id`),
   ADD KEY `movie` (`movie_id`);
@@ -268,7 +269,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `genre_movie`
 --
 ALTER TABLE `genre_movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `hall`
@@ -289,10 +290,10 @@ ALTER TABLE `payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `show`
+-- AUTO_INCREMENT for table `shows`
 --
-ALTER TABLE `show`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `shows`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -312,9 +313,9 @@ ALTER TABLE `genre_movie`
   ADD CONSTRAINT `genre_movie_ibfk_2` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `show`
+-- Constraints for table `shows`
 --
-ALTER TABLE `show`
+ALTER TABLE `shows`
   ADD CONSTRAINT `hall` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
