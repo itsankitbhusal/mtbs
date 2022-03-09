@@ -27,15 +27,12 @@ include  __DIR__ . "/../components/sidebar.php";
         <a href="./index.php" class="btn btn-primary px-4 font-weight-bold">Go back</a>
     </div>
     <?php if (hasError()) : ?>
-        <div class="ml-4 alert alert-danger">
+        <div id="error" class="ml-4 alert alert-danger">
             <?php echo getError(); ?>
         </div>
     <?php endif; ?>
-    <?php if (hasSuccess()) : ?>
-        <div class="ml-4 alert alert-success">
-            <?php echo getSuccess(); ?>
-        </div>
-    <?php endif; ?>
+
+
     <!-- /.container-fluid -->
     <div class="container d-flex ">
         <form class="m-4 col-md-8  " method="POST" action="./update.php?id=<?php echo $id; ?>" enctype="multipart/form-data">

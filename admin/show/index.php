@@ -15,12 +15,12 @@ include  __DIR__ . "/../components/sidebar.php";
     <!-- /.container-fluid -->
 
     <?php if (hasError()) : ?>
-        <div class="ml-4 alert alert-danger">
+        <div id="error" class="ml-4 alert alert-danger">
             <?php echo getError(); ?>
         </div>
     <?php endif; ?>
     <?php if (hasSuccess()) : ?>
-        <div class="ml-4 alert alert-success">
+        <div id="success" class="ml-4 alert alert-success">
             <?php echo getSuccess(); ?>
         </div>
     <?php endif; ?>
@@ -66,8 +66,18 @@ include  __DIR__ . "/../components/sidebar.php";
                     <td class="text-center"><?php //ticket price 
                                             echo $key['ticket_price']; ?></td>
                     <td class="text-center">
-                        <a class="btn btn-primary btn-sm mx-2" href="./edit.php?id=<?php echo $key['id']; ?>">Update</a>
-                        <a class="btn btn-danger btn-sm mx-2" onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">Delete</a>
+                        <a class="btn btn-primary btn-sm rounded-5" style="height: 2rem;" href="./edit.php?id=<?php echo $key['id']; ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                            </svg>
+                        </a>
+                        <a class="btn btn-danger btn-sm rounded-5" style="height: 2rem;" onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                            </svg>
+                        </a>
                     </td>
                 </tr>
             <?php endforeach;  ?>
@@ -76,12 +86,7 @@ include  __DIR__ . "/../components/sidebar.php";
 </div>
 </div>
 
-<script>
-    function confirmDelete(id) {
-        if (confirm('Are you sure you want to delete this?')) {
-            location.href = './delete.php?id=' + id;
-        }
-    }
-</script>
+
+
 <!-- End of Main Content -->
 <?php include "../components/footer.php"; ?>

@@ -6,10 +6,12 @@ $cover = is_uploaded_file($_FILES['cover']['tmp_name']);
 if (!$uploaded) {
     setError('Please upload an image');
     Header("Location: create.php");
+    die;
 }
 if (!$cover) {
     setError('Please upload an cover image');
     Header("Location: create.php");
+    die;
 }
 if (!empty($_POST)) {
     $name = request('name');

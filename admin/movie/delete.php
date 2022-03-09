@@ -4,6 +4,7 @@ require "../components/admin.php";
 
 $id = request('id');
 
+$movie = find('movie', $id);
 if (empty($id)) {
     setError("Please provide ID");
     Header("Location: index.php");
@@ -15,7 +16,7 @@ if (empty($movie)) {
 }
 
 if (!empty($movie) && !empty($id)) {
-    $movie = find('movie', $id);
+
     delete('movie', $id);
     $to_delete = "../../uploads/" . $movie['image'];
     $to_delete_cover = "../../cover/" . $movie['image_cover'];

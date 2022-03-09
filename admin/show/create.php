@@ -17,15 +17,12 @@ include  __DIR__ . "/../components/sidebar.php";
         <a href="./index.php" class="btn btn-primary px-4 font-weight-bold">Go back</a>
     </div>
     <?php if (hasError()) : ?>
-        <div class="ml-4 alert alert-danger">
+        <div id="error" class="ml-4 alert alert-danger">
             <?php echo getError(); ?>
         </div>
     <?php endif; ?>
-    <?php if (hasSuccess()) : ?>
-        <div class="ml-4 alert alert-success">
-            <?php echo getSuccess(); ?>
-        </div>
-    <?php endif; ?>
+
+
     <!-- /.container-fluid -->
     <form class="m-4" method="POST" action="./store.php" enctype="multipart/form-data">
 

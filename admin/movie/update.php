@@ -110,7 +110,9 @@ if (!empty($name) && !empty($language) && !empty($release_date) && !empty($runti
 
     setSuccess('Data Updated Sucessfully');
     header("Location: index.php");
+    die;
 } else {
     setError("Please fill all the fields!!!");
     header("Location: edit.php");
+    die;
 }

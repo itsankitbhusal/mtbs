@@ -27,7 +27,7 @@ include  __DIR__ . "/../components/sidebar.php";
         <a href="./index.php" class="btn btn-primary px-4">Go back</a>
     </div>
     <?php if (hasError()) : ?>
-        <div class="ml-4 alert alert-danger">
+        <div id="error" class="ml-4 alert alert-danger">
             <?php echo getError(); ?>
         </div>
     <?php endif; ?>

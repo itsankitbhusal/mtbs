@@ -16,14 +16,6 @@ if (empty($name)) {
     die;
 }
 
-
-
-
-
-
-
-
-
 update('genre', $id, compact('name', 'description'));
 
 setSuccess('Genre data updated!');
