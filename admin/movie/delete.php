@@ -9,7 +9,6 @@ if (empty($id)) {
     Header("Location: index.php");
 }
 
-$movie = find('movie', $id);
 if (empty($movie)) {
     setError("Enter a valid id!!!");
     Header("Location: index.php");
