@@ -40,13 +40,13 @@ require "./functions/functions.php";
                             <!-- Email input -->
                             <div class="form-outline mt-2">
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <input style="border: 1px solid black;" name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="form3Example4">Password</label>
-                                <input style="border: 1px solid black;" id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
                                 <a href="#!" class="d-flex justify-content-end" onclick="showPass()"><i class="fas fa-eye"></i></a>
                             </div>
                             <div class="text-center text-lg-start pt-2">

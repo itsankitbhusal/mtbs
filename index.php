@@ -71,42 +71,31 @@ $result = all('movie');
     <!-- End your project here-->
 
     <!-- carousel start -->
-    <?php
-    // echo "<pre>";
-    // print_r($result);
-    // die;
-    ?>
-
     <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
-
         <div class="carousel-inner">
-
             <?php
             $i = 0;
             $first = reset($result);
             foreach ($result as $key) :
             ?>
-
-
                 <div class="carousel-item <?php
-
                                             if ($first == $key) {
                                                 echo "active";
                                             } else {
                                                 echo "";
                                             }
-
                                             ?>">
                     <img src="./cover/<?php echo $key['image_cover']; ?>" class="img-flui  d-block w-100" alt="" />
                 </div>
             <?php endforeach; ?>
         </div>
         <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span style="font-size: 2rem;" class="fas fa-angle-left" aria-hidden="true">
+            </span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span style="font-size: 2rem;" class="fas fa-angle-right" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
 
@@ -123,9 +112,9 @@ $result = all('movie');
         <div class="container d-flex  gap-4 flex-wrap justify-content-center">
 
             <?php foreach ($result as $key) : ?>
-                <div class="card col-lg-2.5  hover-shadow border">
+                <div class="card col-lg-2.5  hover-shadow border rounded">
                     <div class="">
-                        <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid w-100" />
+                        <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
 
                     </div>
 
@@ -159,29 +148,30 @@ $result = all('movie');
     </div>
 
     <!-- Footer -->
-    <footer class="bg-light text-center container-fluid mt-5">
+    <footer class="bg-light text-center container-fluid mt-5  ">
         <!-- Grid container -->
-        <div class="container p-4 d-flex justify-content-between align-content-center">
+        <div class="container flex-wrap gap-3  p-4 d-flex justify-content-between  align-content-center">
 
             <!-- Section: Social media -->
-            <div class="col-md-4 w-25 d-flex align-items-center">
-                <img class="img-fluid w-75" src="./user/img/logoWithName.png" alt="logo">
+            <div class="w-auto">
+
+                <img style="width: 200px;" class="img-fluid" src="./user/img/logoWithName.png" alt="logo">
             </div>
-            <section class="mb-4 col-md-4 d-flex align-items-center">
-                <div class="mt-4 ">
-                    <!-- Facebook -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #4267B2" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+            <div class="mb-4 ">
 
-                    <!-- Instagram -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #fb3958" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+                <!-- Facebook -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #4267B2" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
 
-                    <!-- Linkedin -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #0072b1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
-                    <!-- Github -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #171515" href="#!" role="button"><i class="fab fa-github"></i></a>
+                <!-- Instagram -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #fb3958" href="#!" role="button"><i class="fab fa-instagram"></i></a>
 
-                </div>
-            </section>
+                <!-- Linkedin -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #0072b1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Github -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #171515" href="#!" role="button"><i class="fab fa-github"></i></a>
+
+
+            </div>
             <!-- Section: Social media -->
 
 
@@ -193,7 +183,7 @@ $result = all('movie');
         <!-- Copyright -->
         <div class="text-center p-3">
             &copy; <?php echo date("Y"); ?> Copyright:
-            <a class="text-dark font-weight-bold" href="#">Ankit Bhusal</a>
+            <a class="text-dark font-weight-bold" href="#">CinemaTic</a>
         </div>
         <!-- Copyright -->
 
