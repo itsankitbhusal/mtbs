@@ -7,7 +7,7 @@
                 <i class="fas fa-ticket-alt"></i>
 
             </div>
-            <div class="sidebar-brand-text mx-3">CINEMA<span>TIC</span> </div>
+            <div class="sidebar-brand-text mx-3 font-weight-bold text-black-50 ">CINEMA<span class="font-weight-bolder text-black ">TIC</span> </div>
         </a>
 
         <!-- Divider -->
@@ -33,6 +33,11 @@
             <a class="nav-link" href="http://localhost/mtbs/admin/genre">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Genre</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://localhost/mtbs/admin/show">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Shows</span></a>
         </li>
 
         <!-- Divider -->
