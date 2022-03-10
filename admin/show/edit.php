@@ -56,7 +56,7 @@ include  __DIR__ . "/../components/sidebar.php";
 
 
     <!-- /.container-fluid -->
-    <form class="m-4" method="POST" action="update.php/?id=<?php echo $id; ?>">
+    <form class="m-4" method="POST" action="update.php?id=<?php echo $id; ?>">
 
 
         <div class="form-group">
