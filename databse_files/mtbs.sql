@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2022 at 02:00 PM
+-- Generation Time: Mar 10, 2022 at 02:30 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -84,9 +84,9 @@ INSERT INTO `genre_movie` (`id`, `genre_id`, `movie_id`) VALUES
 (82, 9, 17),
 (86, 8, 19),
 (87, 6, 18),
-(91, 5, 16),
-(92, 6, 16),
-(93, 8, 16);
+(99, 5, 16),
+(100, 6, 16),
+(101, 8, 16);
 
 -- --------------------------------------------------------
 
@@ -105,8 +105,9 @@ CREATE TABLE `hall` (
 --
 
 INSERT INTO `hall` (`id`, `name`, `total_seats`) VALUES
-(1, 'Theater 1', 50),
-(2, 'Theater 2', 60);
+(1, 'Theater 1', 55),
+(2, 'Theater 2', 60),
+(4, 'CinemaTIC', 100);
 
 -- --------------------------------------------------------
 
@@ -167,8 +168,10 @@ CREATE TABLE `shows` (
 --
 
 INSERT INTO `shows` (`id`, `hall_id`, `movie_id`, `play_date`, `play_time`, `ticket_price`) VALUES
-(2, 1, 17, '2022-03-08', '10:35:00', 300),
-(5, 2, 16, '2022-03-09', '06:31:00', 550);
+(2, 1, 17, '2022-03-08', '14:35:00', 330),
+(5, 2, 19, '2022-03-09', '06:31:00', 200),
+(7, 1, 16, '2022-03-09', '19:18:00', 500),
+(8, 4, 16, '2022-03-09', '11:15:00', 400);
 
 -- --------------------------------------------------------
 
@@ -269,19 +272,19 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `genre_movie`
 --
 ALTER TABLE `genre_movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -293,7 +296,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
