@@ -1,5 +1,6 @@
 <?php
 require "./functions/db.php";
+require "./functions/functions.php";
 
 $result = all('movie');
 
@@ -102,6 +103,16 @@ $result = all('movie');
     </div>
     <!-- carousel end -->
 
+    <?php if (hasError()) : ?>
+        <div id="error" class="ml-4 alert alert-danger">
+            <?php echo getError(); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (hasSuccess()) : ?>
+        <div id="success" class="ml-4 alert alert-success">
+            <?php echo getSuccess(); ?>
+        </div>
+    <?php endif; ?>
     <!-- now showing starts -->
 
     <div class="container my-5">
@@ -118,7 +129,7 @@ $result = all('movie');
 
                     </div>
 
-                    <div class="card-body">
+                    <a href="./user/book.php?id=<?php echo $key['id']; ?>" class="card-body " style="color: #4a4a4a;">
                         <h5 class="card-title"><?php echo $key['name'] ?></h5>
                         <p class="card-text text-muted">
                             <?php
@@ -134,7 +145,7 @@ $result = all('movie');
 
                             ?>
                         </p>
-                    </div>
+                    </a>
                 </div>
             <?php endforeach; ?>
 
@@ -194,7 +205,7 @@ $result = all('movie');
     <!-- MDB -->
     <script type="text/javascript" src="./user/js/mdb.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript"></script>
+    <script src="./user/js/script.js"></script>
 </body>
 
 </html>
