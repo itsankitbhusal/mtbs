@@ -22,7 +22,7 @@ if (!empty($_POST)) {
         } elseif (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             if ($user['role'] == "user") {
-                header("Location: ./user/index.php");
+                header("Location: ./index.php");
             }
         } else {
             setError('Invalid username or password!');
