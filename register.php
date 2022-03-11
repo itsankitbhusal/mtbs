@@ -95,6 +95,7 @@ if (!empty($_POST)) {
         </div>
 
     </section>
+    <script src="./user/js/script.js"></script>
 </body>
 
 </html>
