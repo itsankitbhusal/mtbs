@@ -27,15 +27,12 @@ require "./functions/functions.php";
                         <form action="./loginphp.php" method="POST">
                             <!-- error -->
                             <?php if (hasError()) : ?>
-                                <div class="ml-4 alert alert-danger">
+                                <div id="error" class="ml-4 alert alert-danger">
                                     <?php echo getError(); ?>
                                 </div>
                             <?php endif; ?>
-                            <?php if (hasSuccess()) : ?>
-                                <div class="ml-4 alert alert-success">
-                                    <?php echo getSuccess(); ?>
-                                </div>
-                            <?php endif; ?>
+
+
 
                             <!-- Email input -->
                             <div class="form-outline mt-2">
@@ -47,7 +44,12 @@ require "./functions/functions.php";
                             <div class="form-outline mt-4">
                                 <label class="form-label" for="form3Example4">Password</label>
                                 <input style="border: 1px solid #dedede; border-radius: 5px" id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
-                                <a href="#!" class="d-flex justify-content-end" onclick="showPass()"><i class="fas fa-eye"></i></a>
+                                <div class="form-check mt-2 mb-3">
+                                    <input id="show" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Show Password
+                                    </label>
+                                </div>
                             </div>
                             <div class="text-center text-lg-start pt-2">
                                 <button type="submit" class="btn btn-primary px-4">Login</button>
@@ -62,15 +64,18 @@ require "./functions/functions.php";
 
     </section>
     <script>
-        function showPass() {
-            let variable = document.getElementById("input");
-            if (variable.type === "password") {
-                variable.type = "text";
-            } else if (variable.type === "text") {
-                variable.type = "password"
+        const eye = document.getElementById('show');
+
+        eye.addEventListener('click', e => {
+            const pass = document.getElementById('input');
+            if (pass.type === "password") {
+                pass.type = "text";
+            } else if (pass.type === "text") {
+                pass.type = "password"
             }
-        }
+        });
     </script>
+    <script src="./user/js/script.js"></script>
 </body>
 
 </html>
