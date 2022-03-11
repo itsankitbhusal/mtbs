@@ -46,7 +46,7 @@ foreach ($shows as $s) {
 </div>
 <div class="container">
 
-    <div class=" d-flex justify-content-center" style="margin-top: 40vh;">
+    <div class=" d-flex justify-content-center" style="margin-top: 30vh;">
         <div class="card col-md-7">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -80,40 +80,25 @@ foreach ($shows as $s) {
             </div>
         </div>
     </div>
-    <div>
-        <?php
-        echo "<pre>";
-        print_r($shows);
+    <br>
+    <div class="container">
+        <div class=" d-flex flex-row mb-5 justify-content-center gap-5 ">
+            <?php $i = 1;
+            foreach ($shows as $s) : ?>
+                <a href="./ticket.php?id=<?php echo $s['id']; ?>" class="my-4">
+                    <div class="bg-white font-weight-bold text-center text-black-50 shadow-4-strong  p-5 rounded-circle d-inline-block">
+                        <?php
+                        echo "Show $i<br>";
+                        echo $s['play_date'] . "<br>";
+                        echo $s['play_time'];
+                        $i++;
+                        ?>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </div>
 
-        foreach ($shows as $s) {
-            echo $s['id'];
-        }
 
-        die;
-        ?>
-        <form class="m-4" method="POST" action="./store.php?id=<?php echo $shows['id']; ?>">
-
-
-            <div class="form-group">
-                <label for="show_date">Choose Show Date</label>
-                <select name="show_date" class="form-control" id="show_date">
-                    <?php
-                    foreach ($shows as $s) :
-                    ?>
-                        <option value="<?php echo $s['id']; ?>"><?php echo $s['play_date']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="ticket">Pick Show Tickets</label>
-                <input min="1" max="5" id="ticket" class="form-control" type="number">
-            </div>
-
-            <br>
-            <button type="submit" class="btn btn-primary">Continue</button>
-
-        </form>
     </div>
 </div>
 
