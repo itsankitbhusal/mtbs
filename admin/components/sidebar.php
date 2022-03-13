@@ -4,10 +4,10 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./index.php">
             <div class="sidebar-brand-icon">
-                <i class="fas fa-ticket-alt"></i>
+                <i class="fas fa-home"></i>
 
             </div>
-            <div class="sidebar-brand-text mx-3 font-weight-bold text-black-50 ">CINEMA<span class="font-weight-bolder text-black ">TIC</span> </div>
+            <div class="sidebar-brand-text mx-3 font-weight-bold ">CINEMA<span class="font-weight-bolder text-black">TIC</span> </div>
         </a>
 
         <!-- Divider -->
@@ -17,27 +17,32 @@
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span class="font-weight-bold text-uppercase "> Dashboard</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/movie">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Movie</span></a>
+                <span class="font-weight-bold text-uppercase ">Movie</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/hall">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Theaters</span></a>
+                <span class="font-weight-bold text-uppercase ">Theaters</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/genre">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Genre</span></a>
+                <span class="font-weight-bold text-uppercase ">Genre</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/show">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Shows</span></a>
+                <span class="font-weight-bold text-uppercase ">Shows</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://localhost/mtbs/admin/user">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span class="font-weight-bold text-uppercase ">Users</span></a>
         </li>
 
         <!-- Divider -->
