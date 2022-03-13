@@ -24,7 +24,7 @@ require "./functions/functions.php";
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">Login</h1>
 
-                        <form action="./loginphp.php" method="POST">
+                        <form action="./login.inc.php" method="POST">
                             <!-- error -->
                             <?php if (hasError()) : ?>
                                 <div id="error" class="ml-4 alert alert-danger">
