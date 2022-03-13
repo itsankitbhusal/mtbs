@@ -1,38 +1,6 @@
 <?php
 require "./functions/db.php";
-if (!empty($_POST)) {
-    $name = request("name");
-    $email = request("email");
-    $password = request("password");
-    $password_verify = request("password_verify");
-
-    if (empty($email) || empty($password) || empty($name) || empty($password_verify)) {
-        die("Please fill all the fields");
-    }
-    $user = where('user', 'email', '=', $email, false);
-    if ($user) {
-        die("Email has alreday been taken!");
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die('Please enter valid email');
-    }
-    if ($password != $password_verify) {
-        die("Password and Confirm password doesnot match!");
-    }
-
-    if (strlen($password) < 6) {
-        die("Password must be 6 character or more");
-    }
-
-    create('user', [
-        'name' => $name,
-        'email' => $email,
-        'password' => password_hash($password, PASSWORD_DEFAULT)
-    ]);
-
-    die("User Registerd");
-}
-
+require "./functions/functions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +23,15 @@ if (!empty($_POST)) {
                 <div class="vh-100 d-flex align-items-center justify-content-center">
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">Register</h1>
+                        <!-- error -->
+                        <?php if (hasError()) : ?>
+                            <div id="error" class="ml-4 alert alert-danger">
+                                <?php echo getError(); ?>
+                            </div>
+                        <?php endif; ?>
 
-                        <form action="./register.php" method="POST">
+                        <form action="./register.inc.php" method="POST">
+
                             <!-- Name input -->
                             <div class="form-outline">
                                 <label class="form-label" for="name">Name</label>
