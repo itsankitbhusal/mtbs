@@ -88,5 +88,6 @@ include  __DIR__ . "/../components/sidebar.php";
         </tbody>
     </table>
 </div>
+</div>
 <!-- End of Main Content -->
 <?php include "../components/footer.php"; ?>
