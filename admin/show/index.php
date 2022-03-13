@@ -44,7 +44,7 @@ include  __DIR__ . "/../components/sidebar.php";
             ?>
                 <tr>
 
-                    <td class="font-weight-bold"><?php echo $key['id']; ?></td>
+                    <td class="font-weight-bold text-center"><?php echo $key['id']; ?></td>
                     <td class="text-center"><?php //hall_name
                                             $hall = where('hall', 'id', '=', $key['hall_id'], false);
                                             echo $hall['name'];
