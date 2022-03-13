@@ -3,14 +3,18 @@ function confirmDelete(id) {
     location.href = `./delete.php?id=${id}`;
   }
 }
-setTimeout(() => {
-  const error = document.getElementById("error");
-  error.classList.add("d-none");
-  error.classList.add("fade");
-}, 3000);
 
-setTimeout(() => {
-  const success = document.getElementById("success");
-  success.classList.add("d-none");
-  success.classList.add("fade");
-}, 3000);
+const error = document.getElementById("error");
+if (error) {
+  setTimeout(() => {
+    error.classList.add("d-none");
+    error.classList.add("fade");
+  }, 3000);
+}
+const success = document.getElementById("success");
+if (success) {
+  setTimeout(() => {
+    success.classList.add("d-none");
+    success.classList.add("fade");
+  }, 3000);
+}
