@@ -19,10 +19,12 @@ if (!empty($_POST)) {
         $_SESSION['user_id'] = $user['id'];
         if ($user['role'] == "admin") {
             header("Location: ./admin/index.php");
+            setSuccess('Admin login Successfully');
         } elseif (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             if ($user['role'] == "user") {
                 header("Location: ./index.php");
+                setSuccess('User Logged In Successfully');
             }
         } else {
             setError('Invalid username or password!');
