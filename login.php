@@ -31,9 +31,6 @@ require "./functions/functions.php";
                                     <?php echo getError(); ?>
                                 </div>
                             <?php endif; ?>
-
-
-
                             <!-- Email input -->
                             <div class="form-outline mt-2">
                                 <label class="form-label" for="form3Example3">Email address</label>
