@@ -62,10 +62,23 @@ $result = all('movie');
             <!-- Collapsible wrapper -->
 
             <!-- Right elements -->
-            <div class="d-flex align-items-center">
-                <a href="./register.php" class="btn btn-primary">Sign Up</a>
-                <!-- Right elements -->
-            </div>
+            <?php if (empty(($_SESSION['user_id']))) :       ?>
+                <div class="d-flex align-items-center mx-2">
+                    <a href="./register.php" class="btn btn-outline-primary ">Sign Up</a>
+                    <!-- Right elements -->
+                </div>
+                <div class="d-flex align-items-center mx-2">
+                    <a href="./login.php" class="btn btn-primary">Log In</a>
+                    <!-- Right elements -->
+                </div>
+            <?php endif; ?>
+            <?php if (!empty(($_SESSION['user_id']))) : ?>
+
+                <div class="d-flex align-items-center mx-2">
+                    <a href="./logout.php" class="btn btn-danger">Log Out</a>
+                    <!-- Right elements -->
+                </div>
+            <?php endif;    ?>
             <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
