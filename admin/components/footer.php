@@ -45,7 +45,7 @@ $log_url = "http://localhost/mtbs/logout.php";
     </div>
 </div>
 <!-- custom script -->
-<script src="../js/script.js"></script>
+<script src="<?php echo $page_url ?>/js/script.js"></script>
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo $page_url ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo $page_url ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
