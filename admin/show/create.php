@@ -1,12 +1,7 @@
 <?php
-
 require_once __DIR__ . "/../components/admin.php";
-
-
-
 include  __DIR__ . "/../components/header.php";
 include  __DIR__ . "/../components/sidebar.php";
-
 ?>
 
 <!-- Begin Page Content -->
@@ -22,13 +17,9 @@ include  __DIR__ . "/../components/sidebar.php";
         </div>
     <?php endif; ?>
 
-
     <!-- /.container-fluid -->
     <form class="m-4" method="POST" action="./store.php" enctype="multipart/form-data">
-
-
         <div class="form-group">
-
             <label for="language">Hall</label>
             <select name="hall_id" class="form-control" id="language">
                 <?php $hall = all('hall');
@@ -39,7 +30,6 @@ include  __DIR__ . "/../components/sidebar.php";
             </select>
         </div>
         <div class="form-group">
-
             <label for="language">Movie</label>
             <select name="movie_id" class="form-control" id="language">
                 <?php $movie = all('movie');
