@@ -23,14 +23,13 @@ require "./functions/functions.php";
                 <div class="vh-100 d-flex align-items-center justify-content-center">
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">Register</h1>
-                        <!-- error -->
-                        <?php if (hasError()) : ?>
-                            <div id="error" class="ml-4 alert alert-danger">
-                                <?php echo getError(); ?>
-                            </div>
-                        <?php endif; ?>
-
                         <form action="./register.inc.php" method="POST">
+                            <!-- error -->
+                            <?php if (hasError()) : ?>
+                                <div id="error" class="ml-4 alert alert-danger">
+                                    <?php echo getError(); ?>
+                                </div>
+                            <?php endif; ?>
 
                             <!-- Name input -->
                             <div class="form-outline">
