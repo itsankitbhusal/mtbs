@@ -31,7 +31,8 @@ if (!empty($user_id) && !empty($show_id) && !empty($total_tickets) && !empty($un
     create('booking', compact('user_id', 'show_id', 'total_tickets', 'unit_price', 'status', 'booked_seat', 'total_price'));
 
     setSuccess('Make payement to confirm booking!!');
-    header("Location: ./payment.php");
+
+    header("Location: ./payment.php?");
 } else {
     die("fill all the fields!!");
 }
