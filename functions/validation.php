@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Validate Name
+ * Validate Name accept character only
  *
  * @param string $name name
  *
@@ -16,17 +16,39 @@ function validateName($name)
 };
 
 /**
- * Validate Phone
+ * Validate Phone Number +977 and 97 && 98
  *
  * @param string $phone phone
  *
  * @return true
  */
 
-function ($phone) {
+function validatePhone($phone)
+{
     if (preg_match('(?:\+977[- ])?\d{2}-?\d{7,8}', $phone)) {
         return true;
     } else {
         return false;
     }
 };
+
+/**
+ * Validate number
+ *
+ * @param string $value number
+ *
+ * @return true
+ */
+
+function validateNumber($value)
+{
+    return preg_match('/^([0-9]*)$/', $value);
+}
+
+/**
+ * Validate expiry date of card
+ *
+ * @param string $value date
+ *
+ * @return true
+ */
