@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2022 at 02:30 PM
+-- Generation Time: Mar 19, 2022 at 01:41 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -33,8 +33,21 @@ CREATE TABLE `booking` (
   `show_id` int(11) NOT NULL,
   `total_tickets` int(11) NOT NULL,
   `unit_price` int(11) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL,
+  `booked_seat` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `user_id`, `show_id`, `total_tickets`, `unit_price`, `status`, `booked_seat`, `total_price`) VALUES
+(2, 14, 8, 100, 400, 'pending', 5, 2000),
+(3, 14, 2, 55, 330, 'pending', 1, 330),
+(4, 14, 8, 100, 400, 'pending', 3, 1200),
+(5, 14, 7, 55, 500, 'pending', 5, 2500),
+(6, 14, 8, 95, 400, 'booked', 5, 2000);
 
 -- --------------------------------------------------------
 
@@ -60,7 +73,8 @@ INSERT INTO `genre` (`id`, `name`) VALUES
 (6, 'Action'),
 (7, 'Romance'),
 (8, 'Drama'),
-(9, 'Biography');
+(9, 'Biography'),
+(10, 'Adventure');
 
 -- --------------------------------------------------------
 
@@ -86,7 +100,15 @@ INSERT INTO `genre_movie` (`id`, `genre_id`, `movie_id`) VALUES
 (87, 6, 18),
 (99, 5, 16),
 (100, 6, 16),
-(101, 8, 16);
+(101, 8, 16),
+(102, 6, 24),
+(103, 10, 24),
+(104, 7, 25),
+(105, 8, 25),
+(106, 6, 26),
+(107, 8, 26),
+(108, 5, 27),
+(109, 6, 27);
 
 -- --------------------------------------------------------
 
@@ -107,7 +129,7 @@ CREATE TABLE `hall` (
 INSERT INTO `hall` (`id`, `name`, `total_seats`) VALUES
 (1, 'Theater 1', 55),
 (2, 'Theater 2', 60),
-(4, 'CinemaTIC', 100);
+(4, 'CinemaTIC', 95);
 
 -- --------------------------------------------------------
 
@@ -133,7 +155,11 @@ INSERT INTO `movie` (`id`, `name`, `language`, `release_date`, `image`, `image_c
 (16, 'The Batman', 'English', '2022-03-04', '6226bc0fc413d.jpeg', '6226bc0fc4627.jpeg', '153'),
 (17, 'Gangubai Kathiawadi', 'Hindi', '2022-02-25', '6226bce868555.jpeg', '6226bce868756.jpeg', '140'),
 (18, 'Lappan Chhappan 2', 'Nepali', '2022-02-25', '6226cbe7db01b.jpeg', '6226bd8f262b6.jpeg', '126'),
-(19, 'Ma Yesto Geet Gauchu 2', 'Nepali', '2022-02-25', '6226be3da38d5.jpeg', '6226be3da3a6a.jpeg', '130');
+(19, 'Ma Yesto Geet Gauchu 2', 'Nepali', '2022-02-25', '6226be3da38d5.jpeg', '6226be3da3a6a.jpeg', '130'),
+(24, 'Morbius', 'English', '2022-04-01', '62357c106534a.jpeg', '62357c1065511.jpeg', '104'),
+(25, 'Radhe Shyam', 'Hindi', '2022-03-11', '62357cb577383.jpeg', '62357cb577453.jpeg', '128'),
+(26, 'RRR', 'Hindi', '2022-03-25', '62357d8691d36.jpeg', '62357d8691dbc.jpeg', '186'),
+(27, 'Bachchan Pandey', 'Hindi', '2022-03-18', '62357e1156831.jpeg', '62357e115691f.jpeg', '150');
 
 -- --------------------------------------------------------
 
@@ -147,6 +173,13 @@ CREATE TABLE `payment` (
   `amount` int(11) NOT NULL,
   `payment_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `booking_id`, `amount`, `payment_on`) VALUES
+(1, 6, 2000, '2022-03-17');
 
 -- --------------------------------------------------------
 
@@ -194,7 +227,13 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
 (1, 'ankit', 'ankit@ankit.com', '$2y$10$VfUe9A5HQdgr.xkHG5ZdSONk58cjBM0fGiaOt1oKiErJWMMU.dIeG', 'user'),
 (2, 'admin', 'admin@admin.com', '$2y$10$Ly2dVfzg91Y8Bicq4GX.qevdi7nOkg2cOrw36ZV4lrWA/oJ64aMnu', 'admin'),
-(3, 'user', 'user@user.com', '$2y$10$t7bUX.E4rUULdwNHOq3Di.ynhGioa7CafUinTXDXcK5FWy47pvGKm', 'user');
+(8, 'CinemaTIC', 'aksj@aksj.aksj', '$2y$10$KYOT2NmGQEwQkxsszIvt8uljAoNrugCaxVugdJIHl9FjuHXMMA/SW', 'user'),
+(9, '123ankit', 'ankit@ankit.com', '$2y$10$bXpGgJJxWE2N3uQIZ8Xct.tkdZaedFhvr.ePwNujoJZFis/yn.wWO', 'user'),
+(10, '12ankit', 'user@abc.com', '$2y$10$sYlu6.2JzHOSgZNLnmrp5uqyZVXuwr4WKCjQGKngtDB5ZZ2Yx77Oy', 'user'),
+(11, 'hello', 'hello@hello', '$2y$10$9d7EIv7BnJ7YUGtG8zpK7.KxS8UJRQwQag05DpK57iF95JYRfys.C', 'user'),
+(12, '123ankit', 'ankkkk@ankit.com', '$2y$10$YRFAHHDA.owK1cvRpCZ8HuRQoXXe0xcS/X6YTK8U.7CmBbScWDFyy', 'user'),
+(13, '1ankit', 'xyz@xyz.com', '$2y$10$eOirpirmc3PdH/5dxMPzZOg10WtPgAzCrv4arJJZvjHq7oNFoXvyu', 'user'),
+(14, 'user', 'user@user.com', '$2y$10$0s73U8a1JQ8ZknbSr/ABduxeXDaf1/K9UPDrfP1w0woFQ6SEnQsMC', 'user');
 
 --
 -- Indexes for dumped tables
@@ -260,19 +299,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `genre_movie`
 --
 ALTER TABLE `genre_movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `hall`
@@ -284,25 +323,25 @@ ALTER TABLE `hall`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
