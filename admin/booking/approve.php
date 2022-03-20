@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/../components/admin.php";
 
+//booking id
 $booking_id = request('id');
 if (empty($booking_id)) {
     setError("Please Provide an ID!!");
@@ -11,6 +12,21 @@ if (empty($booking_id)) {
 
 //find all booking info 
 $result = find('booking', $booking_id);
+
+
+
+//id of user who have done booking
+$result_id = $result['user_id'];
+
+//finding name and email of user who have done booking
+$user_result = find('user', $result_id);
+
+//name
+$user_name = $user_result['name'];
+
+//email
+$user_email = $user_result['email'];
+
 
 if (empty($result)) {
     setError('Error Occured!!');
@@ -32,6 +48,8 @@ if (empty($result)) {
 //no. of booked seat
 $booked_seat = $result['booked_seat'];
 
+//total price
+$total_price = $result['total_price'];
 
 if (empty($booked_seat)) {
     setError('Error Occured!!');
@@ -51,6 +69,7 @@ if (empty($show_id)) {
 //find show detials
 $show = find('shows', $show_id);
 
+$show_time = $show['play_date'] . ' & ' . $show['play_time'];
 
 if (empty($show)) {
     setError('Error Occured!!');
@@ -116,9 +135,9 @@ if (empty($updated_tickets)) {
     die;
 }
 
-$booking_status = where('booking', 'status', '=', 'booked', false);
+$booking_status = where('booking', 'status', '=', 'pending', false);
 
-if (!$booking_status) {
+if ($booking_status) {
     update('booking', $booking_id, [
         'total_tickets' => $updated_tickets,
         'status' => 'booked',
@@ -127,6 +146,11 @@ if (!$booking_status) {
     update('hall', $hall_id, [
         'total_seats' => $updated_tickets,
     ]);
+
+
+    $payment = where('payment', 'booking_id', '=', $booking_id, false);
+    $payment_on = $payment['payment_on'];
+    require_once __DIR__ . "/../../functions/invoice.php";
     setSuccess('Booking has been Approved!');
     header("Location: ./index.php");
     die;
