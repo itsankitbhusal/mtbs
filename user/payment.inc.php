@@ -12,14 +12,18 @@ $amount = $booking['total_price'];
 $name = request('name_on_card');
 
 if (!validateName($name)) {
-    die("Please enter a valid name!!");
+    setError("Please enter a valid name!!");
+    header("Location: ./payment.php");
+    die;
 }
 
 
 $card = request('card_number');
 
 if (!validateNumber($card)) {
-    die('Please Enter valid card number!!');
+    setError('Please Enter valid card number!!');
+    header("Location: ./payment.php");
+    die;
 }
 
 $exp = request('exp_date');
@@ -27,13 +31,24 @@ $exp = request('exp_date');
 
 $cvv = request('cvv');
 
+
+if (empty($cvv)) {
+    setError("Please provide all the details!!");
+    header("Location: ./payment.php");
+    die;
+}
+
 if (strlen($cvv) > 3) {
-    die("Please enter valid CVV!!");
+    setError("Please enter valid CVV!!");
+    header("Location: ./payment.php");
+    die;
 }
 $exists = where('payment', 'booking_id', '=', $booking_id, false);
 
-if ($exists) {
-    die("Paymemt Already done!!");
+if ($exists > 5) {
+    setError("You cannot Book more than 5 seats!!");
+    header("Location: ../index.php");
+    die;
 }
 
 if (!empty($name) && !empty($card) && !empty($exp) && !empty($cvv)) {
@@ -44,5 +59,7 @@ if (!empty($name) && !empty($card) && !empty($exp) && !empty($cvv)) {
         'payment_on' => date('Y-m-d')
     ]);
 
-    die("Payment Successful!!");
+    setSuccess("Payment Successful!!");
+    header("Location: ../index.php");
+    die;
 }

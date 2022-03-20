@@ -43,6 +43,16 @@ foreach ($shows as $s) {
         <img class="img-fluid" src="../cover/<?php echo $result['image_cover']; ?>" alt="Cover Image" />
     </div>
     <div class="container">
+        <?php if (hasError()) : ?>
+            <div id="error" class="ml-4 alert alert-danger">
+                <?php echo getError(); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (hasSuccess()) : ?>
+            <div id="success" class="ml-4 alert alert-success">
+                <?php echo getSuccess(); ?>
+            </div>
+        <?php endif; ?>
 
         <div class=" d-flex justify-content-center" style="margin-top: 30vh;">
             <div class="card col-md-7">
@@ -109,5 +119,6 @@ foreach ($shows as $s) {
 
 
 </body>
+<script src="./js/script.js"></script>
 
 </html>

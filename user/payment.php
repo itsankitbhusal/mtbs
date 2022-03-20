@@ -21,6 +21,16 @@ require "../functions/functions.php";
 <body>
 
     <div class="container">
+        <?php if (hasError()) : ?>
+            <div id="error" class="ml-4 alert alert-danger">
+                <?php echo getError(); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (hasSuccess()) : ?>
+            <div id="success" class="ml-4 alert alert-success">
+                <?php echo getSuccess(); ?>
+            </div>
+        <?php endif; ?>
         <form action="./payment.inc.php" method="post" class="col-md-4 mx-auto mt-5">
             <div class="form-group">
                 <label for="name_on_card">Name on card</label>
@@ -43,5 +53,6 @@ require "../functions/functions.php";
     </div>
 
 </body>
+<script src="./js/script.js"></script>
 
 </html>

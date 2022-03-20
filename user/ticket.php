@@ -55,6 +55,16 @@ $price = $ticket_price['ticket_price'];
 
 <body>
     <div class="container">
+        <?php if (hasError()) : ?>
+            <div id="error" class="ml-4 alert alert-danger">
+                <?php echo getError(); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (hasSuccess()) : ?>
+            <div id="success" class="ml-4 alert alert-success">
+                <?php echo getSuccess(); ?>
+            </div>
+        <?php endif; ?>
         <div class="d-flex justify-content-center mt-5">
             <form action="./booking.php?sid=<?php echo $id ?>&hid=<?php echo $hall_id ?>&price=<?php echo $price; ?>&tt=<?php echo $total_seats['total_seats'];                                                                                                                        ?>" method="post" class="col-md-4">
                 <div class="form-group">
@@ -90,5 +100,6 @@ $price = $ticket_price['ticket_price'];
         document.getElementById('total_price').value = total;
     }
 </script>
+<script src="./js/script.js"></script>
 
 </html>

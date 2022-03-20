@@ -20,6 +20,12 @@ $total_tickets = request('tt');
 $unit_price = request('price');
 
 $booked_seat = request('booked_seats');
+if ($booked_seat > 5) {
+    setError("You cannot book more than 5 seats!!");
+    $url = './ticket.php?id=' . $show_id;
+    header('Location: ' . $url);
+    die;
+}
 
 //total price from POST
 $total_price = $unit_price * $booked_seat;
@@ -31,8 +37,10 @@ if (!empty($user_id) && !empty($show_id) && !empty($total_tickets) && !empty($un
     create('booking', compact('user_id', 'show_id', 'total_tickets', 'unit_price', 'status', 'booked_seat', 'total_price'));
 
     setSuccess('Make payement to confirm booking!!');
-
     header("Location: ./payment.php?");
+    die;
 } else {
-    die("fill all the fields!!");
+    setError("fill all the fields!!");
+    header("Location: ./payment.php?");
+    die;
 }
