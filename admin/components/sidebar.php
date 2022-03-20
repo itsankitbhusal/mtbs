@@ -44,6 +44,11 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase ">Users</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://localhost/mtbs/admin/booking">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span class="font-weight-bold text-uppercase ">Bokings</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider" />
