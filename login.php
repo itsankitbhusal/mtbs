@@ -42,8 +42,8 @@ require "./functions/functions.php";
                                 <label class="form-label" for="form3Example4">Password</label>
                                 <input style="border: 1px solid #dedede; border-radius: 5px" id="input" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
                                 <div class="form-check mt-2 mb-3">
-                                    <input id="show" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
+                                    <input id="show" class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label" for="show">
                                         Show Password
                                     </label>
                                 </div>
