@@ -30,8 +30,13 @@ $payment = where('payment', 'booking_id', '=', $booking['id'], false);
 
 $payment_id = $payment['id'];
 
-if (!empty($id) && !empty($payment_id)) {
+if (!empty($id)) {
     delete('booking', $id);
+    setSuccess('Booking Deleted Successfully');
+    header("Location: ./index.php");
+    die;
+}
+if (!empty($payment_id)) {
     delete('payment', $payment_id);
     setSuccess('Booking Deleted Successfully');
     header("Location: ./index.php");
