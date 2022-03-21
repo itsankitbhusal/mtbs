@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 01:41 PM
+-- Generation Time: Mar 21, 2022 at 07:48 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -43,11 +43,8 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `user_id`, `show_id`, `total_tickets`, `unit_price`, `status`, `booked_seat`, `total_price`) VALUES
-(2, 14, 8, 100, 400, 'pending', 5, 2000),
-(3, 14, 2, 55, 330, 'pending', 1, 330),
-(4, 14, 8, 100, 400, 'pending', 3, 1200),
-(5, 14, 7, 55, 500, 'pending', 5, 2500),
-(6, 14, 8, 95, 400, 'booked', 5, 2000);
+(8, 14, 8, 91, 400, 'booked', 2, 800),
+(12, 15, 5, 58, 200, 'booked', 2, 400);
 
 -- --------------------------------------------------------
 
@@ -127,9 +124,9 @@ CREATE TABLE `hall` (
 --
 
 INSERT INTO `hall` (`id`, `name`, `total_seats`) VALUES
-(1, 'Theater 1', 55),
-(2, 'Theater 2', 60),
-(4, 'CinemaTIC', 95);
+(1, 'Theater 1', 53),
+(2, 'Theater 2', 52),
+(4, 'CinemaTIC', 91);
 
 -- --------------------------------------------------------
 
@@ -179,7 +176,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `booking_id`, `amount`, `payment_on`) VALUES
-(1, 6, 2000, '2022-03-17');
+(4, 8, 800, '2022-03-20'),
+(5, 12, 400, '2022-03-20');
 
 -- --------------------------------------------------------
 
@@ -228,12 +226,9 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
 (1, 'ankit', 'ankit@ankit.com', '$2y$10$VfUe9A5HQdgr.xkHG5ZdSONk58cjBM0fGiaOt1oKiErJWMMU.dIeG', 'user'),
 (2, 'admin', 'admin@admin.com', '$2y$10$Ly2dVfzg91Y8Bicq4GX.qevdi7nOkg2cOrw36ZV4lrWA/oJ64aMnu', 'admin'),
 (8, 'CinemaTIC', 'aksj@aksj.aksj', '$2y$10$KYOT2NmGQEwQkxsszIvt8uljAoNrugCaxVugdJIHl9FjuHXMMA/SW', 'user'),
-(9, '123ankit', 'ankit@ankit.com', '$2y$10$bXpGgJJxWE2N3uQIZ8Xct.tkdZaedFhvr.ePwNujoJZFis/yn.wWO', 'user'),
-(10, '12ankit', 'user@abc.com', '$2y$10$sYlu6.2JzHOSgZNLnmrp5uqyZVXuwr4WKCjQGKngtDB5ZZ2Yx77Oy', 'user'),
 (11, 'hello', 'hello@hello', '$2y$10$9d7EIv7BnJ7YUGtG8zpK7.KxS8UJRQwQag05DpK57iF95JYRfys.C', 'user'),
-(12, '123ankit', 'ankkkk@ankit.com', '$2y$10$YRFAHHDA.owK1cvRpCZ8HuRQoXXe0xcS/X6YTK8U.7CmBbScWDFyy', 'user'),
-(13, '1ankit', 'xyz@xyz.com', '$2y$10$eOirpirmc3PdH/5dxMPzZOg10WtPgAzCrv4arJJZvjHq7oNFoXvyu', 'user'),
-(14, 'user', 'user@user.com', '$2y$10$0s73U8a1JQ8ZknbSr/ABduxeXDaf1/K9UPDrfP1w0woFQ6SEnQsMC', 'user');
+(14, 'user', 'user@user.com', '$2y$10$0s73U8a1JQ8ZknbSr/ABduxeXDaf1/K9UPDrfP1w0woFQ6SEnQsMC', 'user'),
+(15, 'ankit bhusal', 'ankitbhusal@gmail.com', '$2y$10$oQH0Git5q.0QZXbddzM.He4jnF4EfpMaOEpUpYNdv8JLU7pMqes8K', 'user');
 
 --
 -- Indexes for dumped tables
@@ -243,7 +238,9 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user_id`),
+  ADD KEY `show` (`show_id`);
 
 --
 -- Indexes for table `genre`
@@ -275,7 +272,8 @@ ALTER TABLE `movie`
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `booking` (`booking_id`);
 
 --
 -- Indexes for table `shows`
@@ -299,7 +297,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `genre`
@@ -329,7 +327,7 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `shows`
@@ -341,11 +339,18 @@ ALTER TABLE `shows`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `show` FOREIGN KEY (`show_id`) REFERENCES `shows` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `genre_movie`
@@ -353,6 +358,12 @@ ALTER TABLE `user`
 ALTER TABLE `genre_movie`
   ADD CONSTRAINT `genre_movie_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `genre_movie_ibfk_2` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `booking` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shows`
