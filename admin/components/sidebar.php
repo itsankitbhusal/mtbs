@@ -2,7 +2,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./index.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/mtbs/admin/index.php">
             <div class="sidebar-brand-icon">
                 <i class="fas fa-home"></i>
 
@@ -17,37 +17,37 @@
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase "> Dashboard</span></a>
+                <span class="font-weight-bold text-uppercase"> Dashboard</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/movie">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase ">Movie</span></a>
+                <span class="font-weight-bold text-uppercase">Movie</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/hall">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase ">Theaters</span></a>
+                <span class="font-weight-bold text-uppercase">Theaters</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/genre">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase ">Genre</span></a>
+                <span class="font-weight-bold text-uppercase">Genre</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/show">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase ">Shows</span></a>
+                <span class="font-weight-bold text-uppercase">Shows</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/user">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase ">Users</span></a>
+                <span class="font-weight-bold text-uppercase">Users</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/booking">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase ">Bokings</span></a>
+                <span class="font-weight-bold text-uppercase">Bokings</span></a>
         </li>
 
         <!-- Divider -->
