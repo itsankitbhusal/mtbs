@@ -1,11 +1,7 @@
 <?php
 require "./functions/db.php";
 require "./functions/functions.php";
-
 $result = all('movie');
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +19,25 @@ $result = all('movie');
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
     <link rel="stylesheet" href="./user/css/mdb.min.css" />
+    <link rel="stylesheet" href="./user/css/style.css">
+    <style>
+        html {
+            scrollbar-width: thin;
+
+        }
+
+        html::-webkit-scrollbar {
+            width: .5vw;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: gray;
+        }
+
+        html::-webkit-scrollbar-track {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
