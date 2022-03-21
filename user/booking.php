@@ -1,6 +1,5 @@
 <?php
-require "../functions/db.php";
-require "../functions/functions.php";
+require "./components/user.php";
 
 check_user();
 

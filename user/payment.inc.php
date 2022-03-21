@@ -1,7 +1,5 @@
 <?php
-require "../functions/db.php";
-require "../functions/functions.php";
-require "../functions/validation.php";
+require "./components/user.php";
 
 $booking = query('SELECT * FROM booking ORDER BY id DESC LIMIT 1', false);
 $booking_id = $booking['id'];
