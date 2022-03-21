@@ -6,7 +6,6 @@ include  __DIR__ . "/../../functions/validation.php";
 $result = check_user();
 $page_url = "http://localhost/mtbs/public/";
 
-
 $shows = all('shows');
 // echo "<pre>";
 // print_r($shows);
@@ -19,22 +18,22 @@ if ($shows) {
         $currentDate = date("Y-m-d");
         // echo "$date <br>";
         // echo "$currentDate <br>";
-
-        if ($currentDate < $date) {
-
+        if ($date < $currentDate) {
             delete('shows', $s['id']);
             // echo "deleted";
-        } elseif ($date == $currentDate)
+        } elseif ($date == $currentDate) {
             // echo "inside next loop <br><br>";
 
             $time = $s['play_time'];
-        // convert databse time to timestamp to compare
-        $time_timestamp = DateTime::createFromFormat('H:i:s', $time)->getTimestamp();
-        // echo $time_timestamp . "<br><br>";
-        if (!empty($time)) {
-            $current_timestamp  = time();
-            if ($current_timestamp > $time_timestamp) {
-                delete('shows', $s['id']);
+
+            if (!empty($time)) {
+                // convert databse time to timestamp to compare
+                $time_timestamp = DateTime::createFromFormat('H:i:s', $time)->getTimestamp();
+                // echo $time_timestamp . "<br><br>";
+                $current_timestamp  = time();
+                if ($current_timestamp > $time_timestamp) {
+                    delete('shows', $s['id']);
+                }
             }
         }
     }
