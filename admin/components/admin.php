@@ -6,25 +6,34 @@ $result = check_admin();
 $page_url = "http://localhost/mtbs/admin/";
 
 $shows = all('shows');
-echo "<pre>";
-print_r($shows);
+// echo "<pre>";
+// print_r($shows);
 
-foreach ($shows as $s) {
-    $date = $s['play_date'];
-    $currentDate = date("Y-m-d");
+if ($shows) {
+    date_default_timezone_set('Asia/Kathmandu');
 
-    if ($date < $currentDate) {
+    foreach ($shows as $s) {
+        $date = $s['play_date'];
+        $currentDate = date("Y-m-d");
+        // echo "$date <br>";
+        // echo "$currentDate <br>";
 
-        delete('shows', $s['id']);
-    }
-}
-foreach ($shows as $s) {
-    $time = $s['play_time'];
-    if (!empty($time)) {
-        $current_timestamp  = time();
-        $current_time = date('H:i:s', $current_timestamp);
-        if ($time < $current_time) {
+        if ($currentDate < $date) {
+
             delete('shows', $s['id']);
+            // echo "deleted";
+        } elseif ($date == $currentDate)
+            // echo "inside next loop <br><br>";
+
+            $time = $s['play_time'];
+        // convert databse time to timestamp to compare
+        $time_timestamp = DateTime::createFromFormat('H:i:s', $time)->getTimestamp();
+        // echo $time_timestamp . "<br><br>";
+        if (!empty($time)) {
+            $current_timestamp  = time();
+            if ($current_timestamp > $time_timestamp) {
+                delete('shows', $s['id']);
+            }
         }
     }
 }
