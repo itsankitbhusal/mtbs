@@ -5,6 +5,7 @@ check_user();
 
 $id = request('id');
 
+
 $shows = where('shows', 'movie_id', '=', $id);
 
 
@@ -89,6 +90,7 @@ foreach ($shows as $s) {
         </div>
         <br>
         <div class="container">
+
             <div class=" d-flex flex-row mb-5 justify-content-center gap-5 ">
                 <?php $i = 1;
                 if (empty($shows)) {
