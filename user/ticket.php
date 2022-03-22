@@ -2,6 +2,11 @@
 require "./components/user.php";
 
 check_user();
+
+//count total number of seats already booked
+$booking_total = query("SELECT SUM(booked_seat) FROM booking WHERE status='booked'"); //5
+
+
 //getting user id from session
 // $user_id = $_SESSION['user_id']; //user id
 $id = request('id'); //show id
@@ -12,7 +17,14 @@ $hall = find('shows', $id);
 $hall_id =  $hall['hall_id'];
 
 //get total seats (Array )
-$total_seats = query('select `total_seats` from `hall` where id =' . $hall_id, false);
+$total_seats = query('select `total_seats` from `hall` where id =' . $hall_id, false); //50
+
+if ($total_seats <= $booking_total) {
+    setError('Maximum seat limit reached!!');
+    $url = './book.php/id=' . $id;
+    header("Location: " . $url);
+    die;
+}
 
 //total no of seats
 $seats = $total_seats['total_seats'];
