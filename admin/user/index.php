@@ -31,6 +31,7 @@ include  __DIR__ . "/../components/sidebar.php";
                 <th class="font-weight-bold text-center">Id</th>
                 <th class="font-weight-bold text-center">Name</th>
                 <th class="font-weight-bold text-center">Email</th>
+                <th class="font-weight-bold text-center">Phone</th>
                 <th class="font-weight-bold text-center">Action</th>
             </tr>
         </thead>
@@ -45,6 +46,13 @@ include  __DIR__ . "/../components/sidebar.php";
                     </td>
                     <td class="text-center">
                         <?php echo $key['email']; ?>
+                    </td>
+                    <td class="text-center">
+                        <?php if (!empty($key['phone'])) {
+                            echo $key['phone'];
+                        } else {
+                            echo 'no phone';
+                        } ?>
                     </td>
                     <td class="text-center">
                         <a class="btn btn-danger btn-sm rounded-5" style="height: 2rem;" onclick="confirmDelete(<?php echo $key['id']; ?>)" href="#!">
