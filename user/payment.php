@@ -1,7 +1,6 @@
 <?php
 require "./components/user.php";
 
-
 ?>
 
 <!DOCTYPE html>
