@@ -33,31 +33,37 @@ require "./functions/functions.php";
 
                             <!-- Name input -->
                             <div class="form-outline">
-                                <label class="form-label" for="name">Name</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="name" type="name" id="name" class="form-control " placeholder="Enter your name" />
+                                <label class="form-label" for="name">Full Name</label>
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="name" type="name" id="name" class="form-control " required />
                             </div>
 
                             <!-- Email input -->
                             <div class="form-outline">
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="email" type="email" id="form3Example3" class="form-control " placeholder="Enter your email" />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="email" type="email" id="form3Example3" class="form-control " required />
+                            </div>
+
+                            <!-- Phone input -->
+                            <div class="form-outline">
+                                <label class="form-label" for="phone">Phone no.</label>
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="phone" type="text" id="phone" class="form-control " required />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline ">
-                                <label class="form-label" for="form3Example4">Password</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password" type="password" id="form3Example4" class="form-control " placeholder="Enter password" />
+                                <label class="form-label" for="password">Password</label>
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password" type="password" id="password" class="form-control" required />
                             </div>
                             <!--Confirm Password input -->
-                            <div class="form-outline ">
-                                <label class="form-label" for="confirm">Confirm Password</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password_verify" type="password" id="confirm" class="form-control " placeholder="Confirm password" />
+                            <div class=" form-outline ">
+                                <label class=" form-label" for="confirm">Confirm Password</label>
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password_verify" type="password" id="confirm" class="form-control" required />
                             </div>
 
 
 
 
-                            <div class="text-center text-lg-start mt-4 pt-2">
+                            <div class=" text-center text-lg-start mt-4 pt-2">
                                 <button type="submit" class="btn btn-primary px-4">Register</button>
                                 <p class="small mt-2 pt-1 mb-0">Already have an account? <a href="./login.php" class="link-danger">Login</a></p>
                             </div>
