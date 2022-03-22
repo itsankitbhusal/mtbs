@@ -125,31 +125,34 @@ if (empty($total_seats_hall)) {
 }
 
 //we need to decrease seats in the hall table and booking table
+//this already checked during the booking
+// $updated_tickets = $total_seats_hall - $booked_seat;
 
-$updated_tickets = $total_seats_hall - $booked_seat;
 
-
-if (empty($updated_tickets)) {
-    setError('Error Occured!!');
-    header("Location: ./index.php");
-    die;
-}
+// if (empty($updated_tickets)) {
+//     setError('Error Occured!!');
+//     header("Location: ./index.php");
+//     die;
+// }
 
 $booking_status = where('booking', 'status', '=', 'pending', false);
 
 if ($booking_status) {
-    update('booking', $booking_id, [
-        'total_tickets' => $updated_tickets,
-        'status' => 'booked',
-    ]);
+    // update('booking', $booking_id, [
+    //     'total_tickets' => $updated_tickets,
+    //     'status' => 'booked',
+    // ]);
 
-    update('hall', $hall_id, [
-        'total_seats' => $updated_tickets,
-    ]);
+    // update('hall', $hall_id, [
+    //     'total_seats' => $updated_tickets,
+    // ]);
 
 
     $payment = where('payment', 'booking_id', '=', $booking_id, false);
     $payment_on = $payment['payment_on'];
+    update('booking', $booking_id, [
+        'status' => 'booked',
+    ]);
     require_once __DIR__ . "/../../functions/invoice.php";
     setSuccess('Booking has been Approved!');
     header("Location: ./index.php");
