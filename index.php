@@ -1,239 +1,92 @@
-<?php
-require "./functions/db.php";
-require "./functions/functions.php";
-$result = all('movie');
-?>
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once "./user/components/header.php"; ?>
+<!-- carousel start -->
+<div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+    <div class="carousel-inner">
+        <?php
+        $i = 0;
+        $first = reset($result);
+        foreach ($result as $key) :
+        ?>
+            <div class="carousel-item <?php
+                                        if ($first == $key) {
+                                            echo "active";
+                                        } else {
+                                            echo "";
+                                        }
+                                        ?>">
+                <img src="./cover/<?php echo $key['image_cover']; ?>" class="img-flui  d-block w-100" alt="" />
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
+        <span style="font-size: 2rem;" class="fas fa-angle-left" aria-hidden="true">
+        </span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
+        <span style="font-size: 2rem;" class="fas fa-angle-right" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>MTBS - Movie Ticket Booking System</title>
-    <!-- MDB icon -->
-    <link rel="icon" href="#" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-    <!-- MDB -->
-    <link rel="stylesheet" href="./user/css/mdb.min.css" />
-    <link rel="stylesheet" href="./user/css/style.css">
-    <style>
-        html {
-            scrollbar-width: thin;
+</div>
+<!-- carousel end -->
 
-        }
+<?php if (hasError()) : ?>
+    <div id="error" class="ml-4 alert alert-danger">
+        <?php echo getError(); ?>
+    </div>
+<?php endif; ?>
+<?php if (hasSuccess()) : ?>
+    <div id="success" class="ml-4 alert alert-success">
+        <?php echo getSuccess(); ?>
+    </div>
+<?php endif; ?>
+<!-- now showing starts -->
 
-        html::-webkit-scrollbar {
-            width: .5vw;
-        }
+<div class="container my-5">
+    <div class="my-4 d-flex mx-auto align-items-center col-md-12">
+        <h1 class="font-weight-bold col-md-6">NOW SHOWING</h1>
+        <!-- <div class="input-group justify-content-end">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" />
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div> -->
+    </div>
+    <!-- cards -->
+    <div class="container d-flex  gap-4 flex-wrap justify-content-center">
 
-        html::-webkit-scrollbar-thumb {
-            background-color: gray;
-        }
+        <?php foreach ($result as $key) : ?>
+            <div class="card col-lg-2.5  hover-shadow border rounded">
+                <div class="">
+                    <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
 
-        html::-webkit-scrollbar-track {
-            background-color: white;
-        }
-    </style>
-</head>
+                </div>
 
-<body>
-    <!-- Start your project here-->
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- Container wrapper -->
-        <div class="container">
-            <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+                <a href="./user/book.php?id=<?php echo $key['id']; ?>" class="card-body " style="color: #4a4a4a;">
+                    <h5 class="card-title"><?php echo $key['name'] ?></h5>
+                    <p class="card-text text-muted">
+                        <?php
+                        $genres = where('genre_movie', 'movie_id', '=', $key['id']);
+                        $total_genre = count($genres);
+                        $i = 1;
+                        foreach ($genres as $g) {
+                            $genre = find('genre', $g['genre_id']);
+                            echo $genre['name'];
+                            if ($i < $total_genre) echo ", ";
+                            $i++;
+                        }
 
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse justify-content-center " id="navbarSupportedContent">
-                <!-- Navbar brand -->
-                <a class="navbar-brand m-2 mt-lg-0" href="./index.php">
-                    <img src="./user/img/logoWithName.png" height="30" alt="MTBS Logo" loading="lazy" />
+                        ?>
+                    </p>
                 </a>
-                <!-- Left links -->
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 font-weight-bold">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">MOVIES</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">ABOUT</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">CONTACT</a>
-                    </li>
-                </ul>
-                <!-- Left links -->
             </div>
-            <!-- Collapsible wrapper -->
-
-            <!-- Right elements -->
-            <?php if (empty(($_SESSION['user_id']))) :       ?>
-                <div class="d-flex align-items-center mx-2">
-                    <a href="./register.php" class="btn btn-outline-primary ">Sign Up</a>
-                    <!-- Right elements -->
-                </div>
-                <div class="d-flex align-items-center mx-2">
-                    <a href="./login.php" class="btn btn-primary">Log In</a>
-                    <!-- Right elements -->
-                </div>
-            <?php endif; ?>
-            <?php if (!empty(($_SESSION['user_id']))) : ?>
-
-                <div class="d-flex align-items-center mx-2">
-                    <a href="./logout.php" class="btn btn-danger">Log Out</a>
-                    <!-- Right elements -->
-                </div>
-            <?php endif;    ?>
-            <!-- Container wrapper -->
-    </nav>
-    <!-- Navbar -->
-    <!-- End your project here-->
-
-    <!-- carousel start -->
-    <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
-        <div class="carousel-inner">
-            <?php
-            $i = 0;
-            $first = reset($result);
-            foreach ($result as $key) :
-            ?>
-                <div class="carousel-item <?php
-                                            if ($first == $key) {
-                                                echo "active";
-                                            } else {
-                                                echo "";
-                                            }
-                                            ?>">
-                    <img src="./cover/<?php echo $key['image_cover']; ?>" class="img-flui  d-block w-100" alt="" />
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
-            <span style="font-size: 2rem;" class="fas fa-angle-left" aria-hidden="true">
-            </span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
-            <span style="font-size: 2rem;" class="fas fa-angle-right" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-
+        <?php endforeach; ?>
     </div>
-    <!-- carousel end -->
+    <!-- cards -->
+</div>
 
-    <?php if (hasError()) : ?>
-        <div id="error" class="ml-4 alert alert-danger">
-            <?php echo getError(); ?>
-        </div>
-    <?php endif; ?>
-    <?php if (hasSuccess()) : ?>
-        <div id="success" class="ml-4 alert alert-success">
-            <?php echo getSuccess(); ?>
-        </div>
-    <?php endif; ?>
-    <!-- now showing starts -->
-
-    <div class="container my-5">
-        <div class="my-4">
-            <h1 class="font-weight-bold">NOW SHOWING</h1>
-        </div>
-        <!-- cards -->
-        <div class="container d-flex  gap-4 flex-wrap justify-content-center">
-
-            <?php foreach ($result as $key) : ?>
-                <div class="card col-lg-2.5  hover-shadow border rounded">
-                    <div class="">
-                        <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
-
-                    </div>
-
-                    <a href="./user/book.php?id=<?php echo $key['id']; ?>" class="card-body " style="color: #4a4a4a;">
-                        <h5 class="card-title"><?php echo $key['name'] ?></h5>
-                        <p class="card-text text-muted">
-                            <?php
-                            $genres = where('genre_movie', 'movie_id', '=', $key['id']);
-                            $total_genre = count($genres);
-                            $i = 1;
-                            foreach ($genres as $g) {
-                                $genre = find('genre', $g['genre_id']);
-                                echo $genre['name'];
-                                if ($i < $total_genre) echo ", ";
-                                $i++;
-                            }
-
-                            ?>
-                        </p>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-
-
-        </div>
-        <!-- cards -->
-
-
-
-
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-light text-center container-fluid mt-5  ">
-        <!-- Grid container -->
-        <div class="container flex-wrap gap-3  p-4 d-flex justify-content-between  align-content-center">
-
-            <!-- Section: Social media -->
-            <div class="w-auto">
-
-                <img style="width: 200px;" class="img-fluid" src="./user/img/logoWithName.png" alt="logo">
-            </div>
-            <div class="mb-4 ">
-
-                <!-- Facebook -->
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #4267B2" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-
-                <!-- Instagram -->
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #fb3958" href="#!" role="button"><i class="fab fa-instagram"></i></a>
-
-                <!-- Linkedin -->
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #0072b1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
-                <!-- Github -->
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #171515" href="#!" role="button"><i class="fab fa-github"></i></a>
-
-
-            </div>
-            <!-- Section: Social media -->
-
-
-
-
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            &copy; <?php echo date("Y"); ?> Copyright:
-            <a class="text-dark font-weight-bold" href="#">CinemaTic</a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-
-    <!-- now showing ends -->
-    <!-- MDB -->
-    <script type="text/javascript" src="./user/js/mdb.min.js"></script>
-    <!-- Custom scripts -->
-    <script src="./user/js/script.js"></script>
-</body>
-
-</html>
+<?php require_once "./user/components/footer.php" ?>
