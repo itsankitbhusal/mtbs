@@ -52,7 +52,7 @@ $headers .= "From: CinemaTic <cinematic@mtbs.com>" . "\r\n";
 
 // Mail it
 if (mail($to, $subject, $message, $headers)) {
-    echo "Success";
+    setSuccess("Email sent!!");
 } else {
-    echo "Error";
+    setError('Email sent failed!');
 }
