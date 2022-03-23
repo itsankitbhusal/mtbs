@@ -86,7 +86,7 @@ $price = $ticket_price['ticket_price'];
                 </div>
                 <div class="form-group">
                     <label for="booked_seats">Book Seats</label>
-                    <input type="number" onchange="price()" name="booked_seats" min="1" max="5" class="form-control" id="booked_seats">
+                    <input type="number" onkeyup="price()" name="booked_seats" min="1" max="5" class="form-control" id="booked_seats">
                 </div>
                 <div class="form-group">
                     <label for="total_price">Total Price</label>
