@@ -13,23 +13,33 @@
 <div class="container my-5">
     <div class="row col-md-4 mx-auto">
 
-        <form method="POST" action="">
+        <?php if (hasError()) : ?>
+            <div id="error" class="ml-4 alert alert-danger">
+                <?php echo getError(); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (hasSuccess()) : ?>
+            <div id="success" class="ml-4 alert alert-success">
+                <?php echo getSuccess(); ?>
+            </div>
+        <?php endif; ?>
+        <form method="POST" action="./contact.inc.php">
             <div class="mb-3">
                 <label for="inputName" class="form-label">Name</label>
-                <input name="name" type="text" class="form-control" id="inputName">
+                <input required name="name" type="text" class="form-control" id="inputName">
             </div>
             <div class="mb-3">
                 <label for="inputEmail" class="form-label">Email address</label>
-                <input name="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+                <input required name="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="subject" class="form-label">Subject</label>
-                <input type="text" name="subject" class="form-control" id="subject">
+                <input required type="text" name="subject" class="form-control" id="subject">
             </div>
             <div class="mb-3">
                 <label for="subject" class="form-label">Message</label>
-                <textarea name="message" class="form-control" style="height: 8rem;" placeholder="Leave a message here"></textarea>
+                <textarea required name="message" class="form-control" style="height: 8rem;" placeholder="Leave a message here"></textarea>
             </div>
             <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
