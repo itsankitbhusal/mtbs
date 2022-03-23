@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 04:23 PM
+-- Generation Time: Mar 23, 2022 at 03:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,198 @@ SET time_zone = "+00:00";
 --
 -- Database: `mtbs`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `show_id` int(11) NOT NULL,
+  `total_tickets` int(11) NOT NULL,
+  `unit_price` int(11) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `booked_seat` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `user_id`, `show_id`, `total_tickets`, `unit_price`, `status`, `booked_seat`, `total_price`) VALUES
+(22, 14, 27, 90, 450, 'booked', 1, 450),
+(23, 14, 28, 50, 500, 'booked', 1, 500),
+(24, 14, 28, 50, 500, 'booked', 3, 1500),
+(25, 14, 27, 90, 450, 'pending', 5, 2250),
+(26, 14, 29, 52, 550, 'pending', 2, 1100),
+(27, 14, 27, 90, 450, 'pending', 2, 900),
+(28, 14, 27, 90, 450, 'pending', 2, 900),
+(29, 14, 27, 90, 450, 'pending', 2, 900),
+(30, 14, 28, 50, 500, 'booked', 2, 1000),
+(31, 14, 28, 50, 500, 'pending', 5, 2500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `genre`
+--
+
+CREATE TABLE `genre` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `genre`
+--
+
+INSERT INTO `genre` (`id`, `name`) VALUES
+(1, 'Sci-Fi'),
+(2, 'Horror'),
+(3, 'Fantasy'),
+(4, 'Comedy'),
+(5, 'Crime'),
+(6, 'Action'),
+(7, 'Romance'),
+(8, 'Drama'),
+(9, 'Biography'),
+(10, 'Adventure');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `genre_movie`
+--
+
+CREATE TABLE `genre_movie` (
+  `id` int(11) NOT NULL,
+  `genre_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `genre_movie`
+--
+
+INSERT INTO `genre_movie` (`id`, `genre_id`, `movie_id`) VALUES
+(80, 5, 17),
+(81, 8, 17),
+(82, 9, 17),
+(86, 8, 19),
+(87, 6, 18),
+(99, 5, 16),
+(100, 6, 16),
+(101, 8, 16),
+(102, 6, 24),
+(103, 10, 24),
+(104, 7, 25),
+(105, 8, 25),
+(106, 6, 26),
+(107, 8, 26),
+(108, 5, 27),
+(109, 6, 27);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hall`
+--
+
+CREATE TABLE `hall` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `total_seats` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hall`
+--
+
+INSERT INTO `hall` (`id`, `name`, `total_seats`) VALUES
+(1, 'Theater 1', 50),
+(2, 'Theater 2', 52),
+(4, 'CinemaTIC', 90);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie`
+--
+
+CREATE TABLE `movie` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `language` varchar(10) NOT NULL,
+  `release_date` date NOT NULL,
+  `image` varchar(200) DEFAULT NULL,
+  `image_cover` varchar(200) NOT NULL,
+  `runtime` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie`
+--
+
+INSERT INTO `movie` (`id`, `name`, `language`, `release_date`, `image`, `image_cover`, `runtime`) VALUES
+(16, 'The Batman', 'English', '2022-03-04', '6226bc0fc413d.jpeg', '6226bc0fc4627.jpeg', '153'),
+(17, 'Gangubai Kathiawadi', 'Hindi', '2022-02-25', '6226bce868555.jpeg', '6226bce868756.jpeg', '140'),
+(18, 'Lappan Chhappan 2', 'Nepali', '2022-02-25', '6226cbe7db01b.jpeg', '6226bd8f262b6.jpeg', '126'),
+(19, 'Ma Yesto Geet Gauchu 2', 'Nepali', '2022-02-25', '6226be3da38d5.jpeg', '6226be3da3a6a.jpeg', '130'),
+(24, 'Morbius', 'English', '2022-04-01', '62357c106534a.jpeg', '62357c1065511.jpeg', '104'),
+(25, 'Radhe Shyam', 'Hindi', '2022-03-11', '62357cb577383.jpeg', '62357cb577453.jpeg', '128'),
+(26, 'RRR', 'Hindi', '2022-03-25', '62357d8691d36.jpeg', '62357d8691dbc.jpeg', '186'),
+(27, 'Bachchan Pandey', 'Hindi', '2022-03-18', '62357e1156831.jpeg', '62357e115691f.jpeg', '150');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `payment_on` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `booking_id`, `amount`, `payment_on`) VALUES
+(12, 22, 450, '2022-03-21'),
+(13, 23, 500, '2022-03-22'),
+(14, 24, 1500, '2022-03-22'),
+(15, 30, 1000, '2022-03-22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shows`
+--
+
+CREATE TABLE `shows` (
+  `id` int(11) NOT NULL,
+  `hall_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `play_date` date NOT NULL,
+  `play_time` time NOT NULL,
+  `ticket_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shows`
+--
+
+INSERT INTO `shows` (`id`, `hall_id`, `movie_id`, `play_date`, `play_time`, `ticket_price`) VALUES
+(27, 4, 16, '2022-04-20', '10:00:00', 450),
+(28, 1, 16, '2022-04-20', '10:00:00', 500),
+(29, 2, 16, '2022-04-20', '10:00:00', 550);
 
 -- --------------------------------------------------------
 
@@ -53,6 +245,55 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `phone`) VALUES
 --
 
 --
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user_id`),
+  ADD KEY `show` (`show_id`);
+
+--
+-- Indexes for table `genre`
+--
+ALTER TABLE `genre`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `genre_movie`
+--
+ALTER TABLE `genre_movie`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `genre_id` (`genre_id`),
+  ADD KEY `movie_id` (`movie_id`);
+
+--
+-- Indexes for table `hall`
+--
+ALTER TABLE `hall`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `movie`
+--
+ALTER TABLE `movie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `booking` (`booking_id`);
+
+--
+-- Indexes for table `shows`
+--
+ALTER TABLE `shows`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hall` (`hall_id`),
+  ADD KEY `movie` (`movie_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -63,10 +304,83 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `genre`
+--
+ALTER TABLE `genre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `genre_movie`
+--
+ALTER TABLE `genre_movie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+
+--
+-- AUTO_INCREMENT for table `hall`
+--
+ALTER TABLE `hall`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `movie`
+--
+ALTER TABLE `movie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `shows`
+--
+ALTER TABLE `shows`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `show` FOREIGN KEY (`show_id`) REFERENCES `shows` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `genre_movie`
+--
+ALTER TABLE `genre_movie`
+  ADD CONSTRAINT `genre_movie_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `genre_movie_ibfk_2` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `booking` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shows`
+--
+ALTER TABLE `shows`
+  ADD CONSTRAINT `hall` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
