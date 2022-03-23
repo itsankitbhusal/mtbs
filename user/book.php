@@ -66,7 +66,7 @@ foreach ($shows as $s) {
                             <br>
                             <p class="card-text text-muted">Language: <span class="text-black"><?php echo $result['language']; ?></span></p>
                             <p class="card-text text-muted">Release Date: <span class="text-black"><?php echo $result['release_date']; ?></span></p>
-                            <p class="card-text text-muted">Runtime: <span class="text-black"><?php echo $result['runtime'] . "Minutes"; ?></span></p>
+                            <p class="card-text text-muted">Runtime: <span class="text-black"><?php echo $result['runtime'] . " Minutes"; ?></span></p>
 
                             <p class="card-text text-muted">Genre: <small class="text-black">
                                     <?php
@@ -113,8 +113,6 @@ foreach ($shows as $s) {
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-
-
         </div>
     </div>
 
