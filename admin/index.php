@@ -25,7 +25,7 @@ include_once __DIR__ . "/./components/sidebar.php";
     <!-- stats-card starts -->
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./user/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Total Users</p>
         <p class="card-text h1 font-weight-bold text-left">
           <?php $result = query('SELECT COUNT(id) AS total FROM `user`');
@@ -34,78 +34,78 @@ include_once __DIR__ . "/./components/sidebar.php";
           echo $result[0]['total'];
           ?>
         </p>
-      </div>
+      </a>
     </div>
 
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./movie/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Total Movies</p>
         <p class="card-text h1 font-weight-bold text-left"> <?php $result = query('SELECT COUNT(id) AS total FROM `movie`');
                                                             // echo "<pre>";
                                                             // print_r($result);
                                                             echo $result[0]['total'];
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./hall/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Movie Theaters</p>
         <p class="card-text h1 font-weight-bold text-left"> <?php $result = query('SELECT COUNT(id) AS total FROM `hall`');
                                                             // echo "<pre>";
                                                             // print_r($result);
                                                             echo $result[0]['total'];
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./genre/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Total Genres</p>
         <p class="card-text h1 font-weight-bold text-left"> <?php $result = query('SELECT COUNT(id) AS total FROM `genre`');
                                                             // echo "<pre>";
                                                             // print_r($result);
                                                             echo $result[0]['total'];
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <div class="card col-md-3 outline-black3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./show/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Total Shows</p>
         <p class="card-text h1 font-weight-bold text-left"><?php $result = query('SELECT COUNT(id) AS total FROM `shows`');
                                                             // echo "<pre>";
                                                             // print_r($result);
                                                             echo $result[0]['total'];
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./booking/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Total Bookings</p>
         <p class="card-text h1 font-weight-bold text-left"> <?php $result = query('SELECT COUNT(id) AS total FROM `booking`');
                                                             // echo "<pre>";
                                                             // print_r($result);
                                                             echo $result[0]['total'];
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./booking/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Total Payments</p>
         <p class="card-text h1 font-weight-bold text-left"> <?php $result = query('SELECT COUNT(id) AS total FROM `payment`');
                                                             // echo "<pre>";
                                                             // print_r($result);
                                                             echo $result[0]['total'];
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <div class="card col-md-3 border hover-shadow bg-white hover-shadow-soft" style="cursor: pointer;">
-      <div class="card-body">
+      <a href="./booking/" class="card-body text-black text-decoration-none">
         <p class="card-title text-left text-muted font-weight-bold " style="font-size: 1.2rem;">Approved Bookings</p>
         <p class="card-text h1 font-weight-bold text-left"> <?php
                                                             $result = where('booking', 'status', '=', 'booked');
@@ -114,7 +114,7 @@ include_once __DIR__ . "/./components/sidebar.php";
                                                             // print_r($result);
                                                             echo $approved;
                                                             ?></p>
-      </div>
+      </a>
     </div>
 
     <!-- stats-card ends -->
