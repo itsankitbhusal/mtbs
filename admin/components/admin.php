@@ -8,6 +8,7 @@ $page_url = "http://localhost/mtbs/admin/";
 $shows = all('shows');
 // echo "<pre>";
 // print_r($shows);
+$booking = where('booking', 'status', '=', 'pending');
 
 if ($shows) {
     date_default_timezone_set('Asia/Kathmandu');
@@ -34,6 +35,28 @@ if ($shows) {
                     delete('shows', $s['id']);
                 }
             }
+        }
+    }
+    //delete booking after 15 minutes
+    foreach ($booking as $b) {
+        $t = $b['booking_time'];
+        $now_time = explode(' ', $t);
+        $db_date = $now_time[0];
+        $db_time = strtotime($now_time[1]);
+
+
+        $cur = strtotime(date('H:i:s'));
+        $cur_date = date('Y-m-d');
+
+
+        if ($db_date < $cur_date) {
+            delete('booking', $b['id']);
+            setError('Booking Timeout!!');
+        }
+
+        if (($db_time + 900) < $cur) {
+            delete('booking', $b['id']);
+            setError('Booking Timeout!!');
         }
     }
 }
