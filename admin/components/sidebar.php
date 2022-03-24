@@ -1,13 +1,12 @@
 <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/mtbs/admin/index.php">
             <div class="sidebar-brand-icon">
                 <i class="fas fa-home"></i>
-
             </div>
-            <div class="sidebar-brand-text mx-3 font-weight-bold ">CINEMA<span class="font-weight-bolder text-black">TIC</span> </div>
+            <div class="sidebar-brand-text mx-3 font-weight-bold ">CINEMA<span class="font-weight-bolder">TIC</span> </div>
         </a>
 
         <!-- Divider -->
@@ -22,7 +21,7 @@
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/movie">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase">Movie</span></a>
+                <span class="font-weight-bold text-uppercase">Movies</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/hall">
@@ -32,7 +31,7 @@
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/genre">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="font-weight-bold text-uppercase">Genre</span></a>
+                <span class="font-weight-bold text-uppercase">Genres</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://localhost/mtbs/admin/show">
