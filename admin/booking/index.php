@@ -37,7 +37,7 @@ include  __DIR__ . "/../components/sidebar.php";
     <div class="container">
         <p class="text-gray font-weight-bold mx-4">Bookings with Payment</p>
 
-        <table class="table mx-4 table-responsive-md table-borderless">
+        <table class="table mx-4 table-responsive-md table-bordered">
             <thead>
                 <tr>
                     <th class="font-weight-bold text-center">Id</th>
@@ -90,7 +90,7 @@ include  __DIR__ . "/../components/sidebar.php";
             <p class="text-gray font-weight-bold mx-4">Bookings only</p>
 
 
-            <table class="table mx-4 table-responsive-md table-borderless">
+            <table class="table mx-4 table-responsive-md table-bordered">
                 <thead>
                     <tr>
                         <th class="font-weight-bold text-center">Id</th>

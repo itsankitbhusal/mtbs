@@ -34,7 +34,7 @@ include  __DIR__ . "/../components/sidebar.php";
     <?php endif; ?>
 
 
-    <table class="table mx-4 table-responsive-md table-borderless">
+    <table class="table mx-4 table-responsive-md table-bordered">
         <thead>
             <tr>
                 <th class="text-center font-weight-bold">Id</th>
