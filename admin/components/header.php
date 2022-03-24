@@ -19,6 +19,24 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo $page_url ?>css/sb-admin-2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo $page_url ?>css/mdb.min.css">
+    <style>
+        html {
+            scrollbar-width: thin;
+
+        }
+
+        html::-webkit-scrollbar {
+            width: .5vw;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: gray;
+        }
+
+        html::-webkit-scrollbar-track {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body id="page-top">
