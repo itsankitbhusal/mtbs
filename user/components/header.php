@@ -63,6 +63,9 @@ $result = all('movie');
                         <a class="nav-link" href="./index.php">HOME</a>
                     </li>
                     <li class="nav-item mx-2">
+                        <a class="nav-link" href="./movie.php">MOVIES</a>
+                    </li>
+                    <li class="nav-item mx-2">
                         <a class="nav-link" href="./about.php">ABOUT</a>
                     </li>
                     <li class="nav-item mx-2">
