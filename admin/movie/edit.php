@@ -38,12 +38,12 @@ include  __DIR__ . "/../components/sidebar.php";
         <form class="m-4 col-md-8  " method="POST" action="./update.php?id=<?php echo $id; ?>" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input value="<?php echo $result['name'] ?>" name="name" type="text" class="form-control" id="name" placeholder="The Shawshank Redemption">
+                <input required value="<?php echo $result['name'] ?>" name="name" type="text" class="form-control" id="name" placeholder="The Shawshank Redemption">
             </div>
             <div class="form-group">
                 <label for="language">Language</label>
 
-                <select name="language" class="form-control" id="language">
+                <select required name="language" class="form-control" id="language">
                     <option <?php if ($result['language'] == "English") {
                                 echo "selected";
                             } ?>>English</option>
@@ -63,7 +63,7 @@ include  __DIR__ . "/../components/sidebar.php";
             </div>
             <div class="form-group">
                 <label for="releseDate">Release Date</label>
-                <input name="release_date" value="<?php echo $result['release_date']; ?>" type="date" class="form-control" id="releseDate">
+                <input required name="release_date" value="<?php echo $result['release_date']; ?>" type="date" class="form-control" id="releseDate">
             </div>
             <div class="form-group">
                 <label for="runtime">Runtime </label>
@@ -72,7 +72,7 @@ include  __DIR__ . "/../components/sidebar.php";
                     <div class="input-group-prepend">
                         <span class="input-group-text">Runtime </span>
                     </div>
-                    <input value="<?php echo $result['runtime'] ?>" name="runtime" placeholder="runtime in minutes" type="number" min="0" max="250" aria-label="hh" class="form-control">
+                    <input required value="<?php echo $result['runtime'] ?>" name="runtime" placeholder="runtime in minutes" type="number" min="0" max="250" aria-label="hh" class="form-control">
                 </div>
 
             </div>
@@ -85,7 +85,7 @@ include  __DIR__ . "/../components/sidebar.php";
                 <?php foreach ($prev_result as $key) : ?>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" <?php if (in_array($key['id'], $genre_ids)) echo 'checked'; ?> value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
+                        <input required class="form-check-input" <?php if (in_array($key['id'], $genre_ids)) echo 'checked'; ?> value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
                         <label for="<?php echo $key['id']; ?>"><?php echo $key['name']; ?></label>
                     </div>
 
@@ -97,12 +97,12 @@ include  __DIR__ . "/../components/sidebar.php";
 
             <div class="form-group">
                 <label class="form-label" for="image">Upload Image:</label>
-                <input id="image" name="image" type="file" class="form-control">
+                <input required id="image" name="image" type="file" class="form-control">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="image">Upload Cover:</label>
-                <input id="image" name="image_cover" type="file" class="form-control">
+                <input required id="image" name="image_cover" type="file" class="form-control">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update movie</button>

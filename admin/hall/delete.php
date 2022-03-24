@@ -5,16 +5,23 @@ require "../components/admin.php";
 $id = request('id');
 
 if (empty($id)) {
-    die("Please provide ID");
+    setError('Enter a id!!');
+    header('Location: ./index.php');
+    die;
 }
 
 $hall = find('hall', $id);
 if (empty($hall)) {
-    die("Enter a valid id!!!");
+    setError("Enter a valid id!!");
+    header('Location: ./index.php');
+    die;
 }
 
+if (!empty($id)) {
 
-delete('hall', $id);
+    delete('hall', $id);
 
-setSuccess('Cinema Hall deleted!');
-header("Location: index.php");
+    setSuccess('Cinema Hall deleted!!');
+    header("Location: ./index.php");
+    die;
+}

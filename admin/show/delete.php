@@ -6,20 +6,24 @@ $id = request('id');
 
 if (empty($id)) {
     setError("Please provide ID");
-    Header("Location: index.php");
+    header("Location: index.php");
+    die;
 }
 
 $shows = find('shows', $id);
 if (empty($shows)) {
     setError("Enter a valid id!!!");
-    Header("Location: index.php");
+    header("Location: index.php");
+    die;
 }
 
 if (!empty($shows) && !empty($id)) {
     delete('shows', $id);
     setSuccess('Show deleted!');
     header("Location: index.php");
+    die;
 } else {
     setError("Show deletion failed");
-    Header("Location: index.php");
+    header("Location: index.php");
+    die;
 }

@@ -27,12 +27,12 @@ include  __DIR__ . "/../components/sidebar.php";
     <form class="m-4" method="POST" action="./store.php" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
-            <input name="name" type="text" class="form-control" id="name" placeholder="The Shawshank Redemption">
+            <input required name="name" type="text" class="form-control" id="name" placeholder="The Shawshank Redemption">
         </div>
         <div class="form-group">
             <label for="language">Language</label>
 
-            <select name="language" class="form-control" id="language">
+            <select required name="language" class="form-control" id="language">
                 <option>English</option>
                 <option>Nepali</option>
                 <option>Hindi</option>
@@ -42,7 +42,7 @@ include  __DIR__ . "/../components/sidebar.php";
         </div>
         <div class="form-group">
             <label for="releseDate">Release Date</label>
-            <input name="release_date" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="releseDate">
+            <input required name="release_date" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="releseDate">
         </div>
         <div class="form-group">
             <label for="runtime">Runtime </label>
@@ -52,7 +52,7 @@ include  __DIR__ . "/../components/sidebar.php";
                     <span class="input-group-text">Runtime </span>
                 </div>
                 <!-- <input name="hh" placeholder="hh" type="number" min="0" max="4" aria-label="hh" class="form-control"> -->
-                <input name="runtime" placeholder="Runtime in minutes" type="number" max="250" aria-label="mm" class="form-control">
+                <input required name="runtime" placeholder="Runtime in minutes" type="number" max="250" aria-label="mm" class="form-control">
                 <!-- <input name="ss" placeholder="ss" type="number" min="0" max="59" aria-label="ss" class="form-control"> -->
             </div>
 
@@ -63,7 +63,7 @@ include  __DIR__ . "/../components/sidebar.php";
             <br>
             <?php foreach ($result as $key) : ?>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
+                    <input required class="form-check-input" value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
                     <label for="<?php echo $key['id']; ?>"><?php echo $key['name']; ?></label>
                 </div>
 
@@ -74,12 +74,12 @@ include  __DIR__ . "/../components/sidebar.php";
 
         <div class="form-group">
             <label class="form-label" for="image">Upload Image:</label>
-            <input id="image" name="image" type="file" class="form-control">
+            <input required id="image" name="image" type="file" class="form-control">
         </div>
 
         <div class="form-group">
             <label class="form-label" for="image">Upload Cover:</label>
-            <input id="image" name="cover" type="file" class="form-control">
+            <input required id="image" name="cover" type="file" class="form-control">
         </div>
         <br>
 

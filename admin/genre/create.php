@@ -5,16 +5,18 @@ require_once __DIR__ . "/../components/admin.php";
 if (!empty($_POST)) {
 
     $name = request('name');
+
+
     if (!empty($name)) {
         create('genre', compact("name"));
         setSuccess("Genre added sucessfully!");
         header("Location: index.php");
-        die();
+        die;
     } else {
         setError("Please fill all the fields!");
         // die("Please fill both fields!!");
         header("Location:  create.php");
-        die();
+        die;
     }
 }
 include  __DIR__ . "/../components/header.php";
@@ -42,7 +44,7 @@ include  __DIR__ . "/../components/sidebar.php";
     <form class="m-4" method="POST" action="./create.php">
         <div class="form-group">
             <label for="movieName">Name</label>
-            <input name="name" type="text" class="form-control" id="movieName" placeholder="Sci-Fi">
+            <input required name="name" type="text" class="form-control" id="movieName" placeholder="Sci-Fi">
         </div>
         <button type="submit" class="btn btn-primary">Add Genre</button>
 

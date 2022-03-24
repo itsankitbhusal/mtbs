@@ -5,12 +5,12 @@ $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);
 $cover = is_uploaded_file($_FILES['cover']['tmp_name']);
 if (!$uploaded) {
     setError('Please upload an image');
-    Header("Location: create.php");
+    header("Location: create.php");
     die;
 }
 if (!$cover) {
     setError('Please upload an cover image');
-    Header("Location: create.php");
+    header("Location: create.php");
     die;
 }
 if (!empty($_POST)) {
@@ -35,12 +35,14 @@ if (!empty($_POST)) {
         if ($type != "image/png" && $type != "image/jpeg") {
             setError("File must be an image");
             Header("Location: create.php");
+            die;
         }
         $mb_size = $size / 1024 / 1024;
 
         if ($mb_size > 2) {
             setError("File should be less than 2 MB");
             Header("Location: create.php");
+            die;
         }
         $uname = uniqid();
 
@@ -62,13 +64,15 @@ if (!empty($_POST)) {
 
         if ($type_cover != "image/png" && $type_cover != "image/jpeg") {
             setError("File must be an image");
-            Header("Location: create.php");
+            header("Location: create.php");
+            die;
         }
         $mb_size_cover = $size / 1024 / 1024;
 
         if ($mb_size > 5) {
             setError("File should be less than 5 MB");
-            Header("Location: create.php");
+            header("Location: create.php");
+            die;
         }
         $uname_cover = uniqid();
 
@@ -99,8 +103,10 @@ if (!empty($_POST)) {
         }
         setSuccess('Data Inserted Sucessfully');
         header("Location: index.php");
+        die;
     } else {
         setError("Please fill all the fields");
-        Header("Location: create.php");
+        header("Location: create.php");
+        die;
     }
 }

@@ -44,12 +44,12 @@ include  __DIR__ . "/../components/sidebar.php";
     <form class="m-4" method="POST" action="./create.php">
         <div class="form-group">
             <label for="movieName">Name</label>
-            <input name="name" type="text" class="form-control" id="movieName" placeholder="QFX Jalma">
+            <input required name="name" type="text" class="form-control" id="movieName" placeholder="QFX Jalma">
         </div>
 
         <div class="form-group">
             <label for="total_seats">Total Seats</label>
-            <input name="total_seats" type="number" class="form-control" id="total_seats">
+            <input required name="total_seats" type="number" class="form-control" id="total_seats">
         </div>
 
 

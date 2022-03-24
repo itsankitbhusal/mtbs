@@ -5,18 +5,23 @@ $id = request('id');
 $name = request('name');
 
 if (empty($id)) {
-    die("Please provide ID");
+    setError("Please provide an id!");
+    header("Location: index.php");
+    die;
 }
 
 $genre = find('genre', $id);
 
 if (empty($name)) {
-    setError("Please fill all the fiels!");
+    setError("Please fill all the fields!");
     header("Location: index.php");
     die;
 }
 
-update('genre', $id, compact('name', 'description'));
+if (!empty($name) && !empty($genre)) {
 
-setSuccess('Genre data updated!');
-header("Location: index.php");
+    update('genre', $id, compact('name', 'description'));
+
+    setSuccess('Genre data updated!');
+    header("Location: index.php");
+}

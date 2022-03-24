@@ -7,12 +7,14 @@ $id = request('id');
 $movie = find('movie', $id);
 if (empty($id)) {
     setError("Please provide ID");
-    Header("Location: index.php");
+    header("Location: index.php");
+    die;
 }
 
 if (empty($movie)) {
     setError("Enter a valid id!!!");
-    Header("Location: index.php");
+    header("Location: index.php");
+    die;
 }
 
 if (!empty($movie) && !empty($id)) {
@@ -25,7 +27,9 @@ if (!empty($movie) && !empty($id)) {
 
     setSuccess('Movie deleted!');
     header("Location: index.php");
+    die;
 } else {
     setError("Movie deletion failed");
-    Header("Location: index.php");
+    header("Location: index.php");
+    die;
 }

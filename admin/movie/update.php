@@ -7,7 +7,8 @@ $id = request('id');
 $movie = find('movie', $id);
 if (!$movie) {
     setError("Provide movie ID");
-    Header("Location: ./edit.php");
+    header("Location: ./edit.php");
+    die;
 }
 
 $image = $_FILES['image'];
@@ -20,7 +21,8 @@ $release_date = request('release_date');
 $list = request('genre');
 if (empty($list)) {
     setError("Please choose an genre");
-    Header("Location: ./edit.php");
+    header("Location: ./edit.php");
+    die;
 }
 //runtime
 $runtime = request('runtime');
@@ -111,8 +113,10 @@ if (!empty($name) && !empty($language) && !empty($release_date) && !empty($runti
     setSuccess('Data Updated Sucessfully');
     header("Location: index.php");
     die;
+    die;
 } else {
     setError("Please fill all the fields!!!");
     header("Location: edit.php");
+    die;
     die;
 }

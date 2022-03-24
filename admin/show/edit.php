@@ -93,16 +93,16 @@ include  __DIR__ . "/../components/sidebar.php";
         </div>
         <div class="form-group">
             <label for="releseDate">Play Date</label>
-            <input name="play_date" type="date" value="<?php echo $shows['play_date']; ?>" class="form-control" id="releseDate">
+            <input required name="play_date" type="date" value="<?php echo $shows['play_date']; ?>" class="form-control" id="releseDate">
         </div>
         <div class="form-group">
             <label for="releseDate">Play Time</label>
-            <input name="play_time" type="time" value="<?php echo $shows['play_time']; ?>" class="form-control" id="releseDate">
+            <input required name="play_time" type="time" value="<?php echo $shows['play_time']; ?>" class="form-control" id="releseDate">
         </div>
 
         <div class="form-group">
             <label for="releseDate">Ticket Price</label>
-            <input name="ticket_price" value="<?php echo $shows['ticket_price']; ?>" type="number" class="form-control" id="releseDate">
+            <input required name="ticket_price" value="<?php echo $shows['ticket_price']; ?>" type="number" class="form-control" id="releseDate">
         </div>
 
         <button type="submit" class="btn btn-primary">Update Show</button>
