@@ -41,17 +41,17 @@ include  __DIR__ . "/../components/sidebar.php";
         </div>
         <div class="form-group">
             <label for="releseDate">Play Date</label>
-            <input name="play_date" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="releseDate">
+            <input required name="play_date" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="releseDate">
         </div>
         <div class="form-group">
             <label for="releseDate">Play Time</label>
-            <input name="play_time" type="time" value="<?php date_default_timezone_set('Asia/Kathmandu');
-                                                        echo date('h:i'); ?>" class="form-control" id="releseDate">
+            <input required name="play_time" type="time" value="<?php date_default_timezone_set('Asia/Kathmandu');
+                                                                echo date('h:i'); ?>" class="form-control" id="releseDate">
         </div>
 
         <div class="form-group">
             <label for="releseDate">Ticket Price</label>
-            <input name="ticket_price" type="number" class="form-control" id="releseDate">
+            <input required name="ticket_price" type="number" class="form-control" id="releseDate">
         </div>
 
         <button type="submit" class="btn btn-primary">Add movie</button>

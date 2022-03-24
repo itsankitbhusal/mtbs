@@ -11,9 +11,15 @@ if (!empty($_POST)) {
     $hall_id = request('hall_id');
     $movie_id = request('movie_id');
     $play_date = request('play_date');
+    $current_date = date('Y-m-d');
     $play_time = request('play_time');
     $ticket_price = request('ticket_price');
 
+    if ($current_date >= $play_date) {
+        setError("Play date must be grater than current date!!");
+        Header("Location: create.php");
+        die;
+    }
 
     if (!empty($hall_id) && !empty($movie_id) && !empty($play_date) && !empty($play_time) && !empty($ticket_price)) {
 
@@ -28,8 +34,10 @@ if (!empty($_POST)) {
 
         setSuccess('Data Inserted Sucessfully');
         header("Location: index.php");
+        die;
     } else {
         setError("Please fill all the fields");
         Header("Location: create.php");
+        die;
     }
 }
