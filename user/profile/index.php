@@ -1,7 +1,34 @@
 <?php require_once "./components/header.php";
 require_once "./components/user.php";
 
+$user_id = $_SESSION['user_id'];
+
+$user = find('user', $user_id);
+// echo "<pre>";
+// print_r($user);
+// die;
+// Array
+// (
+//     [id] => 14
+//     [name] => user
+//     [email] => user@user.com
+//     [password] => $2y$10$0s73U8a1JQ8ZknbSr/ABduxeXDaf1/K9UPDrfP1w0woFQ6SEnQsMC
+//     [role] => user
+//     [phone] => 
+// )
+
+
 ?>
+<?php if (hasError()) : ?>
+    <div id="error" class="ml-4 alert alert-danger">
+        <?php echo getError(); ?>
+    </div>
+<?php endif; ?>
+<?php if (hasSuccess()) : ?>
+    <div id="success" class="ml-4 alert alert-success">
+        <?php echo getSuccess(); ?>
+    </div>
+<?php endif; ?>
 
 <div class="card overflow-hidden">
     <div class="row no-gutters row-bordered row-border-light">
@@ -13,33 +40,28 @@ require_once "./components/user.php";
             </div>
         </div>
         <div class="col-md-9">
-            <div class="tab-content ">
+            <form method="POST" action="./update.php" class="tab-content ">
                 <div class="">
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Username</label>
-                            <input type="text" class="form-control mb-1" value="nmaxwell">
-                        </div>
-                        <div class="form-group">
                             <label class="form-label">Name</label>
-                            <input type="text" class="form-control" value="Nelle Maxwell">
+                            <input type="text" name="name" class="form-control mb-1" value="<?php echo $user['name']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="form-label">E-mail</label>
-                            <input type="text" class="form-control mb-1" value="nmaxwell@mail.com">
+                            <input type="text" name="email" class="form-control mb-1" value="<?php echo $user['email'] ?>">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Company</label>
-                            <input type="text" class="form-control" value="Company Ltd.">
+                            <label class="form-label">Phone</label>
+                            <input type="number" name="phone" class="form-control" value="<?php echo $user['phone'] ?>">
                         </div>
                     </div>
 
                 </div>
                 <div class="text-right mt-3 mx-4 my-4 mb-5">
-                    <button type="button" class="btn btn-primary">Save changes</button>&nbsp;
-                    <button type="button" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
