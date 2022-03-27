@@ -48,7 +48,12 @@ if ($password != $password_verify) {
     Header("Location: ./register.php");
     die;
 }
-
+$user_phone = where('user', 'phone', '=', $phone, false);
+if ($user_phone) {
+    setError("Phone has alreday been taken!");
+    Header("Location: ./register.php");
+    die;
+}
 if (!empty($name) && !empty($email) && !empty($password) && !empty($phone) && ($password == $password_verify)) {
     create('user', [
         'name' => $name,
