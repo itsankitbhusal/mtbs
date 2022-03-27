@@ -64,7 +64,7 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
                 ?>
                     <p class="h3 font-weight-bold">Make Payment!!</p>
                     <hr>
-                    <div class="d-flex gap-3 mb-5">
+                    <div class="d-flex flex-wrap gap-3 mb-5">
                         <?php
                         foreach ($not_payed as $n) :
                             $show_pending = find('shows', $n['show_id']);
@@ -128,7 +128,7 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
 
         <p class="h3 font-weight-bold">Your Bookings!!</p>
         <hr>
-        <div class="d-flex gap-3">
+        <div class="d-flex flex-wrap gap-3">
             <?php foreach ($result as $key) :
                 $show = find('shows', $key['show_id']);
                 $movie_id = $show['movie_id'];
@@ -179,9 +179,6 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
             </div>
         </div>
     </div>
-
-
-    <?php include './components/footer.php' ?>
 </div>
 
 <?php include './components/footer.php' ?>
