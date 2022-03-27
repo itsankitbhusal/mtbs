@@ -4,16 +4,7 @@ require_once "./components/user.php";
 $result = where('booking', 'user_id', '=', $_SESSION['user_id']);
 $user_id = $_SESSION['user_id'];
 $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'booked')");
-// echo '<pre>';
-// print_r($result);
 
-foreach ($result as $r) {
-    $show = find('shows', $r['show_id']);
-    $movie_id = $show['movie_id'];
-
-
-    $result = where('movie', 'id', '=', $movie_id);
-}
 
 
 
@@ -63,13 +54,8 @@ foreach ($result as $r) {
 
                 // $result = where('movie', 'id', '=', $movie_id);
 
-                foreach ($not_payed as $n) {
-                    $show_pending = find('shows', $n['show_id']);
-                    $movie_id_pending = $show_pending['movie_id'];
 
-                    $result_pending = where('movie', 'id', '=', $movie_id_pending);
-                    $show_id = $n['show_id'];
-                }
+
 
                 ?>
                 <?php
@@ -78,93 +64,116 @@ foreach ($result as $r) {
                 ?>
                     <p class="h3 font-weight-bold">Make Payment!!</p>
                     <hr>
-                    <?php foreach ($result_pending as $key) : ?>
+                    <div class="d-flex gap-3">
                         <?php
-                        // user id
-                        //show id
-                        //status
-                        // booking_time
+                        foreach ($not_payed as $n) :
+                            $show_pending = find('shows', $n['show_id']);
+                            $movie_id_pending = $show_pending['movie_id'];
 
-                        $find = query("SELECT id FROM `booking` WHERE(user_id = $user_id AND show_id = $show_id ) LIMIT 1");
-
-
-                        $booking_id = $find[0]['id'];
-                        // echo "<pre>";
-                        // print_r($booking_id);
-                        // die;
-
-
-                        // need booking id to pass in url
-                        // $find = where('booking', 'id');
-
-
-                        ?>
-                        <a href="../payment.php?id=<?php echo $booking_id; ?>" class="card col-md-3  hover-shadow border rounded">
-                            <div class="">
-                                <img src="../../uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
-                            </div>
-
-                            <div class="card-body " style="color: #4a4a4a;">
-                                <h5 class="card-title"><?php echo $key['name'] ?></h5>
-                                <p class="card-text text-muted">
-                                    <?php
-                                    $genres = where('genre_movie', 'movie_id', '=', $key['id']);
-                                    $total_genre = count($genres);
-                                    $i = 1;
-                                    foreach ($genres as $g) {
-                                        $genre = find('genre', $g['genre_id']);
-                                        echo $genre['name'];
-                                        if ($i < $total_genre) echo ", ";
-                                        $i++;
-                                    }
-
-                                    ?>
-                                </p>
-                            </div>
-                        </a>
-                        <br>
-                <?php endforeach;
-                endif;
-
-                ?>
-
-
-
-                <p class="h3 font-weight-bold">Your Bookings!!</p>
-                <hr>
-
-                <?php foreach ($result as $key) : ?>
-                    <div class="card col-md-3  hover-shadow border rounded">
-                        <div class="">
-                            <img src="../../uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
-
-                        </div>
-
-                        <div class="card-body " style="color: #4a4a4a;">
-                            <h5 class="card-title"><?php echo $key['name'] ?></h5>
-                            <p class="card-text text-muted">
+                            $result_pending = where('movie', 'id', '=', $movie_id_pending);
+                            $show_id = $n['show_id'];
+                            foreach ($result_pending as $key) : ?>
                                 <?php
-                                $genres = where('genre_movie', 'movie_id', '=', $key['id']);
-                                $total_genre = count($genres);
-                                $i = 1;
-                                foreach ($genres as $g) {
-                                    $genre = find('genre', $g['genre_id']);
-                                    echo $genre['name'];
-                                    if ($i < $total_genre) echo ", ";
-                                    $i++;
-                                }
+                                // user id
+                                //show id
+                                //status
+                                // booking_time
+
+                                $find = query("SELECT id FROM `booking` WHERE(user_id = $user_id AND show_id = $show_id ) LIMIT 1");
+
+
+                                $booking_id = $find[0]['id'];
+                                // echo "<pre>";
+                                // print_r($booking_id);
+                                // die;
+
+
+                                // need booking id to pass in url
+                                // $find = where('booking', 'id');
+
 
                                 ?>
-                            </p>
-                        </div>
+                                <a href="../payment.php?id=<?php echo $booking_id; ?>" class="card col-md-3  hover-shadow border rounded">
+                                    <div class="">
+                                        <img src="../../uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
+                                    </div>
+
+                                    <div class="card-body " style="color: #4a4a4a;">
+                                        <h5 class="card-title"><?php echo $key['name'] ?></h5>
+                                        <p class="card-text text-muted">
+                                            <?php
+                                            $genres = where('genre_movie', 'movie_id', '=', $key['id']);
+                                            $total_genre = count($genres);
+                                            $i = 1;
+                                            foreach ($genres as $g) {
+                                                $genre = find('genre', $g['genre_id']);
+                                                echo $genre['name'];
+                                                if ($i < $total_genre) echo ", ";
+                                                $i++;
+                                            }
+
+                                            ?>
+                                        </p>
+                                    </div>
+                                </a>
+                                <br>
+                    <?php endforeach;
+                        endforeach;
+                    endif;
+
+                    ?>
                     </div>
 
-                <?php endforeach;
 
-                if (empty($not_payed) && empty($result)) {
-                    echo '<h2 class="h2 mx-5 mt-5">Please book some movies!!</h2>';
-                }
-                ?>
+
+                    <p class="h3 font-weight-bold mt-5 ">Your Bookings!!</p>
+                    <hr>
+                    <div class="d-flex gap-3">
+                        <?php foreach ($result as $key) :
+                            $show = find('shows', $key['show_id']);
+                            $movie_id = $show['movie_id'];
+                            $result_movie = where('movie', 'id', '=', $movie_id);
+
+                            // echo ' <pre>';
+                            // print_r($result_movie);
+                            // die;
+
+                            foreach ($result_movie as $m) :
+
+                        ?>
+                                <div class="card col-md-3 hover-shadow border rounded mb-5">
+                                    <div class="">
+                                        <img src="../../uploads/<?php echo $m['image']; ?>" class="img-fluid w-100 rounded" />
+
+                                    </div>
+
+                                    <div class="card-body " style="color: #4a4a4a;">
+                                        <h5 class="card-title"><?php echo $m['name'] ?></h5>
+                                        <p class="card-text text-muted">
+                                            <?php
+                                            $genres = where('genre_movie', 'movie_id', '=', $m['id']);
+                                            $total_genre = count($genres);
+                                            $i = 1;
+                                            foreach ($genres as $g) {
+                                                $genre = find('genre', $g['genre_id']);
+                                                echo $genre['name'];
+                                                if ($i < $total_genre) echo ", ";
+                                                $i++;
+                                            }
+
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                        <?php endforeach;
+                        endforeach; ?>
+                    </div>
+                    <?php
+                    if (empty($not_payed) && empty($result)) {
+                        echo '<h2 class="h2 mx-5 mt-5">Please book some movies!!</h2>';
+                    }
+                    ?>
 
 
             </div>
