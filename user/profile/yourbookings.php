@@ -72,7 +72,10 @@ foreach ($result as $r) {
                 }
 
                 ?>
-                <?php if (!empty($not_payed)) : ?>
+                <?php
+                if (!empty($not_payed)) :
+
+                ?>
                     <p class="h3 font-weight-bold">Make Payment!!</p>
                     <hr>
                     <?php foreach ($result_pending as $key) : ?>
@@ -122,6 +125,7 @@ foreach ($result as $r) {
                         <br>
                 <?php endforeach;
                 endif;
+
                 ?>
 
 
@@ -155,7 +159,13 @@ foreach ($result as $r) {
                         </div>
                     </div>
 
-                <?php endforeach; ?>
+                <?php endforeach;
+
+                if (empty($not_payed) && empty($result)) {
+                    echo '<h2 class="h2 mx-5 mt-5">Please book some movies!!</h2>';
+                }
+                ?>
+
 
             </div>
         </div>
