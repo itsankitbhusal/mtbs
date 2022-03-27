@@ -14,7 +14,7 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
 
 <div>
     <?php require_once "./components/header.php" ?>
-    <div class="card overflow-hidden">
+    <div class="card ">
         <div class="row no-gutters row-bordered row-border-light">
             <div class="col-md-3 pt-0">
                 <div class="list-group list-group-flush account-settings-links">
@@ -64,7 +64,7 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
                 ?>
                     <p class="h3 font-weight-bold">Make Payment!!</p>
                     <hr>
-                    <div class="d-flex gap-3">
+                    <div class="d-flex gap-3 mb-5">
                         <?php
                         foreach ($not_payed as $n) :
                             $show_pending = find('shows', $n['show_id']);
@@ -117,63 +117,63 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
                                     </div>
                                 </a>
                                 <br>
-                    <?php endforeach;
+
+                    </div>
+
+        <?php endforeach;
                         endforeach;
                     endif;
 
-                    ?>
+        ?>
+
+        <p class="h3 font-weight-bold">Your Bookings!!</p>
+        <hr>
+        <div class="d-flex gap-3">
+            <?php foreach ($result as $key) :
+                $show = find('shows', $key['show_id']);
+                $movie_id = $show['movie_id'];
+                $result_movie = where('movie', 'id', '=', $movie_id);
+
+                // echo ' <pre>';
+                // print_r($result_movie);
+                // die;
+
+                foreach ($result_movie as $m) :
+
+            ?>
+                    <div class="card col-md-3 hover-shadow border rounded mb-5">
+                        <div class="">
+                            <img src="../../uploads/<?php echo $m['image']; ?>" class="img-fluid w-100 rounded" />
+
+                        </div>
+
+                        <div class="card-body " style="color: #4a4a4a;">
+                            <h5 class="card-title"><?php echo $m['name'] ?></h5>
+                            <p class="card-text text-muted">
+                                <?php
+                                $genres = where('genre_movie', 'movie_id', '=', $m['id']);
+                                $total_genre = count($genres);
+                                $i = 1;
+                                foreach ($genres as $g) {
+                                    $genre = find('genre', $g['genre_id']);
+                                    echo $genre['name'];
+                                    if ($i < $total_genre) echo ", ";
+                                    $i++;
+                                }
+
+                                ?>
+                            </p>
+                        </div>
                     </div>
 
-
-
-                    <p class="h3 font-weight-bold mt-5 ">Your Bookings!!</p>
-                    <hr>
-                    <div class="d-flex gap-3">
-                        <?php foreach ($result as $key) :
-                            $show = find('shows', $key['show_id']);
-                            $movie_id = $show['movie_id'];
-                            $result_movie = where('movie', 'id', '=', $movie_id);
-
-                            // echo ' <pre>';
-                            // print_r($result_movie);
-                            // die;
-
-                            foreach ($result_movie as $m) :
-
-                        ?>
-                                <div class="card col-md-3 hover-shadow border rounded mb-5">
-                                    <div class="">
-                                        <img src="../../uploads/<?php echo $m['image']; ?>" class="img-fluid w-100 rounded" />
-
-                                    </div>
-
-                                    <div class="card-body " style="color: #4a4a4a;">
-                                        <h5 class="card-title"><?php echo $m['name'] ?></h5>
-                                        <p class="card-text text-muted">
-                                            <?php
-                                            $genres = where('genre_movie', 'movie_id', '=', $m['id']);
-                                            $total_genre = count($genres);
-                                            $i = 1;
-                                            foreach ($genres as $g) {
-                                                $genre = find('genre', $g['genre_id']);
-                                                echo $genre['name'];
-                                                if ($i < $total_genre) echo ", ";
-                                                $i++;
-                                            }
-
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div>
-
-                        <?php endforeach;
-                        endforeach; ?>
-                    </div>
-                    <?php
-                    if (empty($not_payed) && empty($result)) {
-                        echo '<h2 class="h2 mx-5 mt-5">Please book some movies!!</h2>';
-                    }
-                    ?>
+            <?php endforeach;
+            endforeach; ?>
+        </div>
+        <?php
+        if (empty($not_payed) && empty($result)) {
+            echo '<h2 class="h2 mx-5 mt-5">Please book some movies!!</h2>';
+        }
+        ?>
 
 
             </div>
