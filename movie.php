@@ -41,13 +41,13 @@ if (hasError()) : ?>
     <div class="container d-flex  gap-4 flex-wrap justify-content-center">
 
         <?php foreach ($result as $key) : ?>
-            <div class="card col-lg-2.5  hover-shadow border rounded">
+            <a href="./user/book.php?id=<?php echo $key['id']; ?>" class="card col-lg-2.5  hover-shadow border rounded">
                 <div class="">
                     <img src="./uploads/<?php echo $key['image']; ?>" class="img-fluid w-100 rounded" />
 
                 </div>
 
-                <a href="./user/book.php?id=<?php echo $key['id']; ?>" class="card-body " style="color: #4a4a4a;">
+                <div class="card-body " style="color: #4a4a4a;">
                     <h5 class="card-title"><?php echo $key['name'] ?></h5>
                     <p class="card-text text-muted">
                         <?php
@@ -63,8 +63,8 @@ if (hasError()) : ?>
 
                         ?>
                     </p>
-                </a>
-            </div>
+                </div>
+            </a>
         <?php endforeach; ?>
     </div>
     <!-- cards -->
