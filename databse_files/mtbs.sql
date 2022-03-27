@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2022 at 03:13 PM
+-- Generation Time: Mar 27, 2022 at 07:06 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -35,24 +35,18 @@ CREATE TABLE `booking` (
   `unit_price` int(11) NOT NULL,
   `status` varchar(10) NOT NULL,
   `booked_seat` int(11) NOT NULL,
-  `total_price` int(11) NOT NULL
+  `total_price` int(11) NOT NULL,
+  `booking_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `user_id`, `show_id`, `total_tickets`, `unit_price`, `status`, `booked_seat`, `total_price`) VALUES
-(22, 14, 27, 90, 450, 'booked', 1, 450),
-(23, 14, 28, 50, 500, 'booked', 1, 500),
-(24, 14, 28, 50, 500, 'booked', 3, 1500),
-(25, 14, 27, 90, 450, 'pending', 5, 2250),
-(26, 14, 29, 52, 550, 'pending', 2, 1100),
-(27, 14, 27, 90, 450, 'pending', 2, 900),
-(28, 14, 27, 90, 450, 'pending', 2, 900),
-(29, 14, 27, 90, 450, 'pending', 2, 900),
-(30, 14, 28, 50, 500, 'booked', 2, 1000),
-(31, 14, 28, 50, 500, 'pending', 5, 2500);
+INSERT INTO `booking` (`id`, `user_id`, `show_id`, `total_tickets`, `unit_price`, `status`, `booked_seat`, `total_price`, `booking_time`) VALUES
+(41, 14, 28, 50, 500, 'booked', 3, 2500, '2022-03-27 13:11:12'),
+(53, 14, 38, 90, 500, 'booked', 1, 500, '2022-03-27 13:20:39'),
+(55, 14, 27, 90, 450, 'booked', 2, 900, '2022-03-27 15:06:32');
 
 -- --------------------------------------------------------
 
@@ -184,10 +178,9 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `booking_id`, `amount`, `payment_on`) VALUES
-(12, 22, 450, '2022-03-21'),
-(13, 23, 500, '2022-03-22'),
-(14, 24, 1500, '2022-03-22'),
-(15, 30, 1000, '2022-03-22');
+(17, 41, 2500, '2022-03-27'),
+(21, 53, 500, '2022-03-27'),
+(22, 55, 900, '2022-03-27');
 
 -- --------------------------------------------------------
 
@@ -211,7 +204,8 @@ CREATE TABLE `shows` (
 INSERT INTO `shows` (`id`, `hall_id`, `movie_id`, `play_date`, `play_time`, `ticket_price`) VALUES
 (27, 4, 16, '2022-04-20', '10:00:00', 450),
 (28, 1, 16, '2022-04-20', '10:00:00', 500),
-(29, 2, 16, '2022-04-20', '10:00:00', 550);
+(29, 2, 16, '2022-04-20', '10:00:00', 550),
+(38, 4, 17, '2022-04-02', '10:00:00', 500);
 
 -- --------------------------------------------------------
 
@@ -233,12 +227,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `phone`) VALUES
-(1, 'ankit', 'ankit@ankit.com', '$2y$10$VfUe9A5HQdgr.xkHG5ZdSONk58cjBM0fGiaOt1oKiErJWMMU.dIeG', 'user', ''),
-(2, 'admin', 'admin@admin.com', '$2y$10$Ly2dVfzg91Y8Bicq4GX.qevdi7nOkg2cOrw36ZV4lrWA/oJ64aMnu', 'admin', ''),
-(8, 'CinemaTIC', 'aksj@aksj.aksj', '$2y$10$KYOT2NmGQEwQkxsszIvt8uljAoNrugCaxVugdJIHl9FjuHXMMA/SW', 'user', ''),
-(11, 'hello', 'hello@hello', '$2y$10$9d7EIv7BnJ7YUGtG8zpK7.KxS8UJRQwQag05DpK57iF95JYRfys.C', 'user', ''),
-(14, 'user', 'user@user.com', '$2y$10$0s73U8a1JQ8ZknbSr/ABduxeXDaf1/K9UPDrfP1w0woFQ6SEnQsMC', 'user', ''),
-(23, 'Ankit Bhusal', 'ankitbhusal95@gmail.com', '$2y$10$oMfmTH.tE9ok/WHx9cYar.rfzr7WuVRmW.I3Z8R.r.byFoYf26vp6', 'user', '9824408587');
+(1, 'ankit', 'ankit@ankit.com', '$2y$10$VfUe9A5HQdgr.xkHG5ZdSONk58cjBM0fGiaOt1oKiErJWMMU.dIeG', 'user', '9762534112'),
+(2, 'admin', 'admin@admin.com', '$2y$10$Ly2dVfzg91Y8Bicq4GX.qevdi7nOkg2cOrw36ZV4lrWA/oJ64aMnu', 'admin', '9823513251'),
+(8, 'CinemaTIC', 'aksj@aksj.aksj', '$2y$10$KYOT2NmGQEwQkxsszIvt8uljAoNrugCaxVugdJIHl9FjuHXMMA/SW', 'user', '9878912343'),
+(11, 'hello', 'hello@hello', '$2y$10$9d7EIv7BnJ7YUGtG8zpK7.KxS8UJRQwQag05DpK57iF95JYRfys.C', 'user', '9810101100'),
+(14, 'user here', 'user@user.com', '$2y$10$0s73U8a1JQ8ZknbSr/ABduxeXDaf1/K9UPDrfP1w0woFQ6SEnQsMC', 'user', '9700000100'),
+(23, 'Ankit Bhusal', 'ankitbhusal95@gmail.com', '$2y$10$oMfmTH.tE9ok/WHx9cYar.rfzr7WuVRmW.I3Z8R.r.byFoYf26vp6', 'user', '9824408587'),
+(24, 'ankit', 'heeeee@hello.com', '$2y$10$MmvuqweGXibtkvuvjnpZ..gGktLcDP49u6L6LXbmimrOQxteIjRBG', 'user', '9847388977'),
+(25, 'ankit bhusal', 'ankitbhusal959@gmail.com', '$2y$10$7GStC9m4BmBsWn2PDkWuVuSI9vKt0KbzfrB/aMy..RkJGJa3gnclW', 'user', '9779824408587');
 
 --
 -- Indexes for dumped tables
@@ -307,13 +303,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `genre_movie`
@@ -325,7 +321,7 @@ ALTER TABLE `genre_movie`
 -- AUTO_INCREMENT for table `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `movie`
@@ -337,19 +333,19 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
