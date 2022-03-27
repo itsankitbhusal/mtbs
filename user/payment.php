@@ -1,6 +1,13 @@
 <?php
 require "./components/user.php";
 
+$booking_id = request('id');
+if (empty($booking_id)) {
+    setError('Please provide valid booking id!!');
+    header('./index.php');
+    die;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +19,7 @@ require "./components/user.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/mdb.min.css">
 
-    <title>Payment Page </title>
+    <title>Payment Page</title>
 
 </head>
 
@@ -29,7 +36,7 @@ require "./components/user.php";
                 <?php echo getSuccess(); ?>
             </div>
         <?php endif; ?>
-        <form action="./payment.inc.php" method="post" class="col-md-4 mx-auto mt-5">
+        <form action="./payment.inc.php?id=<?php echo $booking_id; ?>" method="post" class="col-md-4 mx-auto mt-5">
             <div class="form-group">
                 <label for="name_on_card">Name on card</label>
                 <input type="text" name="name_on_card" class="form-control" id="name_on_card">
