@@ -9,6 +9,11 @@ if (empty($booking_id)) {
     setError('Payment Failed!!');
     header("Location: ./index.php");
 }
+//check if payment already done for given booking id
+$is_paid = find('payment', $booking_id);
+
+echo $is_paid;
+
 // echo "<pre>";
 // print_r($booking);
 // die;
