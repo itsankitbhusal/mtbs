@@ -9,9 +9,14 @@ if (!empty($_POST)) {
     $play_time = request('play_time');
     $ticket_price = request('ticket_price');
     $current_date = date('Y-m-d');
+    if (!validateNumber($ticket_price)) {
+        setError("Enter valid price!!");
+        header("Location: index.php");
+        die;
+    }
     if ($current_date >= $play_date) {
         setError("Play date must be grater than current date!!");
-        Header("Location: create.php");
+        Header("Location: index.php");
         die;
     }
 

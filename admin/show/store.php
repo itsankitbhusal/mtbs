@@ -4,7 +4,7 @@ require_once __DIR__ . "/../components/admin.php";
 
 if (empty($_POST['hall_id']) || empty($_POST['movie_id']) || empty($_POST['play_date']) || empty($_POST['play_time']) || empty($_POST['ticket_price'])) {
     setError('Please fill all the fields!!');
-    Header("Location: ./create.php");
+    header("Location: ./create.php");
 }
 
 if (!empty($_POST)) {
@@ -15,9 +15,15 @@ if (!empty($_POST)) {
     $play_time = request('play_time');
     $ticket_price = request('ticket_price');
 
+    if (!validateNumber($ticket_price)) {
+        setError("Enter valid price!!");
+        header("Location: create.php");
+        die;
+    }
+
     if ($current_date >= $play_date) {
         setError("Play date must be grater than current date!!");
-        Header("Location: create.php");
+        header("Location: create.php");
         die;
     }
 
@@ -37,7 +43,7 @@ if (!empty($_POST)) {
         die;
     } else {
         setError("Please fill all the fields");
-        Header("Location: create.php");
+        header("Location: create.php");
         die;
     }
 }

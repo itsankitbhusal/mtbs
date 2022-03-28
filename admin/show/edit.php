@@ -7,9 +7,10 @@ $id = request('id');
 $shows = find('shows', $id);
 
 if (empty($shows)) {
-    die("Please enter valid id!!");
+    setError("Please enter valid id!!");
+    header('Location: ./index.php');
+    die;
 }
-
 
 // echo "<pre>";
 // print_r($shows);
@@ -25,12 +26,18 @@ if (empty($shows)) {
 // )
 
 if (empty($id)) {
-    die("Please Enter a valid id!!");
+    setError("Please enter valid id!!");
+    header('Location: ./index.php');
+    die;
 }
 
 if ($id != $shows['id']) {
-    die("Please Enter a valid id!!");
+    setError("Please enter valid id!!");
+    header('Location: ./index.php');
+    die;
 }
+
+
 
 // echo "<pre>";
 // print_r($hall);
