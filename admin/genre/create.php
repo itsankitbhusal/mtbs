@@ -4,8 +4,22 @@ require_once __DIR__ . "/../components/admin.php";
 
 if (!empty($_POST)) {
 
+    $result = all('genre');
+
     $name = request('name');
 
+    foreach ($result as $r) {
+        if ($r['name']  == $name) {
+            setError("Genre already added!");
+            header("Location:  create.php");
+            die;
+        }
+    }
+    if (!validateGenre($name)) {
+        setError("Please provide valid genre!");
+        header("Location:  create.php");
+        die;
+    }
 
     if (!empty($name)) {
         create('genre', compact("name"));
