@@ -72,18 +72,18 @@
                 <!-- Right elements -->
                 <?php if (empty(($_SESSION['user_id']))) :       ?>
                     <div class="d-flex align-items-center mx-2">
-                        <a href="./register.php" class="btn btn-outline-primary ">Sign Up</a>
+                        <a href="../register.php" class="btn btn-outline-primary ">Sign Up</a>
                         <!-- Right elements -->
                     </div>
                     <div class="d-flex align-items-center mx-2">
-                        <a href="./login.php" class="btn btn-primary">Log In</a>
+                        <a href="../login.php" class="btn btn-primary">Log In</a>
                         <!-- Right elements -->
                     </div>
                 <?php endif; ?>
                 <?php if (!empty(($_SESSION['user_id']))) : ?>
 
-                    <a href="../profile/" class="mx-sm-2 mx-md-4 d-flex align-items-center gap-2 p-2 rounded px-4 hover-shadow">
-                        <i class="fas fa-user-circle text-primary "></i>
+                    <a href="../profile/" class="mx-sm-2 text-black mx-md-4 d-flex align-items-center gap-2 p-2 rounded px-4 hover-shadow">
+                        <i class="fas fa-user-circle"></i>
                         <p class="d-block my-auto w-responsive">
                             <?php $user = find('user', $_SESSION['user_id']);
                             echo substr($user['name'], 0, 6);
@@ -92,7 +92,7 @@
                     </a>
 
                     <div class="d-flex align-items-center mx-2">
-                        <a href="./logout.php" class="btn btn-danger">Log Out</a>
+                        <a href="../logout.php" class="btn btn-danger">Log Out</a>
                         <!-- Right elements -->
                     </div>
                 <?php endif;    ?>
