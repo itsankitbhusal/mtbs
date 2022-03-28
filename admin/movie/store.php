@@ -15,6 +15,11 @@ if (!$cover) {
 }
 if (!empty($_POST)) {
     $name = request('name');
+    if (!validateName($name)) {
+        setError('Please provide valid name!!');
+        header("Location: create.php");
+        die;
+    }
     $language = request('language');
     $release_date = request('release_date');
 
@@ -23,6 +28,11 @@ if (!empty($_POST)) {
 
     //runtime
     $runtime = request('runtime');
+    if (!validateNumber($runtime)) {
+        setError('Please provide valid runtime in minutes!!');
+        header("Location: create.php");
+        die;
+    }
 
     //image
     $uploaded = is_uploaded_file($_FILES['image']['tmp_name']);

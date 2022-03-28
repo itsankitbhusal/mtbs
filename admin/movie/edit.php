@@ -6,6 +6,11 @@ $id = request('id');
 
 $prev_result = all('genre');
 $result = where('movie', 'id', '=', $id, false);
+if (empty($result)) {
+    setError("Provide valid id!!");
+    header("Location: ./index.php");
+    die;
+}
 $genre_list = where('genre_movie', 'movie_id', '=', $id);
 
 $genre_ids = [];

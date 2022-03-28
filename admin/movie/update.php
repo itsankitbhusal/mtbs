@@ -6,7 +6,7 @@ require_once __DIR__ . "/../components/admin.php";
 $id = request('id');
 $movie = find('movie', $id);
 if (!$movie) {
-    setError("Provide movie ID");
+    setError("Provide valid id!!");
     header("Location: ./edit.php");
     die;
 }
@@ -14,6 +14,11 @@ if (!$movie) {
 $image = $_FILES['image'];
 
 $name = request('name');
+if (!validateName($name)) {
+    setError('Please provide valid name!!');
+    header("Location: create.php");
+    die;
+}
 $language = request('language');
 $release_date = request('release_date');
 
@@ -26,6 +31,11 @@ if (empty($list)) {
 }
 //runtime
 $runtime = request('runtime');
+if (!validateNumber($runtime)) {
+    setError('Please provide valid runtime in minutes!!');
+    header("Location: create.php");
+    die;
+}
 
 //fetch row from movie where id is $id
 $movie = find('movie', $id);
