@@ -4,11 +4,12 @@ require_once __DIR__ . "/../components/admin.php";
 
 $id = request('id');
 
-
 $result = where('hall', 'id', '=', $id, false);
 
 if (empty($result)) {
-    Header("Location: ./index.php");
+    setError('Please provide valid id!');
+    header("Location: ./index.php");
+    die;
 }
 
 include  __DIR__ . "/../components/header.php";

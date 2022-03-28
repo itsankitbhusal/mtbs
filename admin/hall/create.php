@@ -6,16 +6,36 @@ if (!empty($_POST)) {
 
     $name = request('name');
     $total_seats = request('total_seats');
+
+    $result = all('hall');
+    foreach ($result as $r) {
+        if ($r['name']  == $name) {
+            setError("Hall already added!");
+            header("Location:  create.php");
+            die;
+        }
+    }
+
+    if (!validateName($name)) {
+        setError("Please provide valid name!");
+        header("Location:  create.php");
+        die();
+    }
+    if (!validateNumber($total_seats)) {
+        setError("Please provide valid seats!");
+        header("Location:  create.php");
+        die();
+    }
+    if (empty($name) || empty($total_seats)) {
+        setError("Please fill all the fields!");
+        header("Location:  create.php");
+        die();
+    }
     if (!empty($name) && !empty($total_seats)) {
 
         create('hall', compact("name", "total_seats"));
         setSuccess("Cinema Hall added sucessfully!");
         header("Location: index.php");
-        die();
-    } else {
-        setError("Please fill all the fields!");
-        // die("Please fill both fields!!");
-        header("Location:  create.php");
         die();
     }
 }
