@@ -41,6 +41,9 @@ if (!validateName($subject)) {
 
 $to = 'cinematic@mtbs.com';
 
+// Additional headers
+$headers = "From: $email";
+
 // mail input form to admin
 if (mail($to, $subject, $message, $headers)) {
     setSuccess("Email sent!!");
