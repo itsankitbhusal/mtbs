@@ -92,7 +92,7 @@
                     </a>
 
                     <div class="d-flex align-items-center mx-2">
-                        <a href="../logout.php" class="btn btn-danger">Log Out</a>
+                        <a onclick="handleClickProfile();" class="btn btn-danger">Log Out</a>
                         <!-- Right elements -->
                     </div>
                 <?php endif;    ?>
