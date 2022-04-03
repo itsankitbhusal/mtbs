@@ -89,15 +89,19 @@ $result = all('movie');
                 </div>
             <?php endif; ?>
             <?php if (!empty(($_SESSION['user_id']))) : ?>
+                <?php $id = $_SESSION['user_id'];
+                $is_user = query("SELECT * FROM `user` WHERE (id = $id AND role='user') LIMIT 1");
 
-                <a href="./user/profile/" class="mx-sm-2 mx-md-4 text-black d-flex align-items-center gap-2 p-2 rounded px-4 hover-shadow">
-                    <i class="fas fa-user-circle"></i>
-                    <p class="d-block my-auto w-responsive">
-                        <?php $user = find('user', $_SESSION['user_id']);
-                        echo substr($user['name'], 0, 6);
-                        ?>
-                    </p>
-                </a>
+                if ($is_user) : ?>
+                    <a href="./user/profile/" class="mx-sm-2 mx-md-4 text-black d-flex align-items-center gap-2 p-2 rounded px-4 hover-shadow">
+                        <i class="fas fa-user-circle"></i>
+                        <p class="d-block my-auto w-responsive">
+                            <?php $user = find('user', $_SESSION['user_id']);
+                            echo substr($user['name'], 0, 6);
+                            ?>
+                        </p>
+                    </a>
+                <?php endif; ?>
 
                 <div class="d-flex align-items-center mx-2">
                     <a href="./logout.php" class="btn btn-danger">Log Out</a>
