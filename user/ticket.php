@@ -56,10 +56,26 @@ $price = $ticket_price['ticket_price'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/mdb.min.css">
     <title>Book Seats</title>
-
     <style>
         input:out-of-range {
             background-color: rgba(255, 0, 0, 0.25);
+        }
+
+        html {
+            scrollbar-width: thin;
+
+        }
+
+        html::-webkit-scrollbar {
+            width: .5vw;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: gray;
+        }
+
+        html::-webkit-scrollbar-track {
+            background-color: white;
         }
     </style>
 </head>

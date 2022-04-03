@@ -25,8 +25,25 @@ $is_paid = where('payment', 'booking_id', '=', $booking_id, false);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/mdb.min.css">
-
     <title>Payment Page</title>
+    <style>
+        html {
+            scrollbar-width: thin;
+
+        }
+
+        html::-webkit-scrollbar {
+            width: .5vw;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: gray;
+        }
+
+        html::-webkit-scrollbar-track {
+            background-color: white;
+        }
+    </style>
 
 </head>
 
