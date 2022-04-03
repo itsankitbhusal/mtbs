@@ -39,8 +39,8 @@ foreach ($shows as $s) {
 
 <body>
 
-    <div class="container-fluid position-absolute top-0 ">
-        <img class="img-fluid" src="../cover/<?php echo $result['image_cover']; ?>" alt="Cover Image" />
+    <div class="position-absolute top-0 w-100">
+        <img class="img-fluid w-100" style="height: 50vh; object-fit: cover;" src="../cover/<?php echo $result['image_cover']; ?>" alt="<?php echo $result['name']; ?>" />
     </div>
     <div class="container">
         <?php if (hasError()) : ?>
@@ -55,12 +55,12 @@ foreach ($shows as $s) {
         <?php endif; ?>
 
         <div class=" d-flex justify-content-center" style="margin-top: 30vh;">
-            <div class="card col-md-7">
+            <div class="card col-md-7 ">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img style="width: 20vw;" src="../uploads/<?php echo $result['image'] ?>" class="img-fluid rounded-start" alt="...">
+                    <div class="col-lg-4 col-md-5 mt-md-0 mt-4" style="display: grid; place-items: center;">
+                        <img src="../uploads/<?php echo $result['image'] ?>" class="img-fluid rounded " alt="<?php echo $result['name']; ?>">
                     </div>
-                    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center ">
+                    <div class="col-lg-6  col-md-7  d-flex flex-column align-items-center justify-content-center ">
                         <div class="card-body text-left">
                             <h5 class="card-title font-weight-bold h2"><?php echo $result['name']; ?></h5>
                             <br>
@@ -91,7 +91,7 @@ foreach ($shows as $s) {
         <br>
         <div class="container">
 
-            <div class=" d-flex flex-row mb-5 justify-content-center gap-5 ">
+            <div class=" d-flex flex-row mb-5 justify-content-center gap-5 flex-wrap">
                 <?php $i = 1;
                 if (empty($shows)) {
                     echo "<h1>Shows not available!!</h1>";
