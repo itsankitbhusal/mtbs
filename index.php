@@ -14,7 +14,8 @@
                                             echo "";
                                         }
                                         ?>">
-                <img src="./cover/<?php echo $key['image_cover']; ?>" class="img-flui  d-block w-100" alt="" />
+                <img src="./cover/<?php echo $key['image_cover']; ?>" class="img-flui  d-block w-100" alt="<?php echo $key['name']; ?>" style="object-fit: cover;
+  height: 50vh;" />
             </div>
         <?php endforeach; ?>
     </div>
