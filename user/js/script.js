@@ -1,3 +1,11 @@
+const logOut = document.getElementById("logOut");
+const handleClick = () => {
+  if (confirm("Are you sure want to log out?")) {
+    location.href = "./logout.php";
+  }
+};
+logOut.addEventListener("click", handleClick);
+
 function confirmDelete(id) {
   if (confirm("Are you sure you want to delete this?")) {
     location.href = `./delete.php?id=${id}`;

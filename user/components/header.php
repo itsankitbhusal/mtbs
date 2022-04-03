@@ -104,7 +104,7 @@ $result = all('movie');
                 <?php endif; ?>
 
                 <div class="d-flex align-items-center mx-2">
-                    <a href="./logout.php" class="btn btn-danger">Log Out</a>
+                    <a id="logOut" class="btn btn-danger">Log Out</a>
                     <!-- Right elements -->
                 </div>
             <?php endif;    ?>
