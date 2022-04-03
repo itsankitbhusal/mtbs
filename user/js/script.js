@@ -1,12 +1,13 @@
 // logout confirm for user
 const logOut = document.getElementById("logOut");
-const handleClick = () => {
-  if (confirm("Are you sure want to log out?")) {
-    location.href = "./logout.php";
-  }
-};
-logOut.addEventListener("click", handleClick);
-
+if (logOut) {
+  const handleClick = () => {
+    if (confirm("Are you sure want to log out?")) {
+      location.href = "./logout.php";
+    }
+  };
+  logOut.addEventListener("click", handleClick);
+}
 // logout confirm for user profile
 function handleClickProfile() {
   if (confirm("Are you sure want to log out?")) {
