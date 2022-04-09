@@ -84,7 +84,7 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
 
                                 $booking_id = $find[0]['id'];
                                 // echo "<pre>";
-                                // print_r($booking_id);
+                                // print_r($find);
                                 // die;
 
 

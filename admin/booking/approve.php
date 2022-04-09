@@ -150,10 +150,35 @@ if ($booking_status) {
 
     $payment = where('payment', 'booking_id', '=', $booking_id, false);
     $payment_on = $payment['payment_on'];
-    update('booking', $booking_id, [
-        'status' => 'booked',
-    ]);
-    require_once __DIR__ . "/../../functions/invoice.php";
+    $user_id_al = $result['user_id'];
+
+    //checking if the record match to previous booked show id...
+    $isAvailable = query("select * from booking where show_id = $show_id and user_id=$user_id_al and status='booked'");
+
+    //update existing id if show id is same as previous
+    $id_to_update =  $isAvailable[0]['id'];
+
+    //find previously booked seat to update;
+    $previous_seat_array = query('SELECT booked_seat FROM booking WHERE id =' . $id_to_update);
+
+    $previous_seat = $previous_seat_array[0]['booked_seat'];
+
+    //total no. of seat to update
+    $total_seats_to_update = $previous_seat + $booked_seat;
+
+    //if is available than delete the pending and updating the previous field
+    if ($isAvailable) {
+        delete('booking', $booking_id);
+        update('booking', $id_to_update, [
+            'booked_seat' => $total_seats_to_update,
+            'status' => 'booked'
+        ]);
+    } else {
+        update('booking', $booking_id, [
+            'status' => 'booked',
+        ]);
+    }
+    include_once __DIR__ . "/../../functions/invoice.php";
     setSuccess('Booking has been Approved!');
     header("Location: ./index.php");
     die;
