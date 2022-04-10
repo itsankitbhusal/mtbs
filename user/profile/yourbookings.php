@@ -5,7 +5,18 @@ $result = where('booking', 'user_id', '=', $_SESSION['user_id']);
 $user_id = $_SESSION['user_id'];
 $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'booked')");
 
-
+// echo "<pre>";
+// print_r($result);
+// // die;
+// [id] => 55
+//             [user_id] => 14
+//             [show_id] => 27
+//             [total_tickets] => 90
+//             [unit_price] => 450
+//             [status] => booked
+//             [booked_seat] => 2
+//             [total_price] => 900
+//             [booking_time] => 2022-03-27 20:51:32
 
 
 // die;
@@ -130,17 +141,43 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
         <hr>
         <div class="d-flex flex-wrap gap-3">
             <?php foreach ($result as $key) :
+                $total_seats_db = $key['booked_seat'];
                 $show = find('shows', $key['show_id']);
                 $movie_id = $show['movie_id'];
                 $result_movie = where('movie', 'id', '=', $movie_id);
 
-                // echo ' <pre>';
-                // print_r($result_movie);
+                $show_time_db = $show['play_time'];
+                $show_date_db = $show['play_date'];
+                // echo "<pre>";
+                // print_r($show);
                 // die;
+                // Array
+                // (
+                //     [id] => 28
+                //     [hall_id] => 1
+                //     [movie_id] => 16
+                //     [play_date] => 2022-04-20
+                //     [play_time] => 10:00:00
+                //     [ticket_price] => 500
+                // )
+
 
                 foreach ($result_movie as $m) :
-
+                    //                     echo "<pre>";
+                    //                     print_r($m);
+                    //                     die;
+                    //                     Array
+                    // (
+                    //     [id] => 16
+                    //     [name] => The Batman
+                    //     [language] => English
+                    //     [release_date] => 2022-03-04
+                    //     [image] => 6226bc0fc413d.jpeg
+                    //     [image_cover] => 6226bc0fc4627.jpeg
+                    //     [runtime] => 153
+                    // )
             ?>
+
                     <div class="card col-md-3 hover-shadow border rounded mb-5">
                         <div class="">
                             <img src="../../uploads/<?php echo $m['image']; ?>" class="img-fluid w-100 rounded" />
@@ -163,6 +200,12 @@ $result = query("SELECT * FROM booking WHERE (user_id = $user_id AND status = 'b
 
                                 ?>
                             </p>
+                            <div class="text-muted" style="font-size: .75rem; line-height: .5rem">
+                                <p class="card-title">Booked Seats: <?php echo $total_seats_db; ?></p>
+                                <p class="card-title">Show Date: <?php echo $show_date_db; ?></p>
+                                <p class="card-title">Show Time: <?php echo $show_time_db; ?></p>
+
+                            </div>
                         </div>
                     </div>
 
