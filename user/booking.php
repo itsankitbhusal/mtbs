@@ -32,16 +32,15 @@ if ($booked_seat > 5) {
     die;
 }
 
-//counting tootal number of seats booked by user
-// 
-// $total_tickets_db = query("SELECT sum(booked_seat) FROM booking WHERE (user_id = $user_id)");
-// $db_seat = $total_tickets_db[0]['sum(booked_seat)'];
+// counting tootal number of seats booked by user for a single show
+$total_tickets_db = query("SELECT sum(booked_seat) FROM booking WHERE (user_id = $user_id AND show_id = $show_id)");
+$db_seat = $total_tickets_db[0]['sum(booked_seat)'];
 
-// if (($db_seat + $booked_seat) > 5) {
-//     setError("You cannot book more than 5 seats!!");
-//     header('Location: ./index.php');
-//     die;
-// }
+if (($db_seat + $booked_seat) > 5) {
+    setError("You cannot book more than 5 seats for a particular show!!");
+    header('Location: ./index.php');
+    die;
+}
 
 //total price from POST
 $total_price = $unit_price * $booked_seat;
