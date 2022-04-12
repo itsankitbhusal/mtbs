@@ -155,16 +155,18 @@ if ($booking_status) {
     //checking if the record match to previous booked show id...
     $isAvailable = query("select * from booking where show_id = $show_id and user_id=$user_id_al and status='booked'");
 
-    //update existing id if show id is same as previous
-    $id_to_update =  $isAvailable[0]['id'];
+    if ($isAvailable) {
+        //update existing id if show id is same as previous
+        $id_to_update =  $isAvailable[0]['id'];
 
-    //find previously booked seat to update;
-    $previous_seat_array = query('SELECT booked_seat FROM booking WHERE id =' . $id_to_update);
+        //find previously booked seat to update;
+        $previous_seat_array = query('SELECT booked_seat FROM booking WHERE id =' . $id_to_update);
 
-    $previous_seat = $previous_seat_array[0]['booked_seat'];
+        $previous_seat = $previous_seat_array[0]['booked_seat'];
 
-    //total no. of seat to update
-    $total_seats_to_update = $previous_seat + $booked_seat;
+        //total no. of seat to update
+        $total_seats_to_update = $previous_seat + $booked_seat;
+    }
 
     //if is available than delete the pending and updating the previous field
     if ($isAvailable) {
