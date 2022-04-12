@@ -16,7 +16,7 @@ $image = $_FILES['image'];
 $name = request('name');
 if (!validateName($name)) {
     setError('Please provide valid name!!');
-    header("Location: create.php");
+    header("Location: ./edit.php");
     die;
 }
 $language = request('language');
@@ -33,7 +33,7 @@ if (empty($list)) {
 $runtime = request('runtime');
 if (!validateNumber($runtime)) {
     setError('Please provide valid runtime in minutes!!');
-    header("Location: create.php");
+    header("Location: ./edit.php");
     die;
 }
 

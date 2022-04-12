@@ -63,7 +63,7 @@ include  __DIR__ . "/../components/sidebar.php";
             <br>
             <?php foreach ($result as $key) : ?>
                 <div class="form-check form-check-inline">
-                    <input required class="form-check-input" value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
+                    <input class="form-check-input" value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
                     <label for="<?php echo $key['id']; ?>"><?php echo $key['name']; ?></label>
                 </div>
 

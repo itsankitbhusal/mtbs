@@ -90,7 +90,7 @@ include  __DIR__ . "/../components/sidebar.php";
                 <?php foreach ($prev_result as $key) : ?>
 
                     <div class="form-check form-check-inline">
-                        <input required class="form-check-input" <?php if (in_array($key['id'], $genre_ids)) echo 'checked'; ?> value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
+                        <input class="form-check-input" <?php if (in_array($key['id'], $genre_ids)) echo 'checked'; ?> value="<?php echo $key['id']; ?>" type="checkbox" id="<?php echo $key['id']; ?>" name='genre[]'>
                         <label for="<?php echo $key['id']; ?>"><?php echo $key['name']; ?></label>
                     </div>
 
@@ -102,12 +102,12 @@ include  __DIR__ . "/../components/sidebar.php";
 
             <div class="form-group">
                 <label class="form-label" for="image">Upload Image:</label>
-                <input required id="image" name="image" type="file" class="form-control">
+                <input id="image" name="image" type="file" class="form-control">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="image">Upload Cover:</label>
-                <input required id="image" name="image_cover" type="file" class="form-control">
+                <input id="image" name="image_cover" type="file" class="form-control">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update movie</button>
