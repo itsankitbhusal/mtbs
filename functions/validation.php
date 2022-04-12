@@ -9,7 +9,7 @@
  */
 function validateName($name)
 {
-    return preg_match("/^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$/", $name);
+    return preg_match("/^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/", $name);
 };
 
 /**
