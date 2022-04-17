@@ -6,7 +6,6 @@ check_user();
 //user id 
 $user_id = $_SESSION['user_id'];
 
-
 //show id from ticket GET method
 $show_id = request('sid');
 //hall id form ticket GET method
@@ -50,6 +49,17 @@ $status = 'pending';
 if (!empty($user_id) && !empty($show_id) && !empty($total_tickets) && !empty($unit_price) && !empty($booked_seat) && !empty($total_price)) {
 
     create('booking', compact('user_id', 'show_id', 'total_tickets', 'unit_price', 'status', 'booked_seat', 'total_price'));
+
+    // get user email from user table using $user_id
+    $user_email = find('user', $user_id)['email'];
+
+    $to = $user_email;
+    $from = "admin@cinematic.com";
+    $subject = "Make Payment";
+    $message = "You have 15 minutes to make booking payment. If you don't make payment within 15 minutes, your booking will be cancelled.";
+    $headers = "From: $from";
+    mail($to, $subject, $message, $headers);
+
 
     setSuccess('Make payement to confirm booking!!');
     $booking_id = query('SELECT `id` FROM `booking` ORDER BY id DESC LIMIT 1');
