@@ -98,7 +98,8 @@ if (!empty($name) && !empty($card) && !empty($exp) && !empty($cvv)) {
     $to = $user_email;
     $from = "admin@cinematic.com";
     $subject = "Payment Done";
-    $message = "Your payment is done successfully. Wait for the admin approval to confirm your booking.";
+    $message = "Your payment is done successfully. Wait for the admin approval to confirm your booking.
+    You will receive invoice if the booking is confirmed.";
     $headers = "From: $from";
     mail($to, $subject, $message, $headers);
 
