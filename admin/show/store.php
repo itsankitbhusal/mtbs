@@ -15,6 +15,20 @@ if (!empty($_POST)) {
     $play_time = request('play_time');
     $ticket_price = request('ticket_price');
 
+    // check if same show with date and time already exists
+    $sql = "SELECT * FROM shows WHERE hall_id = $hall_id AND movie_id = $movie_id AND play_date = '$play_date' AND play_time = '$play_time'";
+
+    $is_already_exists = query($sql);
+    // echo "<pre>";
+    // print_r($is_already_exists);
+    // die;
+
+    if ($is_already_exists) {
+        setError('Show already exists!!');
+        header("Location: ./create.php");
+        die;
+    }
+
     if (!validateNumber($ticket_price)) {
         setError("Enter valid price!!");
         header("Location: create.php");
