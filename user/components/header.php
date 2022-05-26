@@ -1,7 +1,9 @@
 <?php
 require "./functions/db.php";
 require "./functions/functions.php";
-$result = all('movie');
+// $result = all('movie');
+// setting limit for now showing
+$result = query('SELECT * from `movie` LIMIT 8');
 ?>
 <!DOCTYPE html>
 <html lang="en">
