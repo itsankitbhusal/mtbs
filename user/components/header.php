@@ -3,7 +3,7 @@ require "./functions/db.php";
 require "./functions/functions.php";
 // $result = all('movie');
 // setting limit for now showing
-$result = query('SELECT * from `movie` LIMIT 8');
+$result = query('SELECT * from `movie` ORDER BY `id` DESC LIMIT 8');
 ?>
 <!DOCTYPE html>
 <html lang="en">
