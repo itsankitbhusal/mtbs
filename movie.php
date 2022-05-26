@@ -2,10 +2,47 @@
 
 $search = request('search');
 
+// limit for a page
+$limit = 4;
+$page = request('page');
+
+
+if ($page <= 0) {
+    $offset = 1;
+    $page = 1;
+} elseif ($page == 1) {
+    $offset = 1;
+    $page = 1;
+} elseif ($page > 1) {
+    // loop for setting the offset
+    $offset = ($page - 1) * $limit;
+}
+
+// get list of total movies in database
+$total_movies = count($result);
+
+if ($limit < $total_movies) {
+    // total pages
+    $total_pages = ceil($total_movies / $limit);
+
+    // echo "$offset, $limit";  
+
+    if ($page) {
+        $result = query("SELECT * FROM movie ORDER BY id DESC LIMIT $offset, $limit");
+    }
+} else {
+    $result = query("SELECT * FROM movie ORDER BY id DESC LIMIT 1, $limit");
+    $total_pages = null;
+}
+
+
+
+
+// php code for searching movies
 if (strlen($search) >= 3) {
-    $result = query("SELECT * FROM `movie` WHERE (`name` LIKE '%" . $search . "%')");
+    $result = query("SELECT * FROM `movie` WHERE (`name` LIKE '%" . $search . "%')  ");
     if (empty($result)) {
-        setError('No data found!!');
+        // setError('No data found!!');
     }
 }
 
@@ -20,6 +57,12 @@ if (hasError()) : ?>
         <?php echo getSuccess(); ?>
     </div>
 <?php endif; ?>
+
+<!-- php code for pagination -->
+<?php
+
+
+?>
 
 <div class="container my-5">
 
@@ -67,12 +110,45 @@ if (hasError()) : ?>
             </a>
         <?php endforeach; ?>
     </div>
+    <?php
+    if (empty($result)) {
+        echo '<h5 style="height:50vh;"> No result Found!!</h5>';
+    }
+    ?>
     <!-- cards -->
+
+    <!-- pagination starts -->
+    <?php if ($total_pages > 1 && !$search) : ?>
+
+        <div class="mt-5">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+
+                    <?php
+                    // loop for pagination
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        if ($i == $page) {
+                            echo '<li class="page-item active" onclick="event.preventDefault()"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                        }
+                    }
+                    ?>
+                    <!-- <li>
+                        hello
+                    </li> -->
+
+
+
+                </ul>
+            </nav>
+        </div>
+    <?php endif; ?>
+    <!-- pagination ends -->
 </div>
 
 
+
 <?php
-if (empty($result)) {
-    echo '<p style="height:50vh;"> </p>';
-}
+
 require_once "./user/components/footer.php"; ?>
