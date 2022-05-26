@@ -3,15 +3,15 @@
 $search = request('search');
 
 // limit for a page
-$limit = 4;
+$limit = 3;
 $page = request('page');
 
 
 if ($page <= 0) {
-    $offset = 1;
+    $offset = 0;
     $page = 1;
 } elseif ($page == 1) {
-    $offset = 1;
+    $offset = 0;
     $page = 1;
 } elseif ($page > 1) {
     // loop for setting the offset
@@ -25,7 +25,7 @@ if ($limit < $total_movies) {
     // total pages
     $total_pages = ceil($total_movies / $limit);
 
-    // echo "$offset, $limit";  
+    // echo "$offset, $limit";
 
     if ($page) {
         $result = query("SELECT * FROM movie ORDER BY id DESC LIMIT $offset, $limit");
