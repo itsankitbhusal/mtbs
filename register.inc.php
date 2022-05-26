@@ -8,6 +8,22 @@ $email = request("email");
 $password = request("password");
 $phone = request("phone");
 $password_verify = request("password_verify");
+if (empty($email) || empty($password) || empty($name) || empty($password_verify)) {
+    setError("Please fill all the fields");
+    Header("Location: ./register.php");
+    die;
+}
+
+if ($password != $password_verify) {
+    setError("Password and Confirm password don't  match!");
+    Header("Location: ./register.php");
+    die;
+}
+if (!validateName($name)) {
+    setError("Enter valid name!!");
+    header("Location: ./register.php");
+    die;
+}
 
 if (!validatePhone($phone)) {
     setError("Enter valid phone!!");
@@ -15,21 +31,9 @@ if (!validatePhone($phone)) {
     die;
 }
 
-if (!validateName($name)) {
-    setError("Enter valid name!!");
-    header("Location: ./register.php");
-    die;
-}
-
-
-if (empty($email) || empty($password) || empty($name) || empty($password_verify)) {
-    setError("Please fill all the fields");
-    Header("Location: ./register.php");
-    die;
-}
 $user = where('user', 'email', '=', $email, false);
 if ($user) {
-    setError("Email has alreday been taken!");
+    setError("Email has already  been taken!");
     Header("Location: ./register.php");
     die;
 }
@@ -43,11 +47,7 @@ if (!validatePassword($password)) {
     Header("Location: ./register.php");
     die;
 }
-if ($password != $password_verify) {
-    setError("Password and Confirm password doesnot match!");
-    Header("Location: ./register.php");
-    die;
-}
+
 $user_phone = where('user', 'phone', '=', $phone, false);
 if ($user_phone) {
     setError("Phone has alreday been taken!");

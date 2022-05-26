@@ -34,30 +34,30 @@ require "./functions/functions.php";
                             <!-- Name input -->
                             <div class="form-outline">
                                 <label class="form-label" for="name">Full Name</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="name" type="name" id="name" class="form-control " required />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="name" type="name" id="name" class="form-control " />
                             </div>
 
                             <!-- Email input -->
                             <div class="form-outline">
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="email" type="email" id="form3Example3" class="form-control " required />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="email" type="email" id="form3Example3" class="form-control " />
                             </div>
 
                             <!-- Phone input -->
                             <div class="form-outline">
                                 <label class="form-label" for="phone">Phone no.</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="phone" type="text" id="phone" class="form-control " required />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="phone" type="text" id="phone" class="form-control " />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline ">
                                 <label class="form-label" for="password">Password</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password" type="password" id="password" class="form-control" required />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password" type="password" id="password" class="form-control" />
                             </div>
                             <!--Confirm Password input -->
                             <div class=" form-outline ">
                                 <label class=" form-label" for="confirm">Confirm Password</label>
-                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password_verify" type="password" id="confirm" class="form-control" required />
+                                <input style="border: 1px solid #dedede; border-radius: 5px" name="password_verify" type="password" id="confirm" class="form-control" />
                             </div>
 
 
