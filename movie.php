@@ -3,7 +3,7 @@
 $search = request('search');
 
 // limit for a page
-$limit = 3;
+$limit = 4;
 $page = request('page');
 
 
@@ -19,11 +19,13 @@ if ($page <= 0) {
 }
 
 // get list of total movies in database
-$total_movies = count($result);
+$total_movies = count(all('movie'));
 
 if ($limit < $total_movies) {
     // total pages
-    $total_pages = ceil($total_movies / $limit);
+    $total_pages = ceil(($total_movies / $limit));
+
+    // echo ("$total_movies movies found. Page $page of $total_pages");
 
     // echo "$offset, $limit";
 
@@ -34,9 +36,6 @@ if ($limit < $total_movies) {
     $result = query("SELECT * FROM movie ORDER BY id DESC LIMIT 1, $limit");
     $total_pages = null;
 }
-
-
-
 
 // php code for searching movies
 if (strlen($search) >= 3) {
@@ -58,7 +57,6 @@ if (hasError()) : ?>
     </div>
 <?php endif; ?>
 
-<!-- php code for pagination -->
 <?php
 
 
