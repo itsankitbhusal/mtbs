@@ -1,8 +1,12 @@
+<?php 
+include "../../url.php";
+?>
+
 <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/mtbs/admin/index.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php $base_url + "mtbs/admin/index.php" ?>">
             <div class="sidebar-brand-icon">
                 <i class="fas fa-home"></i>
             </div>
@@ -14,37 +18,37 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase"> Dashboard</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/movie">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin/movie" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase">Movies</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/hall">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin/hall" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase">Theaters</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/genre">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin/genre" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase">Genres</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/show">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin/show" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase">Shows</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/user">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin/user" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase">Users</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="http://localhost/mtbs/admin/booking">
+            <a class="nav-link" href="<?php $base_url + "mtbs/admin/booking" ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span class="font-weight-bold text-uppercase">Bokings</span></a>
         </li>
@@ -91,3 +95,4 @@
                 </ul>
             </nav>
             <!-- End of Topbar -->
+            

@@ -1,6 +1,7 @@
 <!-- Footer -->
 <?php
-$log_url = "http://localhost/mtbs/logout.php";
+include "../../url.php";
+$log_url = $base_url + "mtbs/logout.php";
 ?>
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">

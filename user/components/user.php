@@ -4,7 +4,8 @@ include  __DIR__ . "/../../functions/functions.php";
 include  __DIR__ . "/../../functions/validation.php";
 
 $result = check_user();
-$page_url = "http://localhost/mtbs/public/";
+include "../../url.php";
+$page_url = $base_url + "mtbs/public/";
 
 $shows = all('shows');
 $booking = where('booking', 'status', '=', 'pending');

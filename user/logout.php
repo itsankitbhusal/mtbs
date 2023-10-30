@@ -2,5 +2,8 @@
 
 session_start();
 unset($_SESSION["user_id"]);
-$loc = "http://localhost/mtbs/login.php";
+
+include "../url.php";
+$loc = $base_url + "mtbs/login.php";
+
 header("Location: " . $loc);

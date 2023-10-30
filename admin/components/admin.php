@@ -3,8 +3,10 @@ include  __DIR__ . "/../../functions/db.php";
 include  __DIR__ . "/../../functions/functions.php";
 include  __DIR__ . "/../../functions/validation.php";
 
+include "../../url.php";
+
 $result = check_admin();
-$page_url = "http://localhost/mtbs/admin/";
+$page_url = $base_url + "/mtbs/admin/";
 
 $shows = all('shows');
 // echo "<pre>";

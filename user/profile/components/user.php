@@ -3,8 +3,11 @@ include  __DIR__ . "/../../../functions/db.php";
 include  __DIR__ . "/../../../functions/functions.php";
 include  __DIR__ . "/../../../functions/validation.php";
 
+include "../../../url.php";
+
 $result = check_user();
-$page_url = "http://localhost/mtbs/public/";
+
+$page_url = $base_url + "mtbs/public/";
 
 $shows = all('shows');
 $booking = where('booking', 'status', '=', 'pending');
